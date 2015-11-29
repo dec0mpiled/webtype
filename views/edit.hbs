@@ -1,11 +1,11 @@
 <div class="container">
-  <form action="/e/as/{{document.id}}" method="post">
+  <form action="/e/d/as/{{document.id}}" method="post">
 
 
     <div class="float-right">
-      
+
       <p id="date"> save: <kbd class="light">&#8984;</kbd> + <kbd class="light">s</kbd></p>
-      
+
     </div>
 
     <h1>
@@ -41,7 +41,7 @@
 
 <script>
   $(document).ready(function() {
-    
+
     var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
       mode: 'gfm',
       theme: "github",
@@ -72,7 +72,7 @@
 
       $.ajax({
         type: 'POST',
-        url: '/e/as/{{document.id}}',
+        url: '/e/d/as/{{document.id}}',
         data: formData,
         dataType: 'json',
         encode: true

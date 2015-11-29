@@ -5,20 +5,19 @@ var Account = require('../models/account');
 
 router.get('/', function (req, res) {
     if (!req.user) {
-        res.render('index', { 
-            user : req.user, 
-            title: 'Thunder', 
-            active: 'home' 
+        res.render('index', {
+            user : req.user,
+            title: 'Thunder',
+            active: 'home'
         });
     } else {
-        console.log(req.user.id);
-        Document.find({ 'user._id' : req.user._id }, function (err, documents) {
+        Document.find({ 'user._id' : req.user._id }, null, { sort: '-date.edited' }, function (err, documents) {
             if (err) throw err;
-            res.render('index', { 
-                user : req.user, 
+            res.render('index', {
+                user : req.user,
                 document: documents,
-                title: 'Thunder', 
-                active: 'home' 
+                title: 'Thunder',
+                active: 'home'
             });
         });
     }
@@ -37,7 +36,7 @@ router.get('/!:user', function (req, res) {
     Account.findOne({ username: req.params.user }, function (err, result) {
        if (err) throw err;
        res.render('profile', {
-         result: result  
+         result: result
        });
     });
 });

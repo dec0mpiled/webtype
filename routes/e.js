@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Document = require('../models/document');
+var List = require('../models/list');
 
 var slug = require('slug');
 var marked = require('marked');
@@ -47,5 +48,20 @@ router.get('/l/:id', function (req, res) {
     });
   });
 });
+
+// push to list
+router.post('/l/a/:id', function (req, res) {
+  List.findOne({ _id: req.params.id }, function (err, list) {
+    if (err) throw err;
+    list.item.push({ content: req.body.content, date: { created: new Date, edited: new Date } });
+    list.save(function (err) {
+      if (err) throw err;
+      res.send({ status: 'success' });
+    });
+  });
+});
+
+// shift from list
+router.get('/l/s/:id/:sub')
 
 module.exports = router;

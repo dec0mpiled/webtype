@@ -1,35 +1,38 @@
 <div class="container">
   {{#unless user}}
-  
+
   <h1><a href="/">Thunder</a></h1>
-  
+
   <!-- no user -->
   <br>
   <div class="jumbotron">
-    
+
     <h1>Create documents fast</h1>
     <p>With Thunder, you can create, edit, and send docs super fast.</p>
-    
+
     <a href="/auth/login" class="button">login</a>
     <a href="/auth/register" class="button">register</a>
-    
+
   </div>
   {{else}}
-  
+
   <header>
     <div class="float-right">
       <a href="/auth/logout">logout</a>
     </div>
-    
+
     <h1><a href="/">Thunder</a></h1>
   </header>
-  
-  <h2>Lists</h2>
-  
-  <a href="/c/l">Create new list</a>
-  
+
   <div class="lists">
-    
+    <div class="float-right">
+      <a href="/c/l"><span class="icon icon-plus"></span></a>
+    </div>
+    <h2>Lists</h2>
+  </div>
+
+  <div class="lists">
+
     {{#each list}}
     <div class="list">
       <div class="float-right">
@@ -42,15 +45,19 @@
         <a href="/!{{user.username}}/{{slug}}" class="doc-title">{{content.title}}</a></h3>
     </div>
     {{else}}
-    
+
     {{/each}}
-    
+
   </div>
-  
-  <h2>Documents</h2>
-  
-  <a href="/c/d">Create new document</a>
-  
+
+
+  <div class="documents">
+    <div class="float-right">
+      <a href="/c/d"><span class="icon icon-plus"></span></a>
+    </div>
+    <h2>Documents</h2>
+  </div>
+
   <div class="documents">
     {{#each document}}
     <div class="document">
@@ -65,7 +72,7 @@
     </div>
     {{/each}}
   </div>
-  
+
   {{/unless}}
 </div>
 

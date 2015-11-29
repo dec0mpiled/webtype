@@ -5,11 +5,12 @@ var List = new Schema({
     user: Schema.Types.Mixed,
     slug: String,
     item: [
-      content: String,
-      hash: 
-      date: {
-        created: Date,
-        edited: Date
+      {
+        content: String,
+        date: {
+          created: Date,
+          edited: Date
+        }
       }
     ],
     date: {

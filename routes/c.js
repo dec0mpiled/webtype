@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Document = require('../models/document');
+var List = require('../models/list');
 
 // create new doc
 router.get('/d', function (req, res) {
@@ -15,7 +16,7 @@ router.get('/d', function (req, res) {
     }
   }, function (err, document) {
     if (err) throw err;
-    res.redirect('/e/d/' + document.id); 
+    res.redirect('/e/d/' + document.id);
   });
 });
 
