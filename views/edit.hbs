@@ -1,0 +1,93 @@
+<div class="container">
+  <form action="/e/as/{{document.id}}" method="post">
+
+
+    <div class="float-right">
+      
+      <p id="date"> save: <kbd class="light">&#8984;</kbd> + <kbd class="light">s</kbd></p>
+      
+    </div>
+
+    <h1>
+      <a href="/">Thunder</a>
+    </h1>
+
+
+    <input autocomplete="false" class="autosave" name="title" type="text" placeholder="Title" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
+    <textarea autofocus="autofocus" id="content" name="content">{{#if document.content.data.raw}}{{document.content.data.raw}}{{else}}hello{{/if}}</textarea>
+  </form>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="/moment.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<link href="/stylesheets/animate.css" rel="stylesheet" type="text/css">
+
+<!--codemirror-->
+<link href="/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/github.css" rel="stylesheet" type="text/css">
+<script src="/codemirror/lib/codemirror.js"></script>
+<script src="/codemirror/addon/mode/overlay.js"></script>
+<script src="/codemirror/addon/wrap/hardwrap.js"></script>
+<script src="/codemirror/mode/xml/xml.js"></script>
+<script src="/codemirror/mode/markdown/markdown.js"></script>
+<script src="/codemirror/mode/gfm/gfm.js"></script>
+<script src="/codemirror/mode/javascript/javascript.js"></script>
+<script src="/codemirror/mode/css/css.js"></script>
+<script src="/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="/codemirror/mode/clike/clike.js"></script>
+<script src="/codemirror/mode/meta.js"></script>
+
+<script>
+  $(document).ready(function() {
+    
+    var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
+      mode: 'gfm',
+      theme: "github",
+      lineNumbers: false,
+      lineWrapping: true,
+      viewportMargin: Infinity
+    });
+
+    $(document).keydown(function(event) {
+      // If Control or Command key is pressed and the S key is pressed
+      // run save function. 83 is the key code for S.
+      if ((event.ctrlKey || event.metaKey) && event.which == 83) {
+        autosave();
+        event.preventDefault();
+        return false;
+      }
+    });
+
+    $('form').submit(function(event) {
+      autosave();
+    });
+
+    function autosave() {
+      var formData = {
+        'title': $('input[name=title]').val(),
+        'content': editor.getValue(),
+      };
+
+      $.ajax({
+        type: 'POST',
+        url: '/e/as/{{document.id}}',
+        data: formData,
+        dataType: 'json',
+        encode: true
+      })
+        .done(function(data) {
+          $('#date').html('saved' + moment().format(' h:mm a'));
+          $('#date').addClass('animated bounce');
+          $('#date').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+            $('#date').removeClass('animated bounce');
+          });
+
+        });
+
+      event.preventDefault();
+    }
+
+  });
+</script>
