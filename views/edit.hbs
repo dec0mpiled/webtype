@@ -4,7 +4,7 @@
 
     <div class="float-right">
 
-      <p id="date"> save: <kbd class="light">&#8984;</kbd> + <kbd class="light">s</kbd></p>
+      <button type="submit"><p id="date"> save: <kbd class="light">&#8984;</kbd> + <kbd class="light">s</kbd></p></button>
 
     </div>
 
@@ -14,7 +14,8 @@
 
 
     <input autocomplete="false" class="autosave" name="title" type="text" placeholder="Title" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
-    <textarea autofocus="autofocus" id="content" name="content">{{#if document.content.data.raw}}{{document.content.data.raw}}{{else}}hello{{/if}}</textarea>
+    
+    <textarea autofocus="autofocus" id="content" name="content">{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}</textarea>
   </form>
 </div>
 

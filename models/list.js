@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var List = new Schema({
     user: Schema.Types.Mixed,
     slug: String,
+    title: String,
     item: [
       {
         content: String,

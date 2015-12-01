@@ -42,7 +42,7 @@ input:focus {
 }
 
 input[name='title'] {
-  font-size: 3em;
+  font-size: 2.75em;
 }
 
 .CodeMirror {
