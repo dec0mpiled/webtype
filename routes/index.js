@@ -7,7 +7,7 @@ router.get('/', function (req, res) {
     if (!req.user) {
         res.render('index', {
             user : req.user,
-            title: 'Thunder',
+            title: 'owebbot',
             active: 'home'
         });
     } else {
@@ -16,14 +16,14 @@ router.get('/', function (req, res) {
             res.render('index', {
                 user : req.user,
                 document: documents,
-                title: 'Thunder',
+                title: 'owebbot',
                 active: 'home'
             });
         });
     }
 });
 
-router.get('/!:user/:slug', function (req, res) {
+router.get('/@:user/:slug', function (req, res) {
     Document.findOne({ 'user.username': req.params.user, 'slug': req.params.slug }, function (err, document) {
         if (err) throw err;
         res.render('view', {
@@ -32,11 +32,12 @@ router.get('/!:user/:slug', function (req, res) {
     })
 });
 
-router.get('/!:user', function (req, res) {
+router.get('/@:user', function (req, res) {
     Account.findOne({ username: req.params.user }, function (err, result) {
        if (err) throw err;
        res.render('profile', {
-         result: result
+         result: result,
+         user: req.user
        });
     });
 });

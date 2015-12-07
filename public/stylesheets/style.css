@@ -30,12 +30,22 @@ a {
 }
 
 input {
-  min-width: 100%;
-  font-weight: 300;
-  border: 0 solid;
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
 }
 input:focus {
   outline: none;
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
 }
 ::-webkit-input-placeholder {
   color: #26292C;
@@ -43,6 +53,11 @@ input:focus {
 
 input[name='title'] {
   font-size: 2.75em;
+  border: 0;
+}
+input[name='title']:focus {
+  border: 0;
+  box-shadow: 0 0 0 0 transparent;
 }
 
 .CodeMirror {
@@ -56,14 +71,23 @@ input[name='title'] {
 }
 
 button, .button {
-  padding: .3em .5em;
-  color: #539FFE;
-  text-decoration: none;
-  border: 2px solid;
-  background: transparent;
+  color: #26292C;
+  display: inline-block;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+  background: #fff;
+  transition: box-shadow 0.3s, border 0.3s;
 }
-button:focus, .button:focus {
+button:hover, .button:hover {
   outline: none;
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
 }
 
 .delete, .edit {
