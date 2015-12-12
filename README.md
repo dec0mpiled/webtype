@@ -1,5 +1,3 @@
-## Authentication Template
+## owebbot
 
-authentication-template for express 4
-
-- ignored files: `.env`, `node_modules`
+a simple, yet useful way to use the web
