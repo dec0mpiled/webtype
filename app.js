@@ -1,5 +1,7 @@
 // dotenv (environment variables) (include .env)
-require('dotenv').load();
+if (app.get('env') === 'development') {
+    require('dotenv').load();
+}
 
 // dependencies
 var express = require('express');
