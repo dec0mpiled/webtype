@@ -75,7 +75,6 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // mongoose
-console.log(process.env.MONGOURI);
 mongoose.connect(process.env.MONGOURI);
 
 // catch 404 and forward to error handler
