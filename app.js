@@ -1,6 +1,3 @@
-// dotenv (environment variables) (include .env)
-require( 'dotenv' ).load();
-
 // dependencies
 var express = require( 'express' );
 var path = require( 'path' );
@@ -22,7 +19,12 @@ var d = require( './routes/d' );
 
 var app = express();
 
-var hbs = require( 'hbs' );
+// dotenv (environment variables) (include .env)
+if (app.get('env') === 'development') {
+    require('dotenv').load();
+}
+
+var hbs = require('hbs');
 
 // view engine setup
 app.set( 'views', path.join( __dirname, 'views' ) );
