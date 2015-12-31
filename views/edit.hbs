@@ -3,16 +3,11 @@
 
 
     <div class="float-right">
-
-      <p> 
-        <span id="date">save: <kbd class="light">&#8984;</kbd> + <kbd class="light">s</kbd></span>
-        <a><span class="icon icon-information"></span></a>
-      </p>
-
+      <button type="submit" class="tooltip-bottom" data-tooltip="save" id="date"><i class="icon icon-upload"></i></button>
     </div>
 
     <h1>
-      <a href="/">owebbot</a>
+      <a href="/" class="editor-title">owebbot</a>
     </h1>
 
 
@@ -63,6 +58,17 @@
         return false;
       }
     });
+    
+    $(document).keydown(function(event) {
+      // If Control or Command key is pressed and the S key is pressed
+      // run save function. 83 is the key code for S.
+      if ((event.ctrlKey || event.metaKey) && event.which == 66) {
+        autosave();
+        window.location = '/';
+        event.preventDefault();
+        return false;
+      }
+    });
 
     $('form').submit(function(event) {
       autosave();
@@ -82,9 +88,9 @@
         encode: true
       })
         .done(function(data) {
-          $('#date').html('saved' + moment().format(' h:mm a'));
+          $('#date').attr('data-tooltip', 'last saved' + moment().format(' h:mm a'));
           $('#date').addClass('animated bounce');
-          $('#date').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+          $('#date').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
             $('#date').removeClass('animated bounce');
           });
 
