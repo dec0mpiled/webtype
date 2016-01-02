@@ -26,7 +26,7 @@ router.get('/', function (req, res) {
 router.get('/@:user/:slug', function (req, res) {
     Document.findOne({ 'user.username': req.params.user, 'slug': req.params.slug }, function (err, document) {
         if (err) throw err;
-        res.render('view', {
+        res.render('d/view', {
             document: document
         });
     })
@@ -35,7 +35,7 @@ router.get('/@:user/:slug', function (req, res) {
 router.get('/@:user', function (req, res) {
     Account.findOne({ username: req.params.user }, function (err, result) {
        if (err) throw err;
-       res.render('profile', {
+       res.render('a/profile', {
          result: result,
          user: req.user
        });

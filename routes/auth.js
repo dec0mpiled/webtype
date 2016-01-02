@@ -14,7 +14,7 @@ router.post('/register', function(req, res, next) {
     name: req.body.name
   }), req.body.password, function(err, account) {
     if (err) {
-      return res.render("register", {
+      return res.render("a/register", {
         info: "username already exists!",
         active: 'register'
       });
@@ -33,7 +33,7 @@ router.post('/register', function(req, res, next) {
 
 
 router.get('/login', function(req, res) {
-  res.render('login', {
+  res.render('a/login', {
     user: req.user,
     active: 'login'
   });

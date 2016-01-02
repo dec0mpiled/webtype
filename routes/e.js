@@ -5,11 +5,22 @@ var Document = require('../models/document');
 var slug = require('slug');
 var marked = require('marked');
 
+// edit blog
+router.get('/b/:id', function (req, res) {
+  Blog.findOne({ _id: req.params.id }, function (err, blog) {
+    if (err) throw err;
+    res.render('b/edit', {
+      user: req.user,
+      blog: blog
+    });
+  });
+});
+
 // edit doc
 router.get('/d/:id', function (req, res) {
   Document.findOne({ _id: req.params.id }, function (err, document) {
     if (err) throw err;
-    res.render('edit', {
+    res.render('d/edit', {
       user: req.user,
       document: document
     });
@@ -32,7 +43,6 @@ router.post('/d/as/:id', function (req, res) {
     }
   }, function (err, document) {
     if (err) throw err;
-    console.log(document);
     res.send({ document: document });
   });
 });

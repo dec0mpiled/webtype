@@ -12,7 +12,7 @@
 
 
     <input autocomplete="false" class="autosave" name="title" type="text" placeholder="Title" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
-    
+
     <textarea autofocus="autofocus" id="content" name="content">{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}</textarea>
   </form>
 </div>
@@ -58,7 +58,7 @@
         return false;
       }
     });
-    
+
     $(document).keydown(function(event) {
       // If Control or Command key is pressed and the S key is pressed
       // run save function. 83 is the key code for S.

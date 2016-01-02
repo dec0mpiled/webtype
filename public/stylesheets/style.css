@@ -2,7 +2,7 @@
     padding: 0 10%;
 }
 html {
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-family: "Inconsolata";
     font-size: 1.4em;
     color: #26292C;
 }
@@ -17,7 +17,7 @@ a {
     text-decoration: none;
 }
 .title {
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-family: "Inconsolata";
     font-weight: 200;
     font-size: 3em;
     color: #26292C;
@@ -47,7 +47,7 @@ input: focus {
     border: solid 1px #707070;
     box-shadow: 0 0 5px 1px #969696;
 }
-: : -webkit-input-placeholder {
+::-webkit-input-placeholder {
     color: #26292C;
 }
 input[name='title'] {
@@ -122,13 +122,6 @@ button: hover, .button: hover {
     border-radius: 10px;
 }
 
-.invisible {
-  visibility: hidden;
-}
-
-.document:hover .invisible { visibility: visible; }
-
-
 /**
  * Tooltip Styles
  */
@@ -150,15 +143,15 @@ button: hover, .button: hover {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
-  -webkit-transition: 
+  -webkit-transition:
     opacity 0.2s ease-in-out,
     visibility 0.2s ease-in-out,
     -webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
-  -moz-transition:    
+  -moz-transition:
     opacity 0.2s ease-in-out,
     visibility 0.2s ease-in-out,
     -moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
-  transition:         
+  transition:
     opacity 0.2s ease-in-out,
     visibility 0.2s ease-in-out,
     transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
@@ -249,7 +242,7 @@ button: hover, .button: hover {
 .tooltip-top:focus:after {
   -webkit-transform: translateY(-12px);
   -moz-transform:    translateY(-12px);
-  transform:         translateY(-12px); 
+  transform:         translateY(-12px);
 }
 
 /* Left */
@@ -275,7 +268,7 @@ button: hover, .button: hover {
 .tooltip-left:focus:after {
   -webkit-transform: translateX(-12px);
   -moz-transform:    translateX(-12px);
-  transform:         translateX(-12px); 
+  transform:         translateX(-12px);
 }
 
 /* Bottom */
@@ -300,7 +293,7 @@ button: hover, .button: hover {
 .tooltip-bottom:focus:after {
   -webkit-transform: translateY(12px);
   -moz-transform:    translateY(12px);
-  transform:         translateY(12px); 
+  transform:         translateY(12px);
 }
 
 /* Right */
@@ -324,7 +317,7 @@ button: hover, .button: hover {
 .tooltip-right:focus:after {
   -webkit-transform: translateX(12px);
   -moz-transform:    translateX(12px);
-  transform:         translateX(12px); 
+  transform:         translateX(12px);
 }
 
 /* Move directional arrows down a bit for left/right tooltips */
