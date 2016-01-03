@@ -60,12 +60,15 @@ router.get('/b/:id/dd/:doc', ensureAuthentication, function (req, res) {
     if (err) throw err;
     Blog.findOne({ _id: req.params.id }, function (err, blog) {
       if (err) throw err;
+
       var pos = blog.post.indexOf(document);
       blog.post.splice(pos, 1);
+
       blog.save(function(err) {
         if (err) throw err;
         res.redirect('/e/b/' + req.params.id);
       });
+
     });
   });
 });
@@ -98,6 +101,21 @@ router.post('/d/as/:id', ensureAuthentication, function (req, res) {
   }, function (err, document) {
     if (err) throw err;
     res.send({ document: document });
+    console.log(document);
+    if (document.blog) {
+      Blog.findOne({ _id: document.blog.id }, function(err, blog) {
+        if (err) throw err;
+
+        var pos = blog.post.indexOf(document);
+        blog.post[pos] = blog;
+
+        blog.save(function(err) {
+          if (err) throw err;
+        });
+
+      });
+    }
+
   });
 });
 

@@ -1,15 +1,21 @@
 <header class="container">
+  
   <div class="float-right">
     <p id="date"><a href="/!{{document.user.username}}">@{{document.user.username}}</a><br>{{date document.date.edited}}</p>
   </div>
+
   <h1><a href="/">owebbot</a></h1>
+
 </header>
 
 <div class="container">
+
   <h1 class="title">{{document.content.title}}</h1>
+
   <div class="content">
     {{{document.content.data.html}}}
   </div>
+
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>

@@ -1,16 +1,24 @@
 <div class="container">
+
+  <!-- HEADER -->
   <header>
     <h1><a href="/">owebbot</a></h1>
   </header>
-  
+
   <h1>register</h1>
   <p class="lead">become a member today</p>
 
+
+  <!-- FORM -->
   <form role="form" action="/auth/register" method="post" autocomplete="off">
+
     {{#if info}}
+
     <div class="alert alert-danger" role="alert">{{info}}</div>
     {{else}}
+
     <div>&nbsp;</div>
+
     {{/if}}
 
     <div class="form-group">
@@ -28,7 +36,7 @@
     <div class="form-group">
       <input class="form-control" type="password" name="password" placeholder="password">
     </div>
-    
+
     <button class="btn btn-primary" type="submit">log in</button>
     <a href="/"><button class="btn btn-warning" type="button">cancel</button></a>
   </form>

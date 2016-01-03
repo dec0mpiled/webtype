@@ -1,6 +1,6 @@
 <div class="container">
-  <form action="/e/d/as/{{document.id}}" method="post">
 
+  <form action="/e/d/as/{{document.id}}" method="post">
 
     <div class="float-right">
       <button type="submit" class="tooltip-bottom" data-tooltip="save" id="date"><i class="icon icon-upload"></i></button>
@@ -14,11 +14,16 @@
     <input autocomplete="false" class="autosave" name="title" type="text" placeholder="Title" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
 
     <textarea autofocus="autofocus" id="content" name="content">{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}</textarea>
+    
   </form>
+
 </div>
 
+<!-- SCRIPTS -->
+
+<!-- scripts -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="/moment.js"></script>
+<script type="type/javascript" src="/moment.js"></script>
 
 <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
 <link href="/stylesheets/animate.css" rel="stylesheet" type="text/css">

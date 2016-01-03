@@ -74,35 +74,50 @@
   <div class="documents">
     {{#each document}}
     <div class="document">
+
       <div class="float-right">
         <a href="#add-to-blog-{{id}}" class="add"><span class="icon icon-export"></span></a>
         <a href="/e/d/{{id}}" class="edit"><span class="icon icon-document-edit"></span></a>
         <a href="/d/d/{{id}}" class="delete"><span class="icon icon-trash"></span></a>
       </div>
+
       <h3>
         <a href="/@{{user.username}}/{{slug}}" class="doc-title">{{content.title}}</a>
         <br>
         <span class="date">{{date date.edited}}</span>
       </h3>
+
     </div>
 
     <!-- add to blog modal -->
     <section class="modal--show" id="add-to-blog-{{id}}" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
       <div class="modal-inner">
+
         <header id="modal-label">Add {{content.title}} to Blog</header>
+
         <div class="modal-content">
           {{#each ../blog}}
           <p><a href="/e/b/{{id}}/ad/{{../id}}">{{title}}</a></p>
           {{/each}}
         </div>
+
       </div>
+
       <a href="#!" class="modal-close" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
+
     </section>
+
     {{else}}
+
     <div class="document">
+
       <a href="/c/d">Create a document</a>
+
     </div>
+
     {{/each}}
+    
   </div>
 
   {{/unless}}
