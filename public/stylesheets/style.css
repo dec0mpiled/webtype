@@ -1,39 +1,54 @@
+/**
+ * Style.css
+ * owebbot
+ */
+
+/**
+ * Display Properties
+ */
+
 .container {
     padding: 0 10%;
 }
+
 html {
     font-family: "Inconsolata";
     font-size: 1.4em;
     color: #26292C;
 }
-p,
-ul,
-ol,
-li {
+
+p, ul, ol, li {
     font-weight: 300;
 }
+
 a {
     color: #539FFE;
     text-decoration: none;
 }
+
 .title {
     font-family: "Inconsolata";
     font-weight: 200;
     font-size: 3em;
     color: #26292C;
 }
-.editor-title {
-    color: #dcdcdc;
-}
+
 .doc-title {
     color: #26292C;
     font-weight: 300;
+}
+
+/**
+ * Editor Properties
+ */
+
+.editor-title {
+    color: #dcdcdc;
 }
 input {
     display: block;
     margin: 0;
     width: 100%;
-    font-family: 'helvetica neue', helvetica, arial, sans-serif;
     font-size: 18px;
     appearance: none;
     box-shadow: none;

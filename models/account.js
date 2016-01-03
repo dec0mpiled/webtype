@@ -6,7 +6,11 @@ var Account = new Schema({
     email: String,
     name: String,
     username: String,
-    password: String
+    password: String,
+    blog: {
+      allowed: Number,
+      stripeToken: String
+    }
 });
 
 Account.plugin(passportLocalMongoose);

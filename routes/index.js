@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
+
+// models
 var Document = require('../models/document');
 var Account = require('../models/account');
+var Blog = require('../models/blog');
 
+// home screen (doc list, blog list, user login)
 router.get('/', function (req, res) {
     if (!req.user) {
         res.render('index', {
@@ -13,16 +17,21 @@ router.get('/', function (req, res) {
     } else {
         Document.find({ 'user._id' : req.user._id }, null, { sort: '-date.edited' }, function (err, documents) {
             if (err) throw err;
-            res.render('index', {
-                user : req.user,
-                document: documents,
-                title: 'owebbot',
-                active: 'home'
+            Blog.find({ 'user._id' : req.user._id }, null, { sort: '-date.edited' }, function (err, blogs) {
+              if (err) throw err;
+              res.render('index', {
+                  user : req.user,
+                  document: documents,
+                  blog: blogs,
+                  title: 'owebbot',
+                  active: 'home'
+              });
             });
         });
     }
 });
 
+// doc view
 router.get('/@:user/:slug', function (req, res) {
     Document.findOne({ 'user.username': req.params.user, 'slug': req.params.slug }, function (err, document) {
         if (err) throw err;
@@ -32,6 +41,17 @@ router.get('/@:user/:slug', function (req, res) {
     })
 });
 
+// blog view
+router.get('/~:slug', function (req, res) {
+    Blog.findOne({ 'slug': req.params.slug }, function (err, blog) {
+        if (err) throw err;
+        res.render('b/view', {
+            blog: blog
+        });
+    });
+});
+
+// user view (todo: show blogs and docs)
 router.get('/@:user', function (req, res) {
     Account.findOne({ username: req.params.user }, function (err, result) {
        if (err) throw err;
@@ -42,8 +62,13 @@ router.get('/@:user', function (req, res) {
     });
 });
 
-router.get('/ping', function(req, res){
-    res.status(200).send("pong!");
-});
+// Ensure Authentication
+function ensureAuthentication(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    return res.redirect('/auth/login');
+  }
+}
 
 module.exports = router;

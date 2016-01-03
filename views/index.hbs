@@ -21,28 +21,63 @@
   </div>
   {{else}}
 
+
+<!-- HEADING -->
+
   <header>
     <div class="float-right">
-      <a href="/@{{user.username}}"><i class="icon icon-user"></i></a>
-      <a href="/auth/logout"><i class="icon icon-lock"></i></a>
+      <a href="/@{{user.username}}" data-tooltip="user {{user.username}} settings" class="tooltip-bottom"><i class="icon icon-user"></i></a>
+      <a href="/auth/logout" data-tooltip="log user {{user.username}} out" class="tooltip-bottom"><i class="icon icon-lock"></i></a>
     </div>
 
     <h1><a href="/">owebbot</a></h1>
   </header>
 
+<!-- BLOG -->
+
   <div class="document-heading">
     <div class="float-right">
-      <a href="/c/d" data-tooltip="cmd+d"><span class="icon icon-plus"></span></a>
+      <a href="/c/b" data-tooltip="cmd+d or ctrl+d"><span class="icon icon-plus"></span></a>
     </div>
-    <h2>Documents</h2>
+    <h2>Blogs ({{blog.length}}/{{#if user.blog.allowed}}{{user.blog.allowed}}{{else}}&infin;{{/if}})</h2>
+  </div>
+
+  <div class="documents">
+    {{#each blog}}
+    <div class="document">
+      <div class="float-right">
+        <a href="/e/b/{{id}}" class="edit" data-tooltip="edit blog"><span class="icon icon-gear"></span></a>
+        <a href="/d/b/{{id}}" class="delete" data-tooltip="delete blog"><span class="icon icon-trash"></span></a>
+      </div>
+      <h3>
+        <a href="/~{{slug}}" class="doc-title" data-tooltip="/~{{slug}}">{{title}}</a>
+        <br>
+        <span class="date">{{date date.edited}}</span> <span class="date">{{post.length}} posts</span>
+      </h3>
+    </div>
+    {{else}}
+    <div class="document">
+      <a href="/c/b">Create a blog</a>
+    </div>
+    {{/each}}
+  </div>
+
+<!-- DOCUMENT -->
+
+  <div class="document-heading">
+    <div class="float-right">
+      <a href="/c/d" data-tooltip="cmd+d or ctrl+d"><span class="icon icon-plus"></span></a>
+    </div>
+    <h2>Documents ({{document.length}})</h2>
   </div>
 
   <div class="documents">
     {{#each document}}
     <div class="document">
       <div class="float-right">
-        <a href="/e/d/{{id}}" class="edit"><span class="icon icon-document-new"></span></a>
-        <a href="/d/{{id}}" class="delete"><span class="icon icon-trash"></span></a>
+        <a href="#add-to-blog-{{id}}" class="add"><span class="icon icon-export"></span></a>
+        <a href="/e/d/{{id}}" class="edit"><span class="icon icon-document-edit"></span></a>
+        <a href="/d/d/{{id}}" class="delete"><span class="icon icon-trash"></span></a>
       </div>
       <h3>
         <a href="/@{{user.username}}/{{slug}}" class="doc-title">{{content.title}}</a>
@@ -50,14 +85,35 @@
         <span class="date">{{date date.edited}}</span>
       </h3>
     </div>
+
+    <!-- add to blog modal -->
+    <section class="modal--show" id="add-to-blog-{{id}}" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+      <div class="modal-inner">
+        <header id="modal-label">Add {{content.title}} to Blog</header>
+        <div class="modal-content">
+          {{#each ../blog}}
+          <p><a href="/e/b/{{id}}/ad/{{../id}}">{{title}}</a></p>
+          {{/each}}
+        </div>
+      </div>
+      <a href="#!" class="modal-close" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
+    </section>
+    {{else}}
+    <div class="document">
+      <a href="/c/d">Create a document</a>
+    </div>
     {{/each}}
   </div>
 
   {{/unless}}
 </div>
 
+<!-- SCRIPTS -->
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/modal.js"></script>
 <link href="/stylesheets/animate.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/modal.css" rel="stylesheet" type="text/css">
 
 <script>
 

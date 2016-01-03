@@ -7,7 +7,6 @@ var Blog = require('../models/blog');
 router.get('/b', function (req, res) {
   Blog.create({
     user: req.user,
-    title: req.body.title,
     date: {
       created: new Date,
       edited: new Date
