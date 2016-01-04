@@ -8,6 +8,7 @@ var bodyParser = require( 'body-parser' );
 var mongoose = require( 'mongoose' );
 var passport = require( 'passport' );
 var moment = require( 'moment' );
+var HandlebarsIntl = require('handlebars-intl');
 var LocalStrategy = require( 'passport-local' ).Strategy;
 
 var routes = require( './routes/index' );
@@ -46,6 +47,8 @@ hbs.registerHelper( 'date', function( value ) {
 hbs.registerHelper( 'dateEdited', function( value ) {
     return moment( value ).fromNow();
 } );
+
+HandlebarsIntl.registerWith(hbs);
 
 app.set( "jsonp callback", true );
 

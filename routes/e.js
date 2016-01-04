@@ -8,13 +8,28 @@ var Blog = require('../models/blog');
 var slug = require('slug');
 var marked = require('marked');
 
+//----------------------------------------------------------------------------//
+// BLOG                                                                       //
+//----------------------------------------------------------------------------//
+
 // edit blog
 router.get('/b/:id', ensureAuthentication, function (req, res) {
   Blog.findOne({ _id: req.params.id }, function (err, blog) {
     if (err) throw err;
-    res.render('b/edit', {
-      user: req.user,
-      blog: blog
+    Document.find({ '_id': { $in: [blog.post] } }, function (err, doc) {
+      if (err) {
+        res.render('b/edit', {
+          user: req.user,
+          blog: blog,
+          document: null
+        });
+      } else {
+        res.render('b/edit', {
+          user: req.user,
+          blog: blog,
+          document: doc
+        });
+      }
     });
   });
 });
@@ -41,15 +56,12 @@ router.post('/b/:id', ensureAuthentication, function (req, res) {
 
 // add to blog
 router.get('/b/:id/ad/:doc', ensureAuthentication, function (req, res) {
-  Blog.findOne({ _id: req.params.id }, function (err, blog) {
+  Document.findOneAndUpdate({ _id: req.params.doc }, { blog: req.params.id }, function (err, document) {
     if (err) throw err;
-    Document.findOneAndUpdate({ _id: req.params.doc }, { blog: blog }, function (err, document) {
+    blog.post.addToSet(req.params.doc);
+    blog.save(function(err) {
       if (err) throw err;
-      blog.post.addToSet(document);
-      blog.save(function(err) {
-        if (err) throw err;
-        res.redirect('/e/b/' + req.params.id);
-      });
+      res.redirect('/e/b/' + req.params.id);
     });
   });
 });
@@ -61,7 +73,7 @@ router.get('/b/:id/dd/:doc', ensureAuthentication, function (req, res) {
     Blog.findOne({ _id: req.params.id }, function (err, blog) {
       if (err) throw err;
 
-      var pos = blog.post.indexOf(document);
+      var pos = blog.post.indexOf(req.params.id);
       blog.post.splice(pos, 1);
 
       blog.save(function(err) {
@@ -72,6 +84,10 @@ router.get('/b/:id/dd/:doc', ensureAuthentication, function (req, res) {
     });
   });
 });
+
+//----------------------------------------------------------------------------//
+// DOCUMENT                                                                   //
+//----------------------------------------------------------------------------//
 
 // edit doc
 router.get('/d/:id', ensureAuthentication, function (req, res) {
@@ -101,21 +117,6 @@ router.post('/d/as/:id', ensureAuthentication, function (req, res) {
   }, function (err, document) {
     if (err) throw err;
     res.send({ document: document });
-    console.log(document);
-    if (document.blog) {
-      Blog.findOne({ _id: document.blog.id }, function(err, blog) {
-        if (err) throw err;
-
-        var pos = blog.post.indexOf(document);
-        blog.post[pos] = blog;
-
-        blog.save(function(err) {
-          if (err) throw err;
-        });
-
-      });
-    }
-
   });
 });
 
