@@ -32,36 +32,7 @@
 
     <h1><a href="/">owebbot</a></h1>
   </header>
-
-<!-- BLOG -->
-
-  <div class="document-heading">
-    <div class="float-right">
-      <a href="/c/b" data-tooltip="cmd+d or ctrl+d"><span class="icon icon-plus"></span></a>
-    </div>
-    <h2>Blogs ({{blog.length}}/{{#if user.blog.allowed}}{{user.blog.allowed}}{{else}}&infin;{{/if}})</h2>
-  </div>
-
-  <div class="documents">
-    {{#each blog}}
-    <div class="document">
-      <div class="float-right">
-        <a href="/e/b/{{id}}" class="edit" data-tooltip="edit blog"><span class="icon icon-gear"></span></a>
-        <a href="/d/b/{{id}}" class="delete" data-tooltip="delete blog"><span class="icon icon-trash"></span></a>
-      </div>
-      <h3>
-        <a href="/~{{slug}}" class="doc-title" data-tooltip="/~{{slug}}">{{title}}</a>
-        <br>
-        <span class="date">{{date date.edited}}</span> <span class="date">{{post.length}} posts</span>
-      </h3>
-    </div>
-    {{else}}
-    <div class="document">
-      <a href="/c/b">Create a blog</a>
-    </div>
-    {{/each}}
-  </div>
-
+  
 <!-- DOCUMENT -->
 
   <div class="document-heading">
@@ -76,36 +47,32 @@
     <div class="document">
 
       <div class="float-right">
-        <a href="#add-to-blog-{{id}}" class="add"><span class="icon icon-export"></span></a>
+        <a href="#export-{{id}}" class="add"><span class="icon icon-export"></span></a>
         <a href="/e/d/{{id}}" class="edit"><span class="icon icon-document-edit"></span></a>
         <a href="/d/d/{{id}}" class="delete"><span class="icon icon-trash"></span></a>
       </div>
 
       <h3>
-        <a href="/@{{user.username}}/{{slug}}" class="doc-title">{{content.title}}</a>
+        <a href="/@{{../user.username}}/{{slug}}" class="doc-title">{{content.title}}</a>
         <br>
         <span class="date">{{date date.edited}}</span>
       </h3>
 
     </div>
+    
+    <section id="export-{{id}}" class="modal--show" id="modal-text" tabindex="-1"
+        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
-    <!-- add to blog modal -->
-    <section class="modal--show" id="add-to-blog-{{id}}" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-
-      <div class="modal-inner">
-
-        <header id="modal-label">Add {{content.title}} to Blog</header>
-
-        <div class="modal-content">
-          {{#each ../blog}}
-          <p><a href="/e/b/{{id}}/ad/{{../id}}">{{title}}</a></p>
-          {{/each}}
+        <div class="modal-inner">
+            <header id="modal-label">
+              <h2>Export {{content.title}}</h2>
+            </header>
+            <div class="modal-content"><!-- The modals content --></div>
+            <footer><!-- Footer --></footer>
         </div>
-
-      </div>
-
-      <a href="#!" class="modal-close" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
-
+    
+        <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+            data-dismiss="modal">?</a>
     </section>
 
     {{else}}
