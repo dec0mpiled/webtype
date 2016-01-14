@@ -4,7 +4,6 @@ var Schema = mongoose.Schema;
 var Document = new Schema({
     user: Schema.Types.Mixed,
     slug: String,
-    blog: Schema.Types.ObjectId,
     content: {
         title: String,
         data: {
