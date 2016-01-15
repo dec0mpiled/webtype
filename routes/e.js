@@ -52,10 +52,12 @@ router.get('/d/:id/s', function(req, res, next) {
     } else {
       document.private = false;
     }
+
     document.save(function(err) {
       if (err) return next(err);
       res.redirect('/#export-' + req.params.id);
     });
+
   });
 });
 

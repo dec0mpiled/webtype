@@ -1,5 +1,8 @@
 <div class="container">
-  <h1><a href="/">owebbot</a></h1>
+  <!-- HEADER -->
+  <header>
+    <h1 class="global-logo"><a href="/">owebbot</a></h1>
+  </header>
 
   <h1 class="title">{{result.username}}</h1>
 
@@ -32,4 +35,19 @@
   </form>
 
   {{/equal}}
+
+  <div class="list">
+    <div class="list-header">
+      <h2 class="list-header-title">Documents ({{document.length}})</h2>
+    </div>
+    <div class="list-body">
+      {{#each document}}
+      <div class="list-item">
+        <a class="list-item-header" href="/@{{../result.username}}/{{slug}}"><b>{{content.title}}</b></a>
+        <p class="list-item-meta">{{date date.edited}}</p>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
 </div>
