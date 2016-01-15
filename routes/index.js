@@ -27,11 +27,26 @@ router.get('/', function (req, res) {
 });
 
 // doc view
-router.get('/@:user/:slug', function (req, res) {
+router.get('/@:user/:slug', function (req, res, next) {
   Account.findOne({ username: req.params.user }, function(err, account) {
-    if (err) throw err;
+    if (err) return next(err);
     Document.findOne({ '_user': account._id, 'slug': req.params.slug }, function (err, document) {
-      if (err) throw err;
+      if (err) return next(err);
+      res.render('d/view', {
+        title: document.title,
+        document: document,
+        account: account
+      });
+    });
+  });
+});
+
+// unnamed view
+router.get('/~:id', function (req, res, next) {
+  Account.findOne({ username: req.params.user }, function(err, account) {
+    if (err) return next(err);
+    Document.findOne({ _id: req.params.id }, function (err, document) {
+      if (err) return next(err);
       res.render('d/view', {
         title: document.title,
         document: document,
@@ -42,9 +57,12 @@ router.get('/@:user/:slug', function (req, res) {
 });
 
 // user view (todo: show docs)
-router.get('/@:user', function (req, res) {
+router.get('/@:user', function (req, res, next) {
   Account.findOne({ username: req.params.user }, function (err, result) {
     if (err) return next(err);
+    if (!result) {
+      res.redirect('/');
+    }
     Document.find({ '_user': result._id, 'private': false }, function (err, document) {
       if (err) return next(err);
       res.render('a/profile', {

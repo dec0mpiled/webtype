@@ -41,6 +41,9 @@ input:focus                   { outline: none; border: solid 1px #707070; box-sh
 button, .button               { color: #26292C; display: inline-block; margin: 0; font-family: sans-serif; font-size: 18px; appearance: none; box-shadow: none; border-radius: none; padding: 10px; border: solid 1px #dcdcdc; background: #fff; transition: all 0.3s; }
 button: hover, .button: hover { outline: none; background: #dcdcdc; }
 
+.parsley-error::-webkit-input-placeholder { color: #FF4136; }
+.parsley-required, .parsley-errors-list { display: none; }
+
 /* list --------------------------------------*/
 
 .list-header         { margin: 1em 0; }

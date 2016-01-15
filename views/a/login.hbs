@@ -6,10 +6,9 @@
   </header>
 
   <h1>login</h1>
-  <p class="lead">login to view status</p>
 
   <!-- FORM -->
-  <form role="form" action="/auth/login" method="post">
+  <form role="form" action="/auth/login" method="post" data-parsley-validate>
 
     {{#if info}}
     <div class="alert alert-danger" role="alert">{{info}}</div>
@@ -19,11 +18,11 @@
 
     <div class="form-group">
       <label for="username">Username</label>
-      <input class="form-control" type="text" name="username" placeholder="username">
+      <input required class="form-control" type="text" name="username" placeholder="username">
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input class="form-control" type="password" name="password" placeholder="password">
+      <input required class="form-control" type="password" name="password" placeholder="password">
     </div>
     <br>
     <button class="btn btn-primary" type="submit">log in</button>
