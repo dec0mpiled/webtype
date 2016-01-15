@@ -53,7 +53,11 @@
         </div>
 
         <h3>
-          <a href="/@{{../user.username}}/{{slug}}" class="list-item-header">{{content.title}}</a>
+          {{#if private}}
+          <span class="list-item-header">{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</span>
+          {{else}}
+          <a href="/@{{../user.username}}/{{slug}}" class="list-item-header">{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</a>
+          {{/if}}
           <br>
           <span class="list-item-meta">{{date date.edited}}</span>
         </h3>
