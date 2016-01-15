@@ -36,7 +36,7 @@ router.get('/@:user/:slug', function (req, res) {
         title: document.title,
         document: document,
         account: account
-      });  
+      });
     });
   });
 });

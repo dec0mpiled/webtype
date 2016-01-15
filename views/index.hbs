@@ -1,7 +1,7 @@
 <div class="container">
   {{#unless user}}
 
-  <h1><a href="/">owebbot</a></h1>
+  <h1 class="global-logo"><a href="/">owebbot</a></h1>
 
   <!-- no user -->
   <br>
@@ -25,66 +25,80 @@
 <!-- HEADING -->
 
   <header>
-    <div class="float-right">
-      <a href="/@{{user.username}}" data-tooltip="user {{user.username}} settings" class="tooltip-bottom"><i class="icon icon-user"></i></a>
-      <a href="/auth/logout" data-tooltip="log user {{user.username}} out" class="tooltip-bottom"><i class="icon icon-lock"></i></a>
+    <div class="global-actions">
+      <a class="global-action" href="/@{{user.username}}" data-tooltip="user {{user.username}} settings" class="tooltip-bottom"><i class="icon icon-user"></i></a>
+      <a class="global-action" href="/auth/logout" data-tooltip="log user {{user.username}} out" class="tooltip-bottom"><i class="icon icon-lock"></i></a>
     </div>
 
-    <h1><a href="/">owebbot</a></h1>
+    <h1 class="global-logo"><a href="/">owebbot</a></h1>
   </header>
-  
+
 <!-- DOCUMENT -->
 
-  <div class="document-heading">
-    <div class="float-right">
-      <a href="/c/d" data-tooltip="cmd+d or ctrl+d"><span class="icon icon-plus"></span></a>
+  <div class="list-header">
+    <div class="list-header-actions">
+      <a class="list-header-action" href="/c/d" data-tooltip="cmd+d or ctrl+d"><span class="icon icon-plus"></span></a>
     </div>
-    <h2>Documents ({{document.length}})</h2>
+    <h2 class="list-header-title">Documents ({{document.length}})</h2>
   </div>
 
-  <div class="documents">
+  <div class="list-body">
     {{#each document}}
-    <div class="document">
+    <div class="list-item">
 
-      <div class="float-right">
-        <a href="#export-{{id}}" class="add"><span class="icon icon-export"></span></a>
-        <a href="/e/d/{{id}}" class="edit"><span class="icon icon-document-edit"></span></a>
-        <a href="/d/d/{{id}}" class="delete"><span class="icon icon-trash"></span></a>
-      </div>
+      <header class="list-item-header">
+        <div class="list-item-actions">
+          <a href="#export-{{id}}" class="list-item-action list-item-action-add"><span class="icon icon-export"></span></a>
+          <a href="/e/d/{{id}}" class="list-item-action list-item-action-edit"><span class="icon icon-document-edit"></span></a>
+          <a href="/d/d/{{id}}" class="list-item-action list-item-action-delete"><span class="icon icon-trash"></span></a>
+        </div>
 
-      <h3>
-        <a href="/@{{../user.username}}/{{slug}}" class="doc-title">{{content.title}}</a>
-        <br>
-        <span class="date">{{date date.edited}}</span>
-      </h3>
+        <h3>
+          <a href="/@{{../user.username}}/{{slug}}" class="list-item-header">{{content.title}}</a>
+          <br>
+          <span class="list-item-meta">{{date date.edited}}</span>
+        </h3>
+      </header>
 
     </div>
-    
-    <section id="export-{{id}}" class="modal--show" id="modal-text" tabindex="-1"
+
+    <section id="export-{{id}}" class="modal--show modal-hide" id="modal-text" tabindex="-1"
         role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
         <div class="modal-inner">
             <header id="modal-label">
-              <h2>Export {{content.title}}</h2>
+              <h2>Document Preferences</h2>
             </header>
-            <div class="modal-content"><!-- The modals content --></div>
-            <footer><!-- Footer --></footer>
+            <div class="modal-content">
+
+              <h3>Privacy Settings</h3>
+              {{#if private}}
+              <p>Doc is <b>Private</b>. <a href="/e/d/{{id}}/s?private=false">Make public.</a></p>
+              {{else}}
+              <p>Doc is <b>Public</b>. <a href="/e/d/{{id}}/s?private=true">Make private.</a></p>
+              {{/if}}
+
+              <h3>Export Document</h3>
+              <h4>Download as:</h4>
+              <a href="/e/d/{{id}}/s?download=markdown"><b>Markdown</b></a> or
+              <a href="/e/d/{{id}}/s?download=html"><b>HTML</b></a>
+            </div>
         </div>
-    
+
         <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
             data-dismiss="modal">?</a>
     </section>
 
     {{else}}
 
-    <div class="document">
+    <div class="list-item">
 
       <a href="/c/d">Create a document</a>
 
     </div>
 
     {{/each}}
-    
+
   </div>
 
   {{/unless}}

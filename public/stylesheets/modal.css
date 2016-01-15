@@ -10,7 +10,11 @@
  *
  * @author Hans Christian Reinl - @drublic
  */
-html {
+
+ modal-hide {
+   display: none;
+ }
+ html {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch; }
 

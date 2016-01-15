@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Document = new Schema({
-    user: Schema.Types.ObjectId,
+    _user: Schema.Types.ObjectId,
     slug: String,
     private: Boolean,
     content: {

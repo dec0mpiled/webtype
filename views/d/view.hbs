@@ -1,10 +1,11 @@
 <header class="container">
-  
-  <div class="float-right">
-    <p id="date"><a href="/!{{document.user.username}}">@{{document.user.username}}</a><br>{{date document.date.edited}}</p>
+
+  <div class="global-actions">
+    <a class="global-action" href="/!{{account.username}}">@{{account.username}}</a>
+    <span class="global-action">{{date document.date.edited}}</span>
   </div>
 
-  <h1><a href="/">owebbot</a></h1>
+  <h1 class="global-logo"><a href="/">owebbot</a></h1>
 
 </header>
 

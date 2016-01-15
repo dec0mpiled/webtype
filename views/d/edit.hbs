@@ -2,19 +2,19 @@
 
   <form action="/e/d/as/{{document.id}}" method="post">
 
-    <div class="float-right">
+    <div class="editor-actions">
       <button type="submit" class="tooltip-bottom" data-tooltip="save" id="date"><i class="icon icon-upload"></i></button>
     </div>
 
-    <h1>
-      <a href="/" class="editor-title">owebbot</a>
+    <h1 class="global-logo">
+      <a href="/">owebbot</a>
     </h1>
 
 
-    <input autocomplete="false" class="autosave" name="title" type="text" placeholder="Title" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
+    <input autocomplete="false" class=editor-title name="title" type="text" placeholder="Title" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
 
     <textarea autofocus="autofocus" id="content" name="content">{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}</textarea>
-    
+
   </form>
 
 </div>
