@@ -4,9 +4,9 @@ var router = express.Router();
 // models
 var Document = require('../models/document');
 
-router.get('/d/:id', ensureAuthentication, function (req, res) {
+router.get('/d/:id', ensureAuthentication, function (req, res, next) {
   Document.findOneAndRemove({ _id: req.params.id }, function(err, document) {
-    if (err) throw err;
+    if (err) return next(err);
     res.redirect('/');
   });
 });

@@ -12,18 +12,16 @@ var slug = require('slug');
 //----------------------------------------------------------------------------//
 
 // create new doc
-router.get('/d', ensureAuthentication, function (req, res) {
+router.get('/d', ensureAuthentication, function (req, res, next) {
   Document.create({
     _user: req.user.id,
-    content: {
-      title: 'new draft'
-    },
+    private: true,
     date: {
         created: new Date,
         edited: new Date
     }
   }, function (err, document) {
-    if (err) throw err;
+    if (err) return next(err);
     res.redirect('/e/d/' + document.id);
   });
 });

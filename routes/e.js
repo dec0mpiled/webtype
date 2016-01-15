@@ -13,9 +13,9 @@ var marked = require('marked');
 //----------------------------------------------------------------------------//
 
 // edit doc
-router.get('/d/:id', ensureAuthentication, function (req, res) {
+router.get('/d/:id', ensureAuthentication, function (req, res, next) {
   Document.findOne({ _id: req.params.id }, function (err, document) {
-    if (err) throw err;
+    if (err) return next(err);
     res.render('d/edit', {
       user: req.user,
       document: document
@@ -24,7 +24,7 @@ router.get('/d/:id', ensureAuthentication, function (req, res) {
 });
 
 // autosave
-router.post('/d/as/:id', ensureAuthentication, function (req, res) {
+router.post('/d/as/:id', ensureAuthentication, function (req, res, next) {
   Document.findOneAndUpdate({ _id: req.params.id }, {
     slug: slug(req.body.title, { lower: true, remove: /[.]/g }),
     content: {
@@ -38,8 +38,24 @@ router.post('/d/as/:id', ensureAuthentication, function (req, res) {
       edited: new Date
     }
   }, function (err, document) {
-    if (err) throw err;
+    if (err) return next(err);
     res.send({ document: document });
+  });
+});
+
+// document settings
+router.get('/d/:id/s', function(req, res, next) {
+  Document.findOne({ _id: req.params.id }, function(err, document) {
+    if (err) return next(err);
+    if (req.query.private == 'true') {
+      document.private = true;
+    } else {
+      document.private = false;
+    }
+    document.save(function(err) {
+      if (err) return next(err);
+      res.redirect('/#export-' + req.params.id);
+    });
   });
 });
 
