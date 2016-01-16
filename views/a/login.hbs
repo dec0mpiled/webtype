@@ -10,12 +10,6 @@
   <!-- FORM -->
   <form role="form" action="/auth/login" method="post" data-parsley-validate>
 
-    {{#if info}}
-    <div class="alert alert-danger" role="alert">{{info}}</div>
-    {{else}}
-    <div>&nbsp;</div>
-    {{/if}}
-
     <div class="form-group">
       <label for="username">Username</label>
       <input required class="form-control" type="text" name="username" placeholder="username">
@@ -31,3 +25,22 @@
   </form>
 
 </div>
+
+{{#if info}}
+<!-- messenger.js -->
+<link rel="stylesheet" href="/stylesheets/messenger.css">
+<link rel="stylesheet" href="/stylesheets/messenger-theme-flat.css">
+<script src="/javascripts/messenger.min.js"></script>
+<script src="/javascripts/messenger-theme-flat.js"></script>
+<script type="text/javascript">
+  Messenger.options = {
+    extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+    theme: 'flat'
+  }
+  Messenger().post({
+    message: "{{info}}",
+    type: 'error',
+    showCloseButton: true
+  });
+</script>
+{{/if}}

@@ -2,7 +2,7 @@
 
   <div class="global-actions">
     <a class="global-action" href="/@{{account.username}}">@{{account.username}}</a>
-    <span class="global-action">{{date document.date.edited}}</span>
+    <span class="global-action">{{formatDate document.date.edited day="numeric" month="long" year="numeric"}}</span>
   </div>
 
   <h1 class="global-logo"><a href="/">owebbot</a></h1>
@@ -14,11 +14,40 @@
   <h1 class="title">{{document.content.title}}</h1>
 
   <div class="content">
-    {{{document.content.data.html}}}
-  </div>
 
+    <div class="meta">
+
+      <span class="eta"></span> (<span class="word-count"></span> words)
+
+    </div>
+
+    <div class="content-theme-html">
+      {{{document.content.data.html}}}
+    </div>
+  </div>
 </div>
 
+<script src="/javascripts/readingTime.js"></script>
+<script>
+$(function() {
+  var $article = $('.content');
+
+  $article.readingTime({
+      readingTimeTarget: $article.find('.eta'),
+      wordCountTarget: $article.find('.word-count'),
+      wordsPerMinute: 275,
+      round: true,
+      lang: 'en',
+      success: function() {
+          console.log('It worked!');
+      },
+      error: function(message) {
+          console.log(message);
+          $article.find('.eta').remove();
+      }
+    });
+  });
+</script>
 <script>$( 'pre:not(.prettyprint)' ).addClass( 'prettyprint' );</script>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <style>

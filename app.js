@@ -41,13 +41,6 @@ hbs.registerHelper( 'equal', function( lvalue, rvalue, options ) {
     }
 } );
 
-hbs.registerHelper( 'date', function( value ) {
-    return moment( value ).format( 'MMM DD, YYYY' );
-} );
-hbs.registerHelper( 'dateEdited', function( value ) {
-    return moment( value ).fromNow();
-} );
-
 HandlebarsIntl.registerWith(hbs);
 
 app.set( "jsonp callback", true );

@@ -61,14 +61,14 @@ router.get('/logout', function(req, res, next) {
 });
 
 // update
-router.get('/update', function (req, res, next) {
+router.post('/update', function (req, res, next) {
   Account.findOneAndUpdate({ _id: req.user.id }, {
     name: req.body.name,
     email: req.body.email,
     username: req.body.username
   }, function (err, account) {
     if (err) return next(err);
-    res.redirect('/@' + req.user.username);
+    res.redirect('/');
   });
 });
 

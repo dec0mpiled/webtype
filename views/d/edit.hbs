@@ -20,8 +20,13 @@
 </div>
 
 <!-- SCRIPTS -->
-<link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
 <link href="/stylesheets/animate.css" rel="stylesheet" type="text/css">
+
+<!-- messenger.js -->
+<link rel="stylesheet" href="/stylesheets/messenger.css">
+<link rel="stylesheet" href="/stylesheets/messenger-theme-flat.css">
+<script src="/javascripts/messenger.min.js"></script>
+<script src="/javascripts/messenger-theme-flat.js"></script>
 
 <!--codemirror-->
 <link href="/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
@@ -42,6 +47,11 @@
 
 <script>
   $(document).ready(function() {
+
+    Messenger.options = {
+      extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+      theme: 'flat'
+    }
 
     var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
       mode: 'gfm',
@@ -89,7 +99,22 @@
         dataType: 'json',
         encode: true
       })
+        .fail(function() {
+
+          Messenger().post({
+            message: "could not be saved",
+            type: 'error',
+            showCloseButton: true
+          });
+
+        })
         .done(function(data) {
+
+          Messenger().post({
+            message: "saved" + moment().format(' h:mm:ss a'),
+            showCloseButton: true
+          });
+
           $('#date').attr('data-tooltip', 'last saved' + moment().format(' h:mm a'));
           $('#date').addClass('animated bounce');
           $('#date').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {

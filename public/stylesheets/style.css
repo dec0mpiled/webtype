@@ -18,7 +18,7 @@
 .container { padding: 0 10%;}
 
 html {
-  font-family: "Inconsolata";
+  font-family: Inconsolata;
   font-size: 1.4em;
   color: #26292C;
 }
@@ -38,8 +38,8 @@ label                         { font-size: 14px; }
 input                         { display: block; margin: 0; width: 100%; font-size: 18px; appearance: none; box-shadow: none; border-radius: none; padding: 10px; border: solid 1px #dcdcdc; transition: box-shadow 0.3s, border 0.3s; }
 input:focus                   { outline: none; border: solid 1px #707070; box-shadow: 0 0 5px 1px #969696; }
 ::-webkit-input-placeholder   { color: #26292C; }
-button, .button               { color: #26292C; display: inline-block; margin: 0; font-family: sans-serif; font-size: 18px; appearance: none; box-shadow: none; border-radius: none; padding: 10px; border: solid 1px #dcdcdc; background: #fff; transition: all 0.3s; }
-button: hover, .button: hover { outline: none; background: #dcdcdc; }
+button, .button               { color: #26292C; display: inline-block; margin: 0; font-size: 18px; appearance: none; box-shadow: none; border-radius: none; padding: 10px; border: solid 1px #dcdcdc; background: #fff; transition: all 0.3s; }
+button: hover, .button: hover { outline: none; background: #26292C; color: #fff; }
 
 .parsley-error::-webkit-input-placeholder { color: #FF4136; }
 .parsley-required, .parsley-errors-list { display: none; }
@@ -54,7 +54,8 @@ button: hover, .button: hover { outline: none; background: #dcdcdc; }
 
 .list-item               {  }
 .list-item-header        {  }
-.list-header-title       { font-size: 1.5em; }
+.list-header-title       { font-size: 1.5em; margin: 0; }
+.list-header-subtitle    { color: #939393; margin: 0; }
 .list-item-meta          { font-weight: 500; font-size: 14px; text-transform: uppercase; color: #939393; }
 .list-item-actions       { float: right; }
 .list-item-action        { padding: .1em; }
@@ -77,6 +78,10 @@ button: hover, .button: hover { outline: none; background: #dcdcdc; }
 }
 
 .title {
-    font-family: "Inconsolata"; font-weight: 200; font-size: 3em;
+    font-family: "Helvetica Neue", Helvetica, sans-serif; font-weight: 200; font-size: 3em;
     color: #26292C;
+}
+
+.content-theme-html {
+  line-height: 2em;
 }

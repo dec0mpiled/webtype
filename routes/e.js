@@ -38,7 +38,7 @@ router.post('/d/as/:id', ensureAuthentication, function (req, res, next) {
       edited: new Date
     }
   }, function (err, document) {
-    if (err) return next(err);
+    if (err) return res.sendStatus(500);
     res.send({ document: document });
   });
 });

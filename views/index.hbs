@@ -25,8 +25,9 @@
 
   <header>
     <div class="global-actions">
-      <a class="global-action tooltip-bottom" href="/@{{user.username}}" data-tooltip="user {{user.username}} settings"><i class="icon icon-user"></i></a>
-      <a class="global-action tooltip-bottom" href="/auth/logout" data-tooltip="log user {{user.username}} out"><i class="icon icon-lock"></i></a>
+      <a class="global-action tooltip-bottom" href="/@{{user.username}}" data-tooltip="@{{user.username}}"><i class="icon icon-user"></i></a>
+      <a class="list-header-action tooltip-bottom" href="#settings" data-tooltip="update account"><span class="icon icon-gear"></span></a>
+      <a class="global-action tooltip-bottom" href="/auth/logout" data-tooltip="logout"><i class="icon icon-lock"></i></a>
     </div>
 
     <h1 class="global-logo"><a href="/">owebbot</a></h1>
@@ -63,7 +64,7 @@
             {{/if}}
           {{/if}}
           <br>
-          <span class="list-item-meta">{{date date.edited}}</span>
+          <span class="list-item-meta">{{formatDate date.edited day="numeric" month="long" year="numeric"}}</span>
         </h3>
       </header>
 
@@ -105,6 +106,54 @@
 
   {{/unless}}
 </div>
+
+<section id="settings" class="modal--show modal-hide" id="modal-text" tabindex="-1"
+    role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
+    <div class="modal-inner">
+        <header id="modal-label">
+          <h2>User Preferences</h2>
+        </header>
+        <div class="modal-content">
+
+          <h3>Account Settings</h3>
+
+          <form action="/auth/update" method="post">
+
+            <label for="username">Username</label>
+            <input type="text" name="username" value="{{user.username}}">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" value="{{user.email}}">
+
+            <label for="name">Name</label>
+            <input type="text" name="name" value="{{user.name}}">
+
+            <br>
+
+            <button type="submit" name="button">Save Changes</button>
+
+          </form>
+
+          <h3>Editor Themes</h3>
+
+          <form action="index.html" method="post">
+
+            <label for="theme">Theme</label>
+            <select name="theme">
+              {{#each codemirror.theme}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
+            </select>
+
+          </form>
+
+        </div>
+    </div>
+
+    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+        data-dismiss="modal">?</a>
+</section>
 
 <!-- SCRIPTS -->
 <script type="text/javascript" src="/javascripts/modal.js"></script>
