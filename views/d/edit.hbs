@@ -3,11 +3,11 @@
   <form action="/e/d/as/{{document.id}}" method="post">
 
     <div class="editor-actions">
-      <button type="submit" class="tooltip-bottom" data-tooltip="save" id="date"><i class="icon icon-upload"></i></button>
+      <span class="editor-save" data-editor-status>*</span>
     </div>
 
     <h1 class="global-logo">
-      <a href="/">owebbot</a>
+      <a class="editor-logo" href="/">owebbot</a>
     </h1>
 
 
@@ -19,21 +19,15 @@
 
 </div>
 
-<!-- SCRIPTS -->
-<link href="/stylesheets/animate.css" rel="stylesheet" type="text/css">
-
-<!-- messenger.js -->
-<link rel="stylesheet" href="/stylesheets/messenger.css">
-<link rel="stylesheet" href="/stylesheets/messenger-theme-flat.css">
-<script src="/javascripts/messenger.min.js"></script>
-<script src="/javascripts/messenger-theme-flat.js"></script>
-
 <!--codemirror-->
 <link href="/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
 <link href="/stylesheets/github.css" rel="stylesheet" type="text/css">
+
 <script src="/codemirror/lib/codemirror.js"></script>
 <script src="/codemirror/addon/mode/overlay.js"></script>
 <script src="/codemirror/addon/wrap/hardwrap.js"></script>
+<script src="/codemirror/addon/edit/continuelist.js"></script>
+<script src="/codemirror/addon/edit/closebrackets.js"></script>
 <script src="/codemirror/mode/xml/xml.js"></script>
 <script src="/codemirror/mode/markdown/markdown.js"></script>
 <script src="/codemirror/mode/gfm/gfm.js"></script>
@@ -43,43 +37,24 @@
 <script src="/codemirror/mode/clike/clike.js"></script>
 <script src="/codemirror/mode/meta.js"></script>
 
-<script src="/moment.js"></script>
 
+<!-- custom code -->
 <script>
   $(document).ready(function() {
 
-    Messenger.options = {
-      extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
-      theme: 'flat'
-    }
-
     var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
-      mode: 'gfm',
+      mode: "gfm",
       theme: "github",
       lineNumbers: false,
       lineWrapping: true,
-      viewportMargin: Infinity
+      viewportMargin: Infinity,
+      indentWithTabs: true,
+      autoCloseBrackets: true,
+      extraKeys: { "Enter": "newlineAndIndentContinueMarkdownList" }
     });
 
-    $(document).keydown(function(event) {
-      // If Control or Command key is pressed and the S key is pressed
-      // run save function. 83 is the key code for S.
-      if ((event.ctrlKey || event.metaKey) && event.which == 83) {
-        autosave();
-        event.preventDefault();
-        return false;
-      }
-    });
-
-    $(document).keydown(function(event) {
-      // If Control or Command key is pressed and the S key is pressed
-      // run save function. 83 is the key code for S.
-      if ((event.ctrlKey || event.metaKey) && event.which == 66) {
-        autosave();
-        window.location = '/';
-        event.preventDefault();
-        return false;
-      }
+    editor.on("change", function() {
+      savingState();
     });
 
     $('form').submit(function(event) {
@@ -93,37 +68,33 @@
       };
 
       $.ajax({
-        type: 'POST',
-        url: '/e/d/as/{{document.id}}',
-        data: formData,
-        dataType: 'json',
-        encode: true
-      })
+          type: 'POST',
+          url: '/e/d/as/{{document.id}}',
+          data: formData,
+          dataType: 'json',
+          encode: true
+        })
         .fail(function() {
-
-          Messenger().post({
-            message: "could not be saved",
-            type: 'error',
-            showCloseButton: true
-          });
-
+          errorSavingState();
         })
         .done(function(data) {
-
-          Messenger().post({
-            message: "saved" + moment().format(' h:mm:ss a'),
-            showCloseButton: true
-          });
-
-          $('#date').attr('data-tooltip', 'last saved' + moment().format(' h:mm a'));
-          $('#date').addClass('animated bounce');
-          $('#date').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-            $('#date').removeClass('animated bounce');
-          });
-
+          savedState();
         });
+    }
 
-      event.preventDefault();
+    var el = document.querySelector('.editor-save')
+
+    function errorSavingState() {
+      el.dataset.editorStatus = 'editor-status-error';
+    }
+
+    function savingState() {
+      el.dataset.editorStatus = 'editor-status-saving';
+      autosave();
+    }
+
+    function savedState() {
+      el.dataset.editorStatus = 'editor-status-saved';
     }
 
   });

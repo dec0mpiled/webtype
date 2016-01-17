@@ -31,7 +31,7 @@ router.post('/d/as/:id', ensureAuthentication, function (req, res, next) {
       title: req.body.title,
       data: {
         raw: req.body.content,
-        html: marked(req.body.content)
+        html: marked(req.body.content, { breaks: true })
       }
     },
     date: {

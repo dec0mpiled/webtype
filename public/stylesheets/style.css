@@ -56,7 +56,7 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 .list-item-header        {  }
 .list-header-title       { font-size: 1.5em; margin: 0; }
 .list-header-subtitle    { color: #939393; margin: 0; }
-.list-item-meta          { font-weight: 500; font-size: 14px; text-transform: uppercase; color: #939393; }
+.list-item-meta          { font-weight: 500; font-size: 14px; color: #939393; }
 .list-item-actions       { float: right; }
 .list-item-action        { padding: .1em; }
 .list-item-action-delete { color: #EA3930; }
@@ -65,8 +65,14 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 
 .editor-title       { padding: 0; font-size: 2.75em; font-weight: 300; border: 0; }
 .editor-title:focus { border: 0; box-shadow: 0 0 0 0 transparent; }
+.editor-logo        { color: #939393; }
 .editor-body        {}
 .editor-actions     { float: right; }
+.editor-save        { color: #939393 }
+
+.editor-save[data-editor-status='editor-status-error']  { color: #EA3930; }
+.editor-save[data-editor-status='editor-status-saving'] { color: #FFDC00; }
+.editor-save[data-editor-status='editor-status-saved']  { color: #2ECC40; }
 
 /* document view --------------------------------------*/
 
@@ -84,4 +90,8 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 
 .content-theme-html {
   line-height: 2em;
+}
+
+.CodeMirror {
+  height: auto !important;
 }
