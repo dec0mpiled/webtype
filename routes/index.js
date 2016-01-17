@@ -43,9 +43,9 @@ router.get('/@:user/:slug', function (req, res, next) {
 
 // unnamed view
 router.get('/~:id', function (req, res, next) {
-  Account.findOne({ username: req.params.user }, function(err, account) {
+  Document.findOne({ _id: req.params.id }, function (err, document) {
     if (err) return next(err);
-    Document.findOne({ _id: req.params.id }, function (err, document) {
+    Account.findOne({ username: document.author }, function(err, account) {
       if (err) return next(err);
       res.render('d/view', {
         title: document.title,
