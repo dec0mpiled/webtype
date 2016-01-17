@@ -86,6 +86,7 @@
 
     function errorSavingState() {
       el.dataset.editorStatus = 'editor-status-error';
+      mixpanel.track("Editor Save Error");
     }
 
     function savingState() {
@@ -95,6 +96,7 @@
 
     function savedState() {
       el.dataset.editorStatus = 'editor-status-saved';
+      mixpanel.track("Editor Save Success");
     }
 
   });
