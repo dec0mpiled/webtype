@@ -16,9 +16,14 @@ var marked = require('marked');
 router.get('/d/:id', ensureAuthentication, function (req, res, next) {
   Document.findOne({ _id: req.params.id }, function (err, document) {
     if (err) return next(err);
-    res.render('d/edit', {
-      user: req.user,
-      document: document
+    Document.find({ '_user' : document._user }, function(err, documents) {
+      if (err) return next(err);
+      res.render('d/edit', {
+        user: req.user,
+        document: document,
+        documents: documents,
+        editor: true
+      });
     });
   });
 });
@@ -47,15 +52,15 @@ router.post('/d/as/:id', ensureAuthentication, function (req, res, next) {
 router.get('/d/:id/s', function(req, res, next) {
   Document.findOne({ _id: req.params.id }, function(err, document) {
     if (err) return next(err);
-    if (req.query.private == 'true') {
-      document.private = true;
+    if (req.query.publish == 'true') {
+      document.draft = false;
     } else {
-      document.private = false;
+      document.draft = true;
     }
 
     document.save(function(err) {
       if (err) return next(err);
-      res.redirect('/#export-' + req.params.id);
+      res.redirect('/');
     });
 
   });

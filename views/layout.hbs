@@ -13,8 +13,34 @@
     <link href="/webfont/webfont.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
+    <link href='/stylesheets/drawer.min.css' rel='stylesheet' type='text/css'>
+
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/parsley.min.js"></script>
+
+    <!-- drawer -->
+    <script src="/javascripts/iscroll.js"></script>
+    <script src="/javascripts/drawer.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('.drawer').drawer();
+    });
+    </script>
+
+    <!-- drop -->
+    <link rel="stylesheet" href="/stylesheets/drop-theme-basic.min.css">
+    <script src="/javascripts/tether.min.js"></script>
+    <script src="/javascripts/drop.min.js"></script>
+    <script type="text/javascript">
+    var drop;
+
+    drop = new Drop({
+      target: document.querySelector('.drop-target'),
+      content: 'Welcome to the future!',
+      position: 'bottom left',
+      openOn: 'click'
+    });
+    </script>
 
     <!-- start Mixpanel -->
     <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
@@ -23,10 +49,41 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
     <!-- end Mixpanel -->
 
   </head>
-  <body>
+  <body class="drawer drawer--left">
+    {{#if user}}
+    <header role="banner">
+      <button type="button" class="drawer-toggle drawer-hamburger">
+        <span class="sr-only">toggle navigation</span>
+        <span class="icon icon-menu"></span>
+      </button>
+      <nav class="drawer-nav" role="navigation">
+        <ul class="drawer-menu">
 
-    {{{body}}}
+          <li><a class="drawer-brand" href="/">owebbot</a></li>
 
+          {{#if editor}}
+          <li><b class="drawer-menu-item">Documents:</b></li>
+
+          {{#each documents}}
+
+          <li><a class="drawer-menu-item" href="/e/d/{{id}}">{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</a></li>
+          {{/each}}
+
+          {{else}}
+          <li><a class="drawer-menu-item" href="/people">People</a></li>
+          <li><a class="drawer-menu-item" href="/tags">Tags</a></li>
+          <li><a class="drawer-menu-item" href="/auth/logout">Logout</a></li>
+          {{/if}}
+
+          <li><b><a class="drawer-menu-item" href="/auth/update">Settings</a></b></li>
+          <li><b><a class="drawer-menu-item" href="/auth/logout">Logout</a></b></li>
+        </ul>
+      </nav>
+    </header>
+    {{/if}}
+    <main role="main">
+      {{{body}}}
+    </main>
   </body>
 
 </html>

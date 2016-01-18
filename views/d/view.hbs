@@ -9,15 +9,16 @@
 
 </header>
 
-<div class="container">
 
-  <h1 class="title">{{document.content.title}}</h1>
+<div class="container">
+  {{#if document.draft}}
+  <h1 class="title">{{document.content.title}} (DRAFT)</h1>
 
   <div class="content">
 
     <div class="meta">
 
-      <span class="eta"></span> (<span class="word-count"></span> words)
+      <span class="eta"></span>
 
     </div>
 
@@ -25,6 +26,20 @@
       {{{document.content.data.html}}}
     </div>
   </div>
+  {{else}}
+  <h1 class="title">{{document.content.title}}</h1>
+
+  <div class="content">
+
+    <div class="meta">
+      <span class="eta"></span>
+    </div>
+
+    <div class="content-theme-html">
+      {{{document.content.data.html}}}
+    </div>
+  </div>
+  {{/if}}
 </div>
 
 <script src="/javascripts/readingTime.js"></script>

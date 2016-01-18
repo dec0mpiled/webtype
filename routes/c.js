@@ -15,7 +15,7 @@ var slug = require('slug');
 router.get('/d', ensureAuthentication, function (req, res, next) {
   Document.create({
     _user: req.user.id,
-    private: true,
+    draft: true,
     date: {
         created: new Date,
         edited: new Date

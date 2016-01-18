@@ -18,7 +18,7 @@
     <div class="list-body">
       {{#each document}}
       <div class="list-item">
-        <a class="list-item-header" href="/@{{../result.username}}/{{slug}}"><b>{{content.title}}</b></a>
+        <a class="list-item-header" href="/@{{../result.username}}/{{slug}}"><b>{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</b></a>
         <p class="list-item-meta">{{formatDate date.edited day="numeric" month="long" year="numeric"}}</p>
       </div>
       {{/each}}

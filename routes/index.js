@@ -63,7 +63,7 @@ router.get('/@:user', function (req, res, next) {
     if (!result) {
       res.redirect('/');
     }
-    Document.find({ '_user': result._id, 'private': false }, function (err, document) {
+    Document.find({ '_user': result._id, 'draft': false }, function (err, document) {
       if (err) return next(err);
       res.render('a/profile', {
         result: result,

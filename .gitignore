@@ -4,6 +4,9 @@
 ### Node.js ###
 node_modules
 
+### Codekit ###
+config.codekit
+
 ### OSX ###
 .DS_Store
 .AppleDouble

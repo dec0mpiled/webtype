@@ -4,6 +4,7 @@
   <h1 class="global-logo"><a href="/">owebbot</a></h1>
 
   <!-- no user -->
+
   <br>
   <div class="jumbotron">
 
@@ -48,13 +49,17 @@
 
       <header class="list-item-header">
         <div class="list-item-actions">
-          <a href="#export-{{id}}" class="list-item-action list-item-action-add"><span class="icon icon-export"></span></a>
+          {{#if draft}}
+          <a href="/e/d/{{id}}/s?publish=true" class="list-item-action list-item-action-publish"><span class="icon icon-upload"></span></a>
+          {{else}}
+          <a href="/e/d/{{id}}/s?publish=false" class="list-item-action list-item-action-unpublish"><span class="icon icon-download"></span></a>
+          {{/if}}
           <a href="/e/d/{{id}}" class="list-item-action list-item-action-edit"><span class="icon icon-document-edit"></span></a>
           <a href="/d/d/{{id}}" class="list-item-action list-item-action-delete"><span class="icon icon-trash"></span></a>
         </div>
 
         <h3>
-          {{#if private}}
+          {{#if draft}}
           <span class="list-item-header">{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</span>
           {{else}}
             {{#if content.title}}
@@ -70,28 +75,6 @@
 
     </div>
 
-    <section id="export-{{id}}" class="modal--show modal-hide" id="modal-text" tabindex="-1"
-        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-
-        <div class="modal-inner">
-            <header id="modal-label">
-              <h2>Document Preferences</h2>
-            </header>
-            <div class="modal-content">
-
-              <h3>Privacy Settings</h3>
-              {{#if private}}
-              <p>Doc is <b>Private</b>. <a href="/e/d/{{id}}/s?private=false">Make public.</a></p>
-              {{else}}
-              <p>Doc is <b>Public</b>. <a href="/e/d/{{id}}/s?private=true">Make private.</a></p>
-              {{/if}}
-            </div>
-        </div>
-
-        <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
-            data-dismiss="modal">?</a>
-    </section>
-
     {{else}}
 
     <div class="list-item">
@@ -106,69 +89,3 @@
 
   {{/unless}}
 </div>
-
-<section id="settings" class="modal--show modal-hide" id="modal-text" tabindex="-1"
-    role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-
-    <div class="modal-inner">
-        <header id="modal-label">
-          <h2>User Preferences</h2>
-        </header>
-        <div class="modal-content">
-
-          <h3>Account Settings</h3>
-
-          <form action="/auth/update" method="post">
-
-            <label for="username">Username</label>
-            <input type="text" name="username" value="{{user.username}}">
-
-            <label for="email">Email</label>
-            <input type="email" name="email" value="{{user.email}}">
-
-            <label for="name">Name</label>
-            <input type="text" name="name" value="{{user.name}}">
-
-            <br>
-
-            <button type="submit" name="button">Save Changes</button>
-
-          </form>
-
-          <h3>Editor Themes</h3>
-
-          <form action="index.html" method="post">
-
-            <label for="theme">Theme</label>
-            <select name="theme">
-              {{#each codemirror.theme}}
-              <option value="{{this}}">{{this}}</option>
-              {{/each}}
-            </select>
-
-          </form>
-
-        </div>
-    </div>
-
-    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
-        data-dismiss="modal">?</a>
-</section>
-
-<!-- SCRIPTS -->
-<script type="text/javascript" src="/javascripts/modal.js"></script>
-<link href="/stylesheets/animate.css" rel="stylesheet" type="text/css">
-<link href="/stylesheets/modal.css" rel="stylesheet" type="text/css">
-
-<script>
-
-    $(document).keydown(function(event) {
-      if ((event.ctrlKey || event.metaKey) && event.which == 68) {
-        console.log('event');
-        window.location = '/c/d';
-        event.preventDefault();
-        return false;
-      }
-    });
-
-</script>
