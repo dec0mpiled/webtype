@@ -61,11 +61,20 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
 
           <li><a class="drawer-brand" href="/">owebbot</a></li>
 
+          <a href="/c/d" class="drawer-menu-item">New Document</a>
           {{#if editor}}
+          <li><b class="drawer-menu-item">Document Options:</b></li>
+          {{#if draft}}
+          <a href="/e/d/{{document.id}}/s?publish=true" class="drawer-menu-item"><b>Draft</b>. Publish Now.</a>
+          {{else}}
+          <a href="/e/d/{{document.id}}/s?publish=false" class="drawer-menu-item"><b>Published.</b> Revert to Draft.</a>
+          {{/if}}
+          <a href="/e/d/{{document.id}}" class="drawer-menu-item">Edit Document</a>
+          <a href="/d/d/{{document.id}}" class="drawer-menu-item">Remove Document</a>
+
           <li><b class="drawer-menu-item">Documents:</b></li>
 
           {{#each documents}}
-
           <li><a class="drawer-menu-item" href="/e/d/{{id}}">{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</a></li>
           {{/each}}
 
