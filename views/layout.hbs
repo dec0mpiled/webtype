@@ -15,32 +15,9 @@
 
     <link href='/stylesheets/drawer.min.css' rel='stylesheet' type='text/css'>
 
-    <script src="/javascripts/jquery.min.js"></script>
-    <script src="/javascripts/parsley.min.js"></script>
 
-    <!-- drawer -->
-    <script src="/javascripts/iscroll.js"></script>
-    <script src="/javascripts/drawer.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-      $('.drawer').drawer();
-    });
-    </script>
-
-    <!-- drop -->
-    <link rel="stylesheet" href="/stylesheets/drop-theme-basic.min.css">
-    <script src="/javascripts/tether.min.js"></script>
-    <script src="/javascripts/drop.min.js"></script>
-    <script type="text/javascript">
-    var drop;
-
-    drop = new Drop({
-      target: document.querySelector('.drop-target'),
-      content: 'Welcome to the future!',
-      position: 'bottom left',
-      openOn: 'click'
-    });
-    </script>
+    <!-- minified layout javascripts -->
+    <script src="/dist/layout.js"></script>
 
     <!-- start Mixpanel -->
     <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
@@ -62,20 +39,30 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
           <li><a class="drawer-brand" href="/">owebbot</a></li>
 
           <a href="/c/d" class="drawer-menu-item">New Document</a>
-          {{#if editor}}
-          <li><b class="drawer-menu-item">Document Options:</b></li>
-          {{#if draft}}
-          <a href="/e/d/{{document.id}}/s?publish=true" class="drawer-menu-item"><b>Draft</b>. Publish Now.</a>
-          {{else}}
-          <a href="/e/d/{{document.id}}/s?publish=false" class="drawer-menu-item"><b>Published.</b> Revert to Draft.</a>
-          {{/if}}
-          <a href="/e/d/{{document.id}}" class="drawer-menu-item">Edit Document</a>
-          <a href="/d/d/{{document.id}}" class="drawer-menu-item">Remove Document</a>
 
-          <li><b class="drawer-menu-item">Documents:</b></li>
+          {{#if editor}}
+          {{#if document.content.title}}
+            <a class="drawer-menu-item" href="/@{{user.username}}/{{document.slug}}"><b>{{document.content.title}}</b></a>
+          {{else}}
+            <a class="drawer-menu-item" href="/~{{document.id}}"><b>{{document.id}}</b></a>
+          {{/if}}
+
+          {{#if document.draft}}
+          <a class="drawer-menu-item" href="/e/d/{{document.id}}/s?publish=true">Publish</a>
+          {{else}}
+          <a class="drawer-menu-item" href="/e/d/{{document.id}}/s?publish=false">Unpublish</a>
+          {{/if}}
+
+          <a href="/e/d/{{document.id}}" class="drawer-menu-item">Edit</a>
+          <a href="/d/d/{{document.id}}" class="drawer-menu-item">Remove</a>
+
+          <li><b class="drawer-menu-item">Documents ({{documents.length}})</b></li>
 
           {{#each documents}}
-          <li><a class="drawer-menu-item" href="/e/d/{{id}}">{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</a></li>
+          <li><a class="drawer-menu-item" href="/e/d/{{id}}">
+            {{#if content.title}}{{truncate content.title}}{{else}}{{id}}{{/if}} <br>
+            <span class="list-item-meta">edited {{formatRelative date.edited}}</span>
+          </a></li>
           {{/each}}
 
           {{else}}

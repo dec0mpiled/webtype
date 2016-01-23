@@ -1,5 +1,4 @@
 <div class="container">
-  {{#unless user}}
 
   <h1 class="global-logo"><a href="/">owebbot</a></h1>
 
@@ -7,85 +6,15 @@
 
   <br>
   <div class="jumbotron">
-
     <h1>Blazing fast editing and publishing</h1>
 
     <h2>Quick Markdown Editing.</h2>
     <p>With then barebones simplicity of markdown and our super easy-to-use editor, you can format and send privately or publicly using our easy-to-use blogging feature.</h2>
 
-      <br><br>
+    <br><br>
 
     <a href="/auth/login" class="button">login</a>
     <a href="/auth/register" class="button">register</a>
-
-  </div>
-  {{else}}
-
-
-<!-- HEADING -->
-
-  <header>
-    <div class="global-actions">
-      <a class="global-action tooltip-bottom" href="/@{{user.username}}" data-tooltip="@{{user.username}}"><i class="icon icon-user"></i></a>
-      <a class="list-header-action tooltip-bottom" href="#settings" data-tooltip="update account"><span class="icon icon-gear"></span></a>
-      <a class="global-action tooltip-bottom" href="/auth/logout" data-tooltip="logout"><i class="icon icon-lock"></i></a>
-    </div>
-
-    <h1 class="global-logo"><a href="/">owebbot</a></h1>
-  </header>
-
-<!-- DOCUMENT -->
-
-  <div class="list-header">
-    <div class="list-header-actions">
-      <a class="list-header-action" href="/c/d" data-tooltip="cmd+d or ctrl+d"><span class="icon icon-plus"></span></a>
-    </div>
-    <h2 class="list-header-title">Documents ({{document.length}})</h2>
   </div>
 
-  <div class="list-body">
-    {{#each document}}
-    <div class="list-item">
-
-      <header class="list-item-header">
-        <div class="list-item-actions">
-          {{#if draft}}
-          <a href="/e/d/{{id}}/s?publish=true" class="list-item-action list-item-action-publish"><span class="icon icon-upload"></span></a>
-          {{else}}
-          <a href="/e/d/{{id}}/s?publish=false" class="list-item-action list-item-action-unpublish"><span class="icon icon-download"></span></a>
-          {{/if}}
-          <a href="/e/d/{{id}}" class="list-item-action list-item-action-edit"><span class="icon icon-document-edit"></span></a>
-          <a href="/d/d/{{id}}" class="list-item-action list-item-action-delete"><span class="icon icon-trash"></span></a>
-        </div>
-
-        <h3>
-          {{#if draft}}
-          <span class="list-item-header">{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</span>
-          {{else}}
-            {{#if content.title}}
-              <a href="/@{{../user.username}}/{{slug}}" class="list-item-header">{{content.title}}</a>
-            {{else}}
-              <a href="/~{{id}}" class="list-item-header">{{id}}</a>
-            {{/if}}
-          {{/if}}
-          <br>
-          <span class="list-item-meta">edited {{formatRelative date.edited}}</span>
-        </h3>
-      </header>
-
-    </div>
-
-    {{else}}
-
-    <div class="list-item">
-
-      <a href="/c/d">Create a document</a>
-
-    </div>
-
-    {{/each}}
-
-  </div>
-
-  {{/unless}}
 </div>

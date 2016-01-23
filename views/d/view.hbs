@@ -12,6 +12,7 @@
 
 <div class="container">
   {{#if document.draft}}
+  {{#equal document._user user.id}}
   <h1 class="title">{{document.content.title}} (DRAFT)</h1>
 
   <div class="content">
@@ -26,6 +27,11 @@
       {{{document.content.data.html}}}
     </div>
   </div>
+  {{else}}
+  <p>
+    no access. go <a href="/">home</a>.
+  </p>
+  {{/equal}}
   {{else}}
   <h1 class="title">{{document.content.title}}</h1>
 

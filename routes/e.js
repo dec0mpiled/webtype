@@ -60,7 +60,7 @@ router.get('/d/:id/s', function(req, res, next) {
 
     document.save(function(err) {
       if (err) return next(err);
-      res.redirect('/');
+      res.redirect('/e/d/' + req.params.id);
     });
 
   });
