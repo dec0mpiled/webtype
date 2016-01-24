@@ -1,20 +1,9 @@
 $(document).ready(function() {
 
-  var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
-    mode: "gfm",
-    theme: "github",
-    lineNumbers: false,
-    lineWrapping: true,
-    viewportMargin: Infinity,
-    indentWithTabs: true,
-    autoCloseBrackets: true,
-    readOnly: false,
-    extraKeys: { "Enter": "newlineAndIndentContinueMarkdownList" }
-  });
-
+  
   editor.on("change", function() {
     savingState();
-  })
+  });
 
   $('form').submit(function(event) {
     autosave();

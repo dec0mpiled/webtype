@@ -1,74 +1,30 @@
-<header class="container">
-
-  <div class="global-actions">
-    <a class="global-action" href="/@{{account.username}}">@{{account.username}}</a>
-    <span class="global-action">{{formatDate document.date.edited day="numeric" month="long" year="numeric"}}</span>
-  </div>
-
-  <h1 class="global-logo"><a href="/">owebbot</a></h1>
-
-</header>
-
-
 <div class="container">
-  {{#if document.draft}}
-  {{#equal document._user user.id}}
-  <h1 class="title">{{document.content.title}} (DRAFT)</h1>
 
-  <div class="content">
+  <a class="global-logo" href="/">obot</a>
 
-    <div class="meta">
-
-      <span class="eta"></span>
-
-    </div>
-
-    <div class="content-theme-html">
-      {{{document.content.data.html}}}
-    </div>
+  <!-- document title -->
+  <div class="title">
+    {{#if document.content.title}}
+    <h1><a href="/@{{account.username}}/{{document.slug}}">{{document.content.title}}</a></h1>
+    {{else}}
+    <h1><a href="/~{{document.id}}">{{document.id}}</a></h1>
+    {{/if}}
+    <p class="meta"><a href="/@{{account.username}}">{{account.name}}</a> on {{formatDate document.date.edited}}</p>
+    {{#if draft}}
+    <p class="meta">DRAFT</p>
+    {{/if}}
   </div>
-  {{else}}
-  <p>
-    no access. go <a href="/">home</a>.
-  </p>
-  {{/equal}}
-  {{else}}
-  <h1 class="title">{{document.content.title}}</h1>
 
+  <!-- document content -->
   <div class="content">
-
-    <div class="meta">
-      <span class="eta"></span>
-    </div>
-
-    <div class="content-theme-html">
-      {{{document.content.data.html}}}
-    </div>
+    {{{document.content.data.html}}}
   </div>
-  {{/if}}
+
 </div>
 
-<script src="/javascripts/readingTime.js"></script>
-<script>
-$(function() {
-  var $article = $('.content');
 
-  $article.readingTime({
-      readingTimeTarget: $article.find('.eta'),
-      wordCountTarget: $article.find('.word-count'),
-      wordsPerMinute: 275,
-      round: true,
-      lang: 'en',
-      success: function() {
-          console.log('It worked!');
-      },
-      error: function(message) {
-          console.log(message);
-          $article.find('.eta').remove();
-      }
-    });
-  });
-</script>
+
+
 <script>$( 'pre:not(.prettyprint)' ).addClass( 'prettyprint' );</script>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <style>

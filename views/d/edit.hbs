@@ -10,10 +10,9 @@
       <a class="editor-logo" href="/">owebbot</a>
     </h1>
 
-
     <input autocomplete="false" class=editor-title name="title" type="text" placeholder="{{document.id}}" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
 
-    <textarea autofocus="autofocus" id="content" name="content">{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}</textarea>
+    <div class="editor-frame" data-editor-value="{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}"></div>
 
   </form>
 
@@ -22,6 +21,3 @@
 <!--codemirror-->
 <link href="/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
 <link href="/stylesheets/github.css" rel="stylesheet" type="text/css">
-
-<!-- custom code -->
-<script src="/dist/editor.js"></script>

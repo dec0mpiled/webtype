@@ -1,0 +1,31 @@
+/* Global Logo */
+.global-logo {
+  font: bold 2em "Inconsolata";
+  color: #333;
+  display: block;
+  padding: .3em 0;
+  margin: 0;
+}
+
+/* Document CSS */
+.container  {
+  font: normal 1em "Helvetica Neue", Helvetica, "Open Sans", Segoe UI;
+  padding: 1em 10%;
+  color: #333; }
+
+.title h1 { margin: 0; padding-top: 1em; }
+.title p { font-weight: 300; font-size: 1.3em; padding-bottom: .3em; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: 500; }
+
+h1 { font-size: 2.3em; }
+
+.title a { color: #333; }
+
+a { color: #799CD8; text-decoration: none; }
+a:hover { color: #37549C; }
+
+.title p { margin: 0; }
+
+code {font-family: Monaco, Inconsolata;}
+pre.prettyprint { font-family: Monaco, Inconsolata; padding: 0 !important; border: 0 !important; }

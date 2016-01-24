@@ -44,7 +44,9 @@ router.get('/@:user/:slug', function(req, res, next) {
       res.render('d/view', {
         title: document.title,
         document: document,
-        account: account
+        account: account,
+        user: req.user,
+        view: true
       });
     });
   });
@@ -63,13 +65,15 @@ router.get('/~:id', function(req, res, next) {
       res.render('d/view', {
         title: document.title,
         document: document,
-        account: account
+        account: account,
+        user: req.user,
+        view: true
       });
     });
   });
 });
 
-// user view (todo: show docs)
+// user view
 router.get('/@:user', function(req, res, next) {
   Account.findOne({
     username: req.params.user
