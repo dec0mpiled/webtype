@@ -10,10 +10,15 @@ $(document).ready(function() {
     indentWithTabs: true,
     autoCloseBrackets: true,
     readOnly: false,
+    autofocus: true,
     extraKeys: { "Enter": "newlineAndIndentContinueMarkdownList" }
   });
 
   editor.on("change", function() {
+    savingState();
+  });
+
+  $('.editor-title').change(function() {
     savingState();
   });
 
