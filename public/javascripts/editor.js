@@ -1,6 +1,18 @@
 $(document).ready(function() {
 
-  
+  var editor = CodeMirror(document.querySelector('.editor-frame'), {
+    value: document.querySelector('.editor-frame').dataset.editorValue,
+    mode: "gfm",
+    theme: "github",
+    lineNumbers: false,
+    lineWrapping: true,
+    viewportMargin: Infinity,
+    indentWithTabs: true,
+    autoCloseBrackets: true,
+    readOnly: false,
+    extraKeys: { "Enter": "newlineAndIndentContinueMarkdownList" }
+  });
+
   editor.on("change", function() {
     savingState();
   });
