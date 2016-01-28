@@ -59,10 +59,13 @@
 /* global --------------------------------------*/
 
 .global-logo { font-size: 32px; font-weight: 300; }
-.global-actions { float: right; }
-.global-action {  }
+.global-actions { margin: 1em 0; display: inline-block; border: 2px solid #222; border-radius: 8px; text-align: center; }
+.global-action { display: inline-block; border-right: 2px solid #222; color: #222;  padding: .3em .4em; }
+.global-action:last-of-type { border-right: 0; }
 
 .container { padding: 0 10%;}
+
+header { padding-top: .7em; }
 
 html {
   font-family: 'Helvetica Neue', Helvetica, sans-serif;

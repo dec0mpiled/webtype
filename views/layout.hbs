@@ -43,22 +43,26 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
 
           {{#if editor}}
 
+          <li><b class="drawer-menu-item">Current Document</b></li>
+
+          <a class="drawer-menu-item" href="/@{{user.username}}/{{document.slug}}">Live</a>
+          <a class="drawer-menu-item" href="/d/d/{{document.id}}">Delete</a>
+
           <li><b class="drawer-menu-item">Documents ({{documents.length}})</b></li>
 
           {{#each documents}}
-          <li><a class="drawer-menu-item" href="/e/d/{{id}}">
-            {{#if content.title}}{{truncate content.title}}{{else}}{{id}}{{/if}} <br>
-            <span class="list-item-meta">edited {{formatRelative date.edited}}</span>
-          </a></li>
+          <li>
+            <a class="drawer-menu-item" href="/e/d/{{id}}">
+              {{#if content.title}}{{truncate content.title}}{{else}}{{id}}{{/if}} <br>
+              <span class="list-item-meta">edited {{formatRelative date.edited}}</span>
+            </a>
+            {{#equal document.id id}}
+            <a href="/@{{../user.username}}/{{slug}}">preview</a>
+            {{/equal}}
+          </li>
           {{/each}}
-
-          {{else}}
-          <li><a class="drawer-menu-item" href="/people">People</a></li>
-          <li><a class="drawer-menu-item" href="/tags">Tags</a></li>
-          <li><a class="drawer-menu-item" href="/auth/logout">Logout</a></li>
           {{/if}}
 
-          <li><b><a class="drawer-menu-item" href="/auth/update">Settings</a></b></li>
           <li><b><a class="drawer-menu-item" href="/auth/logout">Logout</a></b></li>
         </ul>
       </nav>

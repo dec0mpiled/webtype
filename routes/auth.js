@@ -4,7 +4,7 @@ var Account = require('../models/account');
 var router = express.Router();
 
 router.get('/register', function(req, res) {
-  res.render('a/register', { active: 'register' });
+  res.render('a/register', { active: 'register', title: 'Register' });
 });
 
 router.post('/register', function(req, res, next) {
@@ -35,14 +35,15 @@ router.post('/register', function(req, res, next) {
 router.get('/login', function(req, res) {
   res.render('a/login', {
     user: req.user,
-    active: 'login'
+    active: 'login',
+    title: 'Login'
   });
 });
 
 router.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err); }
-    if (!user) { return res.render("a/login", { info: "username and password do not match!", active: 'login' }); }
+    if (!user) { return res.render("a/login", { info: "username and password do not match!", active: 'login', title: 'Login' }); }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
       return res.redirect('/');

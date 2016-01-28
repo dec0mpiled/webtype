@@ -19,6 +19,7 @@ router.get('/d/:id', ensureAuthentication, function (req, res, next) {
     Document.find({ '_user' : document._user }, function(err, documents) {
       if (err) return next(err);
       res.render('d/edit', {
+        title: 'Editor',
         user: req.user,
         document: document,
         documents: documents,

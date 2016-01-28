@@ -21,6 +21,7 @@ router.get('/', function(req, res) {
     }, function(err, documents) {
       if (err) throw err;
       res.render('d/edit', {
+        title: 'Editor',
         user: req.user,
         document: documents[0],
         documents: documents,
@@ -42,7 +43,7 @@ router.get('/@:user/:slug', function(req, res, next) {
     }, function(err, document) {
       if (err) return next(err);
       res.render('d/view', {
-        title: document.title,
+        title: document.content.title,
         document: document,
         account: account,
         user: req.user,
