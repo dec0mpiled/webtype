@@ -66,6 +66,7 @@ router.get('/d/:id/s', function(req, res, next) {
   });
 });
 
+
 // Ensure Authentication
 function ensureAuthentication(req, res, next) {
   if (req.isAuthenticated()) {

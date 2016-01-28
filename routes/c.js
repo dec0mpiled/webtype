@@ -11,6 +11,8 @@ var slug = require('slug');
 // DOCUMENT                                                                   //
 //----------------------------------------------------------------------------//
 
+// document creation
+
 // create new doc
 router.get('/d', ensureAuthentication, function (req, res, next) {
   Document.create({
@@ -23,6 +25,28 @@ router.get('/d', ensureAuthentication, function (req, res, next) {
   }, function (err, document) {
     if (err) return next(err);
     res.redirect('/e/d/' + document.id);
+  });
+});
+
+// document sharing
+
+// fork and edit
+router.get('/d/:id/f/:user', function (req, res, next) {
+  Document.findOne({ _id: req.params.id }, function (err, document) {
+    if (err) return next(err);
+    Document.create({
+      _origin_author: document._user,
+      _origin_id: document._id,
+      _user: req.user.id,
+      draft: true,
+      date: {
+        created: new Date,
+        edited: new Data
+      }
+    }, function (err, doc) {
+      if (err) return next(err);
+      res.redirect('/e/d/' + doc.id);
+    });
   });
 });
 

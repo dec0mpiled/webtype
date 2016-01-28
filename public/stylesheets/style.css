@@ -1,4 +1,51 @@
 /**
+ * http://applemusic.tumblr.com/
+ * https://jsfiddle.net/xq56dmrh/
+ */
+
+/** Ultra Light */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 100;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff");
+}
+
+/** Thin */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 200;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff");
+}
+
+/** Regular */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+/** Medium */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 500;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff");
+}
+
+/** Semi Bold */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 600;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff");
+}
+
+/** Bold */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 700;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
+}
+
+/**
  * Style.css
  * owebbot
  */
@@ -11,14 +58,14 @@
 
 /* global --------------------------------------*/
 
-.global-logo { font-size: 32px; }
+.global-logo { font-size: 32px; font-weight: 300; }
 .global-actions { float: right; }
 .global-action {  }
 
 .container { padding: 0 10%;}
 
 html {
-  font-family: Inconsolata;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 1.4em;
   color: #26292C;
 }
@@ -31,6 +78,8 @@ a {
   color: #539FFE;
   text-decoration: none;
 }
+
+b, h1, h2, h3, h4, h5, h6 { font-weight: 500; }
 
 /* form --------------------------------------*/
 
@@ -65,7 +114,7 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 
 .editor-title       { padding: 0; font-size: 2.75em; font-weight: 300; border: 0; }
 .editor-title:focus { border: 0; box-shadow: 0 0 0 0 transparent; }
-.editor-logo        { color: #939393; }
+.editor-logo        { color: #gfgfgf; }
 .editor-body        {}
 .editor-actions     { float: right; }
 .editor-save        { color: #939393 }
@@ -84,7 +133,7 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 }
 
 .title {
-    font-family: "Helvetica Neue", Helvetica, sans-serif; font-weight: 200; font-size: 3em;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif; font-weight: 200; font-size: 3em;
     color: #26292C;
 }
 
@@ -93,5 +142,6 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 }
 
 .CodeMirror {
+  font-weight: 300;
   height: auto !important;
 }

@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var Document = new Schema({
     _user: Schema.Types.ObjectId,
+    _origin_id: Schema.Types.ObjectId,
     slug: String,
     draft: Boolean,
     content: {
