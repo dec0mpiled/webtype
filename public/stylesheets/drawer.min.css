@@ -109,7 +109,7 @@
     box-sizing: content-box;
     width: 2rem;
     padding: 0;
-    padding: 18px .75rem 30px;
+    padding: 14px .75rem 30px;
     -webkit-transition: all .6s cubic-bezier(.19, 1, .22, 1);
     transition: all .6s cubic-bezier(.19, 1, .22, 1);
     -webkit-transform: translateZ(0);

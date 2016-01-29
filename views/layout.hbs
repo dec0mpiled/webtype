@@ -28,11 +28,27 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
 
   </head>
   <body class="drawer drawer--left">
+    {{#if editor}}
+    <div class="global">
+      <div class="container">
+        <a class="global-item-action" href="/@{{user.username}}/{{document.slug}}" target="_blank"><i class="icon icon-export"></i></a>
+
+        <a class="global-item" href="/">owebbot</a> <span class="global-item">/</span>
+        <a class="global-item" href="/@{{user.username}}">@{{user.username}}</a>
+      </div>
+    </div>
+    {{/if}}
+
+
     {{#if user}}
     <header role="banner">
       <button type="button" class="drawer-toggle drawer-hamburger">
         <span class="sr-only">toggle navigation</span>
+        {{#unless editor}}
         <span class="icon icon-menu"></span>
+        {{else}}
+        <span class="editor-logo icon icon-menu"></span>
+        {{/unless}}
       </button>
       <nav class="drawer-nav" role="navigation">
         <ul class="drawer-menu">
@@ -40,7 +56,7 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
           <li><a class="drawer-brand" href="/">owebbot</a></li>
 
           <a href="/c/d" class="drawer-menu-item">New Document</a>
-
+          
           {{#if editor}}
 
           <li><b class="drawer-menu-item">Current Document</b></li>
