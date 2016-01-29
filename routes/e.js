@@ -45,7 +45,7 @@ router.post('/d/as/:id', ensureAuthentication, function (req, res, next) {
     }
   }, function (err, document) {
     if (err) return res.sendStatus(500);
-    res.send({ document: document });
+    res.jsonp({ 'slug': slug(req.body.title, { lower: true, remove: /[.]/g }) });
   });
 });
 

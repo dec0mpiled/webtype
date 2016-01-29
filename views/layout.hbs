@@ -31,9 +31,10 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
     {{#if editor}}
     <div class="global">
       <div class="container">
-        <a class="global-item-action" href="/@{{user.username}}/{{document.slug}}" target="_blank"><i class="icon icon-export"></i></a>
+        <a class="global-item-action editor-preview" data-editor-user="{{user.username}}" href="/@{{user.username}}/{{document.slug}}" target="_blank"><i class="icon icon-export"></i></a>
 
-        <a class="global-item" href="/">owebbot</a> <span class="global-item">/</span>
+        <a class="global-item" href="/">owebbot</a> 
+        <span class="global-item">/</span>
         <a class="global-item" href="/@{{user.username}}">@{{user.username}}</a>
       </div>
     </div>

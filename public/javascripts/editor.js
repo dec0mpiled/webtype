@@ -43,8 +43,16 @@ $(document).ready(function() {
         errorSavingState();
       })
       .done(function(data) {
+        updateHyperLinks(data)
         savedState();
       });
+  }
+  
+  var link = document.querySelector('.editor-preview');
+  
+  function updateHyperLinks(data) {
+    console.log(data);
+    link.href = '/@' + link.dataset.editorUser + '/' + data.slug;
   }
 
   var el = document.querySelector('.editor-save')
