@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
+var findOrCreate = require('mongoose-findorcreate');
 
 var Account = new Schema({
     email: String,
@@ -10,5 +11,6 @@ var Account = new Schema({
 });
 
 Account.plugin(passportLocalMongoose);
+Account.plugin(findOrCreate);
 
 module.exports = mongoose.model('accounts', Account);

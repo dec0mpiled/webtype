@@ -1,15 +1,17 @@
 $(document).ready(function() {
+  
+  var socket = io(); // TIP: io() with no args does auto-discovery
 
   var editor = CodeMirror(document.querySelector('.editor-frame'), {
     value: document.querySelector('.editor-frame').dataset.editorValue,
-    mode: "gfm",
+    mode: "spell-checker",
+    backdrop: "gfm",
     theme: "github",
     lineNumbers: false,
     lineWrapping: true,
     viewportMargin: Infinity,
     indentWithTabs: true,
     autoCloseBrackets: true,
-    readOnly: false,
     autofocus: true,
     extraKeys: { "Enter": "newlineAndIndentContinueMarkdownList" }
   });
@@ -27,25 +29,18 @@ $(document).ready(function() {
   });
 
   function autosave() {
+    console.log('autosaving...');
     var formData = {
       'title': $('input[name=title]').val(),
-      'content': editor.getValue()
+      'content': editor.getValue(),
+      'id' : $('input[name=id]').val()
     };
-
-    $.ajax({
-        type: 'POST',
-        url: '/e/d/as/' + $('form').data('id'),
-        data: formData,
-        dataType: 'json',
-        encode: true
-      })
-      .fail(function() {
-        errorSavingState();
-      })
-      .done(function(data) {
-        updateHyperLinks(data)
-        savedState();
-      });
+    socket.emit('save', formData, function (data) {
+      console.log('saving');
+      updateHyperLinks(data);
+      savedState();
+    });
+    
   }
   
   var link = document.querySelector('.editor-preview');

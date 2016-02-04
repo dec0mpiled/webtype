@@ -1,80 +1,87 @@
-var express = require('express');
-var router = express.Router();
-
-// models
-var Document = require('../models/document');
-
-// local dependencies
-var slug = require('slug');
-var marked = require('marked');
-
-//----------------------------------------------------------------------------//
-// DOCUMENT                                                                   //
-//----------------------------------------------------------------------------//
-
-// edit doc
-router.get('/d/:id', ensureAuthentication, function (req, res, next) {
-  Document.findOne({ _id: req.params.id }, function (err, document) {
-    if (err) return next(err);
-    Document.find({ '_user' : document._user }, function(err, documents) {
+module.exports = function(io) {
+  
+  var express = require('express');
+  var router = express.Router();
+  
+  // models
+  var Document = require('../models/document');
+  
+  // local dependencies
+  var slug = require('slug');
+  var marked = require('marked');
+  
+  //----------------------------------------------------------------------------//
+  // DOCUMENT                                                                   //
+  //----------------------------------------------------------------------------//
+  
+  // edit doc
+  router.get('/d/:id', ensureAuthentication, function (req, res, next) {
+    Document.findOne({ _id: req.params.id }, function (err, document) {
       if (err) return next(err);
-      res.render('d/edit', {
-        title: 'Editor',
-        user: req.user,
-        document: document,
-        documents: documents,
-        editor: true
+      Document.find({ '_user' : document._user }, function(err, documents) {
+        if (err) return next(err);
+        res.render('d/edit', {
+          title: 'Editor',
+          user: req.user,
+          document: document,
+          documents: documents,
+          editor: true
+        });
       });
     });
   });
-});
-
-// autosave
-router.post('/d/as/:id', ensureAuthentication, function (req, res, next) {
-  Document.findOneAndUpdate({ _id: req.params.id }, {
-    slug: slug(req.body.title, { lower: true, remove: /[.]/g }),
-    content: {
-      title: req.body.title,
-      data: {
-        raw: req.body.content,
-        html: marked(req.body.content, { breaks: true })
-      }
-    },
-    date: {
-      edited: new Date
-    }
-  }, function (err, document) {
-    if (err) return res.sendStatus(500);
-    res.jsonp({ 'slug': slug(req.body.title, { lower: true, remove: /[.]/g }) });
-  });
-});
-
-// document settings
-router.get('/d/:id/s', function(req, res, next) {
-  Document.findOne({ _id: req.params.id }, function(err, document) {
-    if (err) return next(err);
-    if (req.query.publish == 'true') {
-      document.draft = false;
-    } else {
-      document.draft = true;
-    }
-
-    document.save(function(err) {
-      if (err) return next(err);
-      res.redirect('/e/d/' + req.params.id);
+  
+  io.sockets.on('connection', function (socket) {
+    socket.on('save', function (name, fn) {
+      Document.findOneAndUpdate({ _id: name.id }, {
+        slug: slug(name.title, { lower: true, remove: /[.]/g }),
+        content: {
+          title: name.title,
+          data: {
+            raw: name.content,
+            html: marked(name.content, { breaks: true })
+          }
+        },
+        date: {
+          edited: new Date
+        }
+      }, function (err, document) {
+        fn({ 'slug': slug(name.title, { lower: true, remove: /[.]/g }) });
+      });
     });
-
   });
-});
-
-
-// Ensure Authentication
-function ensureAuthentication(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  } else {
-    return res.redirect('/auth/login');
+  
+  /*
+  
+  */
+  
+  // document settings
+  router.get('/d/:id/s', function(req, res, next) {
+    Document.findOne({ _id: req.params.id }, function(err, document) {
+      if (err) return next(err);
+      if (req.query.publish == 'true') {
+        document.draft = false;
+      } else {
+        document.draft = true;
+      }
+  
+      document.save(function(err) {
+        if (err) return next(err);
+        res.redirect('/e/d/' + req.params.id);
+      });
+  
+    });
+  });
+  
+  
+  // Ensure Authentication
+  function ensureAuthentication(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    } else {
+      return res.redirect('/auth/login');
+    }
   }
+  
+  return router;
 }
-
-module.exports = router;

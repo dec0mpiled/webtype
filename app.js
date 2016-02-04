@@ -1,5 +1,6 @@
 // dependencies
 var express = require('express');
+var socket_io = require('socket.io');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -11,14 +12,18 @@ var moment = require('moment');
 var HandlebarsIntl = require('handlebars-intl');
 var LocalStrategy = require('passport-local').Strategy;
 
+var app = express();
+
+// socket.io
+var io = socket_io();
+app.io = io;
+
 var routes = require('./routes/index');
 var auth = require('./routes/auth');
 
 var c = require('./routes/c');
-var e = require('./routes/e');
+var e = require('./routes/e')(io);
 var d = require('./routes/d');
-
-var app = express();
 
 // dotenv (environment variables) (include .env)
 if (app.get('env') === 'development') {
