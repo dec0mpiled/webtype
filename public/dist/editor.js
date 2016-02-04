@@ -13986,14 +13986,12 @@ $(document).ready(function() {
   });
 
   function autosave() {
-    console.log('autosaving...');
     var formData = {
       'title': $('input[name=title]').val(),
       'content': editor.getValue(),
       'id' : $('input[name=id]').val()
     };
     socket.emit('save', formData, function (data) {
-      console.log('saving');
       updateHyperLinks(data);
       savedState();
     });
@@ -14003,7 +14001,6 @@ $(document).ready(function() {
   var link = document.querySelector('.editor-preview');
   
   function updateHyperLinks(data) {
-    console.log(data);
     link.href = '/@' + link.dataset.editorUser + '/' + data.slug;
   }
 
