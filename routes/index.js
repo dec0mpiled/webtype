@@ -81,7 +81,7 @@ router.get('/@:user', function(req, res, next) {
   }, function(err, result) {
     if (err) return next(err);
     if (!result) {
-      res.redirect('/');
+      return res.redirect('/');
     }
     Document.find({
       '_user': result._id,
