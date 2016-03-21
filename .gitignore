@@ -4,8 +4,7 @@
 ### Node.js ###
 node_modules
 
-### Codekit ###
-config.codekit
+.codekit-cache
 
 ### OSX ###
 .DS_Store
