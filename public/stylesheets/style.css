@@ -79,24 +79,6 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 .editor-save[data-editor-status='editor-status-saving'] { color: #FFDC00; }
 .editor-save[data-editor-status='editor-status-saved']  { color: #2ECC40; }
 
-/* document view --------------------------------------*/
-
-.prettyprint {
-    font-family: "Inconsolata", monospace !important;
-    font-size: 18px;
-    padding: 0 !important;
-    border: 0 !important;
-}
-
-.title {
-    font-family: 'Helvetica Neue', Helvetica, sans-serif; font-weight: 200; font-size: 3em;
-    color: #26292C;
-}
-
-.content-theme-html {
-  line-height: 2em;
-}
-
 .CodeMirror {
   font-weight: 300;
   height: auto !important;

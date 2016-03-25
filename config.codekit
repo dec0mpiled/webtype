@@ -13,17 +13,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/editor.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/editor.js",
-		"outputAbbreviatedPath": "\/min\/editor-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/package.json": {
 		"fileType": 524288,
 		"ignore": 1,
@@ -1609,7 +1598,7 @@
 		},
 	"\/public\/codemirror\/mode\/css\/css.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/codemirror\/mode\/css\/css.js",
 		"outputAbbreviatedPath": "\/public\/codemirror\/mode\/css\/min\/css-min.js",
@@ -2242,7 +2231,7 @@
 		},
 	"\/public\/codemirror\/mode\/htmlmixed\/htmlmixed.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/codemirror\/mode\/htmlmixed\/htmlmixed.js",
 		"outputAbbreviatedPath": "\/public\/codemirror\/mode\/htmlmixed\/min\/htmlmixed-min.js",
@@ -2340,7 +2329,7 @@
 		},
 	"\/public\/codemirror\/mode\/javascript\/javascript.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/codemirror\/mode\/javascript\/javascript.js",
 		"outputAbbreviatedPath": "\/public\/codemirror\/mode\/javascript\/min\/javascript-min.js",
@@ -4530,18 +4519,29 @@
 		},
 	"\/public\/dist\/editor.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/dist\/editor.js",
-		"outputAbbreviatedPath": "\/editor.js",
+		"outputAbbreviatedPath": "\/public\/dist\/min\/editor-min.js",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/dist\/layout-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/dist\/layout-min.js",
+		"outputAbbreviatedPath": "\/public\/dist\/min\/layout-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
 	"\/public\/dist\/layout.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/dist\/layout.js",
 		"outputAbbreviatedPath": "\/public\/dist\/min\/layout-min.js",
@@ -4552,7 +4552,7 @@
 		},
 	"\/public\/javascripts\/drawer.min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/javascripts\/drawer.min.js",
 		"outputAbbreviatedPath": "\/public\/javascripts\/min\/drawer.min-min.js",
@@ -4574,18 +4574,18 @@
 		},
 	"\/public\/javascripts\/editor.js": {
 		"fileType": 64,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/javascripts\/editor.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/editor-min.js",
+		"outputAbbreviatedPath": "\/public\/dist\/editor.js",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
 		},
 	"\/public\/javascripts\/iscroll.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/javascripts\/iscroll.js",
 		"outputAbbreviatedPath": "\/public\/javascripts\/min\/iscroll-min.js",
@@ -4596,7 +4596,7 @@
 		},
 	"\/public\/javascripts\/jquery.min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/javascripts\/jquery.min.js",
 		"outputAbbreviatedPath": "\/public\/javascripts\/min\/jquery.min-min.js",
@@ -4610,10 +4610,10 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/javascripts\/layout.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/layout-min.js",
+		"outputAbbreviatedPath": "\/public\/dist\/layout.js",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
 	"\/public\/javascripts\/messenger-theme-flat.js": {
@@ -4633,6 +4633,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/javascripts\/messenger.min.js",
 		"outputAbbreviatedPath": "\/public\/javascripts\/min\/messenger.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/javascripts\/min\/layout-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/javascripts\/min\/layout-min.js",
+		"outputAbbreviatedPath": "\/public\/javascripts\/min\/min\/layout-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -4905,7 +4916,7 @@
 	],
 "lastSavedByUser": "Oliver Pope",
 "manualImportLinks": {
-	"\/public\/dist\/editor.js": [
+	"\/public\/javascripts\/editor.js": [
 		{
 			"followForSyntaxChecking": 1,
 			"linkedFileAbbreviatedPath": "\/public\/codemirror\/lib\/codemirror.js",
@@ -4956,20 +4967,52 @@
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/clike\/clike.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/javascript\/javascript.js",
 			"position": 8,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/meta.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/css\/css.js",
 			"position": 9,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/javascripts\/editor.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/htmlmixed\/htmlmixed.js",
 			"position": 10,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/clike\/clike.js",
+			"position": 11,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/meta.js",
+			"position": 12,
+			"type": 0
+			}
+		],
+	"\/public\/javascripts\/layout.js": [
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/public\/javascripts\/jquery.min.js",
+			"position": 0,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/public\/javascripts\/iscroll.js",
+			"position": 1,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/public\/javascripts\/drawer.min.js",
+			"position": 2,
 			"type": 0
 			}
 		]

@@ -1,24 +1,20 @@
-/* Global Logo */
-.global-logo {
-  font: bold 2em "Inconsolata";
-  color: #333;
-  display: block;
-  padding: .3em 0;
-  margin: 0;
+/* Global */
+html {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Geneva, sans-serif;
+  color: #111;
+  font-size: 1.4em;
 }
 
 /* Document CSS */
 .container  {
-  font: normal 1em "Helvetica Neue", Helvetica, "Open Sans", Segoe UI;
-  padding: 1em 10%;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Geneva, sans-serif;
+  padding: 1em 20%;
   color: #333; }
 
-.title h1 { margin: 0; padding-top: 1em; }
-.title p { font-weight: 300; font-size: 1.3em; padding-bottom: .3em; }
+.title h1 { margin: 0; padding-top: 1em; font-size: 2em; }
+.title p { font-weight: 300; font-size: 1em; padding-bottom: .3em; }
 
 h1, h2, h3, h4, h5, h6 { font-weight: 500; }
-
-h1 { font-size: 2.3em; }
 
 .title a { color: #333; }
 
@@ -29,3 +25,9 @@ a:hover { color: #37549C; }
 
 code {font-family: Monaco, Inconsolata;}
 pre.prettyprint { font-family: Monaco, Inconsolata; padding: 0 !important; border: 0 !important; }
+
+.content {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.4em;
+  line-height: 1.75em;
+}
