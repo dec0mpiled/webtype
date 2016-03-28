@@ -4528,17 +4528,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/public\/dist\/layout-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/dist\/layout-min.js",
-		"outputAbbreviatedPath": "\/public\/dist\/min\/layout-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/public\/dist\/layout.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -4556,17 +4545,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/javascripts\/drawer.min.js",
 		"outputAbbreviatedPath": "\/public\/javascripts\/min\/drawer.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/drop.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/drop.min.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/drop.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -4614,116 +4592,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 0,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/messenger-theme-flat.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/messenger-theme-flat.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/messenger-theme-flat-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/messenger.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/messenger.min.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/messenger.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/min\/layout-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/min\/layout-min.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/min\/layout-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/modal.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/modal.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/modal-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/nprogress.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/nprogress.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/nprogress-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/parsley.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/parsley.min.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/parsley.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/readingTime.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/readingTime.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/readingTime-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/spell-checker.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/spell-checker.min.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/spell-checker.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/tether.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/tether.min.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/tether.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/public\/javascripts\/vex.combined.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/javascripts\/vex.combined.min.js",
-		"outputAbbreviatedPath": "\/public\/javascripts\/min\/vex.combined.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
 	"\/public\/moment.js": {

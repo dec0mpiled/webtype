@@ -38,7 +38,6 @@ $(document).ready(function() {
       updateHyperLinks(data);
       savedState();
     });
-    
   }
   
   var link = document.querySelector('.editor-preview');
