@@ -80,6 +80,5 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 .editor-save[data-editor-status='editor-status-saved']  { color: #2ECC40; }
 
 .CodeMirror {
-  font-weight: 300;
   height: auto !important;
 }

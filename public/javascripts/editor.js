@@ -4,9 +4,8 @@ $(document).ready(function() {
 
   var editor = CodeMirror(document.querySelector('.editor-frame'), {
     value: document.querySelector('.editor-frame').dataset.editorValue,
-    mode: "spell-checker",
-    backdrop: "gfm",
-    theme: "github",
+    mode: "gfm",
+    theme: "neat",
     lineNumbers: false,
     lineWrapping: true,
     viewportMargin: Infinity,
