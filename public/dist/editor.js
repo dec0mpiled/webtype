@@ -13375,10 +13375,11 @@ $(document).ready(function() {
   editor.on("change", function() {
     savingState();
   });
-
-  $('.editor-title').change(function() {
-    savingState();
-  });
+  
+  var editorTitle = document.querySelector('.editor-title');
+  
+  editorTitle.addEventListener('input', savingState, false);
+  
 
   $('form').submit(function(event) {
     autosave();
@@ -13397,9 +13398,11 @@ $(document).ready(function() {
   }
   
   var link = document.querySelector('.editor-preview');
+  var slugg = document.querySelector('.global-item-slug');
   
   function updateHyperLinks(data) {
     link.href = '/@' + link.dataset.editorUser + '/' + data.slug;
+    slugg.innerHTML = data.slug;
   }
 
   var el = document.querySelector('.editor-save')

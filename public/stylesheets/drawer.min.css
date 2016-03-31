@@ -31,18 +31,21 @@
     padding: 0;
     list-style: none
 }
-.drawer-menu-item, .drawer-menu-item-action {
+.drawer-menu-header {
     font-size: 1rem;
     display: block;
     padding: .75rem;
     text-decoration: none;
     color: #222
 }
+.drawer-menu-item, .drawer-menu-item-action {
+    padding: .75rem;
+    display: block;
+}
 .drawer-menu-item-action {
   display: inline-block !important;
 }
 .drawer-menu-item:hover, .drawer-menu-item-action:hover {
-    text-decoration: underline;
     color: #555;
     background-color: transparent
 }

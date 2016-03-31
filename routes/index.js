@@ -84,9 +84,8 @@ router.get('/@:user', function(req, res, next) {
       return res.redirect('/');
     }
     Document.find({
-      '_user': result._id,
-      'draft': false
-    }, function(err, document) {
+      '_user': result._id
+    }, null, { sort: '-date.edited' }, function(err, document) {
       if (err) return next(err);
       res.render('a/profile', {
         result: result,

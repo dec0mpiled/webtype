@@ -57,14 +57,20 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 
 .list-body {}
 
-.list-item               {  }
+.list-item               { border: 1px #E0E0E0 solid; border-radius: 4px; padding: .5em; width: 50%; margin: 1em 0; }
+.list-item:hover         { border: 1px #00A6F4 solid; }
 .list-item-header        {  }
 .list-header-title       { font-size: 1.5em; margin: 0; }
 .list-header-subtitle    { color: #939393; margin: 0; }
-.list-item-meta          { font-weight: 500; font-size: 14px; color: #939393; }
+.list-item-title         { font-size: 1.3em; margin: 0; }
+.list-item-meta          { font-weight: 500; font-size: 14px; color: #939393; text-transform: uppercase; }
 .list-item-actions       { float: right; }
 .list-item-action        { padding: .1em; }
 .list-item-action-delete { color: #EA3930; }
+
+@media (max-width: 700px) {
+    .list-item           { width: 100%; }
+}
 
 /* editor --------------------------------------*/
 

@@ -32,10 +32,9 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
     <div class="global">
       <div class="container">
         <a class="global-item-action editor-preview" data-editor-user="{{user.username}}" href="/@{{user.username}}/{{document.slug}}" target="_blank"><i class="icon icon-export"></i></a>
-
-        <a class="global-item" href="/">owebbot</a> 
+        <a class="global-item" href="/@{{user.username}}">files</a>
         <span class="global-item">/</span>
-        <a class="global-item" href="/@{{user.username}}">@{{user.username}}</a>
+        <span class="global-item-slug">{{document.slug}}</span>
       </div>
     </div>
     {{/if}}
@@ -57,14 +56,16 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
           <li><a class="drawer-brand" href="/">owebbot</a></li>
 
           <a href="/c/d" class="drawer-menu-item">New Document</a>
+
+          <li><a href="/@{{user.username}}" class="drawer-menu-item">All Files</a></li>
           
           {{#if editor}}
 
-          <li><b class="drawer-menu-item">Current Document</b></li>
-
+          <li><b class="drawer-menu-header">Current Document</b></li>
+  
           <a class="drawer-menu-item" href="/d/d/{{document.id}}">Delete</a>
 
-          <li><b class="drawer-menu-item">Documents ({{documents.length}})</b></li>
+          <li><b class="drawer-menu-header">Documents ({{documents.length}})</b></li>
 
           {{#each documents}}
           <li>

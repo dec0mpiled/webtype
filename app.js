@@ -37,11 +37,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 
-// https://gist.github.com/meddulla/2571518
-hbs.registerHelper('equal', function(val, val2, block) {
-  if (val == val2) {
-    return block(this);
+hbs.registerHelper('equal', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
   }
+  return options.inverse(this);
 });
 
 // https://gist.github.com/TastyToast/5053642

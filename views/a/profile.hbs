@@ -11,18 +11,20 @@
     </header>
   </div>
 
-  <div class="list">
-    <div class="list-header">
-      <h2 class="list-header-title">Documents ({{document.length}})</h2>
-    </div>
-    <div class="list-body">
+  {{#equal user.id result.id}}
+    <div class="list">
       {{#each document}}
       <div class="list-item">
-        <a class="list-item-header" href="/@{{../result.username}}/{{slug}}"><b>{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</b></a>
-        <p class="list-item-meta">{{formatDate date.edited day="numeric" month="long" year="numeric"}}</p>
+        <h1 class="list-item-title">{{content.title}}</h2>
+        <span class="list-item-meta">{{formatRelative date.edited}}</span>
+        <div class="list-item-actions">
+          <a href="/@{{../result.username}}/{{slug}}" class="list-item-meta">view</a>
+          <a href="/e/d/{{id}}" class="list-item-meta">edit</a>
+          <a href="/d/d/{{id}}" class="list-item-meta">delete</a>
+        </div>
       </div>
       {{/each}}
     </div>
-  </div>
+  {{/equal}}
 
 </div>
