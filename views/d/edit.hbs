@@ -9,10 +9,12 @@
       </div>
     </header>
 
-    <input autocomplete="false" class="editor-title" name="title" type="text" placeholder="{{document.id}}" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
-    <input type="hidden" name="id" value="{{document.id}}">
-
-    <div class="editor-frame" data-editor-value="{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}"></div>
+    <section class="editor-body">
+      <input autocomplete="false" class="editor-title" name="title" type="text" placeholder="{{document.id}}" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
+      <input type="hidden" name="id" value="{{document.id}}">
+      
+      <div class="editor-frame" data-editor-value="{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}"></div>
+    </section>
 
   </form>
 
