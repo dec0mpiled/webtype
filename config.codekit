@@ -4247,6 +4247,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/public\/codemirror\/theme\/espresso-tutti.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/codemirror\/theme\/espresso-tutti.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/public\/codemirror\/theme\/hopscotch.css": {
 		"fileType": 16,
 		"ignore": 0,

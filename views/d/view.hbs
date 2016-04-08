@@ -1,26 +1,19 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
 <div class="container">
-  <!-- document title -->
-  <div class="title">
+  
+  <!-- document content -->
+  <div class="markdown-body">
     {{#if document.content.title}}
     <h1><a href="/@{{account.username}}/{{document.slug}}">{{document.content.title}}</a></h1>
     {{else}}
     <h1><a href="/~{{document.id}}">{{document.id}}</a></h1>
     {{/if}}
     <p class="meta"><a href="/@{{account.username}}">{{account.name}}</a> on {{formatDate document.date.edited}}</p>
-  </div>
-
-  <!-- document content -->
-  <div class="content">
     {{{document.content.data.html}}}
   </div>
 
 </div>
-
-
-
-
-<script>$( 'pre:not(.prettyprint)' ).addClass( 'prettyprint' );</script>
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-<style>
-.pln{color:#333}@media screen{.str{color:#d14}.kwd{color:#333}.com{color:#998}.typ{color:#458}.lit{color:#458}.pun{color:#333}.opn{color:#333}.clo{color:#333}.tag{color:navy}.atn{color:teal}.atv{color:#d14}.dec{color:#333}.var{color:teal}.fun{color:#900}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L4,li.L5,li.L6,li.L7,li.L8,li.L9{}li.L1,li.L3,li.L5,li.L7,li.L9{}
-</style>
