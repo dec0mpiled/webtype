@@ -4,10 +4,17 @@ var router = express.Router();
 // models
 var Document = require('../models/document');
 
-router.get('/d/:id', ensureAuthentication, function (req, res, next) {
-  Document.findOneAndRemove({ _id: req.params.id }, function(err, document) {
+router.get('/a/:id', ensureAuthentication, function (req, res, next) {
+  Document.findOneAndUpdate({ _id: req.params.id }, { archived: true }, function (err, document) {
     if (err) return next(err);
-    res.redirect('/');
+    res.redirect('/a');
+  });
+});
+
+router.get('/d/:id', ensureAuthentication, function (req, res, next) {
+  Document.findOneAndRemove({ _id: req.params.id }, function (err, document) {
+    if (err) return next(err);
+    res.redirect('/a');
   });
 });
 

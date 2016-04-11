@@ -9,6 +9,7 @@ module.exports = function(io) {
   // local dependencies
   var slug = require('slug');
   var marked = require('marked');
+  var xss = require('xss');
   
   //----------------------------------------------------------------------------//
   // DOCUMENT                                                                   //
@@ -31,6 +32,7 @@ module.exports = function(io) {
     });
   });
   
+  // io sockets
   io.sockets.on('connection', function (socket) {
     socket.on('save', function (name, fn) {
       Document.findOneAndUpdate({ _id: name.id }, {
@@ -39,7 +41,7 @@ module.exports = function(io) {
           title: name.title,
           data: {
             raw: name.content,
-            html: marked(name.content, { breaks: true })
+            html: xss(marked(name.content, { breaks: true }))
           }
         },
         date: {

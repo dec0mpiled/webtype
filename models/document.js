@@ -6,6 +6,7 @@ var Document = new Schema({
     _origin_id: Schema.Types.ObjectId,
     slug: String,
     draft: Boolean,
+    archived: Boolean,
     content: {
         title: String,
         data: {

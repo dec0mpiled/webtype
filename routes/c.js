@@ -18,6 +18,7 @@ router.get('/d', ensureAuthentication, function (req, res, next) {
   Document.create({
     _user: req.user.id,
     draft: true,
+    archived: false,
     date: {
         created: new Date,
         edited: new Date

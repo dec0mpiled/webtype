@@ -34,6 +34,7 @@
     "serve-favicon": "^2.2.0",
     "should": "~2.1.0",
     "slug": "^0.9.1",
-    "socket.io": "^1.4.5"
+    "socket.io": "^1.4.5",
+    "xss": "^0.2.10"
   }
 }

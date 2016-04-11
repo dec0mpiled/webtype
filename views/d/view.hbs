@@ -5,14 +5,17 @@
 
 <div class="container">
   
+  <p class="header-meta"><a href="/@{{account.username}}">{{account.name}}</a> on {{formatDate document.date.edited}}</p>
+
+  
+  {{#if document.content.title}}
+  <h1><a class="header-title" href="/@{{account.username}}/{{document.slug}}">{{document.content.title}}</a></h1>
+  {{else}}
+  <h1><a class="header-title" href="/~{{document.id}}">{{document.id}}</a></h1>
+  {{/if}}
+    
   <!-- document content -->
   <div class="markdown-body">
-    {{#if document.content.title}}
-    <h1><a href="/@{{account.username}}/{{document.slug}}">{{document.content.title}}</a></h1>
-    {{else}}
-    <h1><a href="/~{{document.id}}">{{document.id}}</a></h1>
-    {{/if}}
-    <p class="meta"><a href="/@{{account.username}}">{{account.name}}</a> on {{formatDate document.date.edited}}</p>
     {{{document.content.data.html}}}
   </div>
 

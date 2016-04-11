@@ -74,6 +74,15 @@ router.get('/~:id', function(req, res, next) {
   });
 });
 
+router.get('/a', function(req, res, next) {
+  Account.findOne({
+    _id: req.user.id
+  }, function(err, user) {
+    if (err) return next(err);
+    res.redirect('/@' + user.username);
+  });
+});
+
 // user view
 router.get('/@:user', function(req, res, next) {
   Account.findOne({
