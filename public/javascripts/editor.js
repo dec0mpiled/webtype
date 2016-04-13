@@ -1,5 +1,9 @@
 $(document).ready(function() {
   
+  if (window.location.protocol != "https:") {
+    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+  }
+  
   var socket = io(); // TIP: io() with no args does auto-discovery
 
   var editor = CodeMirror(document.querySelector('.editor-frame'), {

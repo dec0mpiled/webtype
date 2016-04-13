@@ -11,7 +11,7 @@
 
 /* global --------------------------------------*/
 
-.global { background: #fff; display: block; margin: 0; padding: .5em; transition: .2s background; }
+.global { background: #fff; display: block; margin: 0; padding: .5em; transition: .2s background; font-size: 1.4em;  }
 .global-item { font-weight: 300; color: #222; }
 .global-item-action { float: right; font-weight: 300; color: #222; }
 .global-logo { color: #539FFE; font-size: 1.6em; }
@@ -22,7 +22,6 @@ header { padding-top: .7em; }
 
 html {
   font-family: "Lucida Grande", "Lucida Sans Unicode", Geneva, sans-serif;
-  font-size: 1.4em;
   color: #111;
 }
 
@@ -74,12 +73,13 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 
 /* editor --------------------------------------*/
 
-.editor-title       { padding: 0; font-size: 2.75em; font-weight: 300; border: 0; }
+.editor-title       { padding: 0; font-size: 3.25em; font-weight: 300; border: 0; }
 .editor-title:focus { border: 0; box-shadow: 0 0 0 0 transparent; }
 .editor-logo        { color: rgba(0, 0, 0, 0.5); }
 .editor-body        { padding: 1em 10%; }
 .editor-actions     { float: right; font-size: 2em; }
 .editor-save        { color: #939393 }
+.editor-frame       { font-size: 1.4em; }
 
 .editor-save[data-editor-status='editor-status-error']  { color: #EA3930; }
 .editor-save[data-editor-status='editor-status-saving'] { color: #FFDC00; }

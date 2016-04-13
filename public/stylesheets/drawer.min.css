@@ -41,6 +41,10 @@
 .drawer-menu-item, .drawer-menu-item-action {
     padding: .75rem;
     display: block;
+    color: #539FFE;
+    text-decoration: none;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Geneva, sans-serif;
+    font-size: 18px;
 }
 .drawer-menu-item-action {
   display: inline-block !important;
