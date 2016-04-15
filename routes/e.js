@@ -9,6 +9,7 @@ module.exports = function(io) {
   // local dependencies
   var slug = require('slug');
   var linkify = require('linkify-it')();
+  var math = require('markdown-it-mathjax')
   var emoji = require('markdown-it-emoji');
 
   var md = require('markdown-it')({
@@ -17,6 +18,7 @@ module.exports = function(io) {
   });
   
   md.use(emoji);
+  md.use(math);
   
   //----------------------------------------------------------------------------//
   // DOCUMENT                                                                   //
