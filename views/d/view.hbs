@@ -11,9 +11,9 @@
 
   
   {{#if document.content.title}}
-  <h1><a class="header-title" href="/@{{account.username}}/{{document.slug}}">{{document.content.title}}</a></h1>
+  <a class="header-title" href="/@{{account.username}}/{{document.slug}}">{{document.content.title}}</a>
   {{else}}
-  <h1><a class="header-title" href="/~{{document.id}}">{{document.id}}</a></h1>
+  <a class="header-title" href="/~{{document.id}}">{{document.id}}</a>
   {{/if}}
     
   <!-- document content -->

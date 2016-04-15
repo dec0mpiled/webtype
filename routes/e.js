@@ -11,7 +11,10 @@ module.exports = function(io) {
   var linkify = require('linkify-it')();
   var math = require('markdown-it-mathjax')
   var emoji = require('markdown-it-emoji');
-  var footnotes =require('markdown-it-footnote');
+  var footnotes = require('markdown-it-footnote');
+  var video = require('markdown-it-video');
+  var arrows = require('markdown-it-smartarrows');
+  var checkbox = require('markdown-it-checkbox');
 
   var md = require('markdown-it')({
     linkify: true, 
@@ -21,7 +24,10 @@ module.exports = function(io) {
   md.use(emoji);
   md.use(math);
   md.use(footnotes);
-    
+  md.use(video);
+  md.use(arrows);
+  md.use(checkbox);
+  
   //----------------------------------------------------------------------------//
   // DOCUMENT                                                                   //
   //----------------------------------------------------------------------------//
