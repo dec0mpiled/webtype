@@ -21,6 +21,7 @@
     "linkify-it": "^1.2.0",
     "markdown-it": "^6.0.1",
     "markdown-it-emoji": "^1.1.1",
+    "markdown-it-footnote": "^2.0.0",
     "markdown-it-mathjax": "^1.0.3",
     "markdown-it-video": "^0.2.1",
     "mocha": "~1.14.0",
