@@ -8,8 +8,15 @@ module.exports = function(io) {
   
   // local dependencies
   var slug = require('slug');
-  var marked = require('marked');
-  var xss = require('xss');
+  var linkify = require('linkify-it')();
+  var emoji = require('markdown-it-emoji');
+
+  var md = require('markdown-it')({
+    linkify: true, 
+    typographer: true
+  });
+  
+  md.use(emoji);
   
   //----------------------------------------------------------------------------//
   // DOCUMENT                                                                   //
@@ -41,7 +48,7 @@ module.exports = function(io) {
           title: name.title,
           data: {
             raw: name.content,
-            html: xss(marked(name.content, { breaks: true }))
+            html: md.render(name.content)
           }
         },
         date: {
