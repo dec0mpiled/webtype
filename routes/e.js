@@ -14,7 +14,8 @@ module.exports = function(io) {
   var footnotes = require('markdown-it-footnote');
   var video = require('markdown-it-video');
   var arrows = require('markdown-it-smartarrows');
-  var checkbox = require('markdown-it-checkbox');
+  var checkbox = require('markdown-it-task-lists');
+  var anchor = require('markdown-it-headinganchor');
 
   var md = require('markdown-it')({
     linkify: true, 
@@ -27,6 +28,7 @@ module.exports = function(io) {
   md.use(video);
   md.use(arrows);
   md.use(checkbox);
+  md.use(anchor);
   
   //----------------------------------------------------------------------------//
   // DOCUMENT                                                                   //
