@@ -1,8 +1,8 @@
 $(document).ready(function() {
   
-  /*if (window.location.protocol != "https:") {
+  if (window.location.protocol != "https:") {
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-  }*/
+  }
   
   var socket = io(); // TIP: io() with no args does auto-discovery
 
@@ -71,6 +71,39 @@ $(document).ready(function() {
   function savedState() {
     el.dataset.editorStatus = 'editor-status-saved';
     mixpanel.track("Editor Save Success");
+  }
+  
+  function draftDoc() {
+    swal({
+      title: "draft",   
+      text: "unpublish document",   
+      type: "info",   
+      showCancelButton: true,   
+      closeOnConfirm: false,   
+      showLoaderOnConfirm: true, 
+    }, function(){
+      socket.emit('draft', { 'id': $('input[name=id]').val() }, function (data) {
+        swal('unpublished!');
+      });
+    });
+  }
+  
+  function publishDoc() {
+    swal({
+      title: "publish",   
+      text: "publish document",   
+      type: "info",   
+      showCancelButton: true,   
+      closeOnConfirm: false,   
+      showLoaderOnConfirm: true, 
+    }, function(){
+      socket.emit('publish', { 
+        'id': $('input[name=id]').val(), 
+        'title': $('input[name=title]').val(),
+        'raw': editor.getValue() }, function (data) {
+        swal('published!');
+      });
+    });
   }
 
 });

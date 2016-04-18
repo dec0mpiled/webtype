@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/tooltip.css">
     <link rel="stylesheet" href="/stylesheets/animate.css">
+    <link rel="stylesheet" href="/stylesheets/sweetalert.css">
     {{else}}
     <link rel="stylesheet" href="/stylesheets/document.css">
     {{/unless}}
@@ -28,18 +29,6 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
 
   </head>
   <body class="drawer drawer--left">
-    {{#if editor}}
-    <div class="global">
-      <div class="container">
-        <a class="global-item-action editor-preview" data-editor-user="{{user.username}}" href="/@{{user.username}}/{{document.slug}}" target="_blank"><i class="icon icon-export"></i></a>
-        <a class="global-item" href="/@{{user.username}}">files</a>
-        <span class="global-item">/</span>
-        <span class="global-item-slug">{{document.slug}}</span>
-      </div>
-    </div>
-    {{/if}}
-
-
     {{#if user}}
     <header role="banner">
       <button type="button" class="drawer-toggle drawer-hamburger">

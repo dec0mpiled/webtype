@@ -4603,6 +4603,17 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
+	"\/public\/javascripts\/sweetalert.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/javascripts\/sweetalert.min.js",
+		"outputAbbreviatedPath": "\/public\/javascripts\/min\/sweetalert.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/public\/moment.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -4664,6 +4675,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/stylesheets\/style.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/public\/stylesheets\/sweetalert.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/stylesheets\/sweetalert.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -4733,80 +4753,86 @@
 	"\/public\/javascripts\/editor.js": [
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/lib\/codemirror.js",
+			"linkedFileAbbreviatedPath": "\/public\/javascripts\/sweetalert.min.js",
 			"position": 0,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/addon\/mode\/overlay.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/lib\/codemirror.js",
 			"position": 1,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/addon\/wrap\/hardwrap.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/addon\/mode\/overlay.js",
 			"position": 2,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/addon\/edit\/continuelist.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/addon\/wrap\/hardwrap.js",
 			"position": 3,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/addon\/edit\/closebrackets.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/addon\/edit\/continuelist.js",
 			"position": 4,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/xml\/xml.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/addon\/edit\/closebrackets.js",
 			"position": 5,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/markdown\/markdown.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/xml\/xml.js",
 			"position": 6,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/gfm\/gfm.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/markdown\/markdown.js",
 			"position": 7,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/javascript\/javascript.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/gfm\/gfm.js",
 			"position": 8,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/css\/css.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/javascript\/javascript.js",
 			"position": 9,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/htmlmixed\/htmlmixed.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/css\/css.js",
 			"position": 10,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/clike\/clike.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/htmlmixed\/htmlmixed.js",
 			"position": 11,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/meta.js",
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/clike\/clike.js",
 			"position": 12,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/public\/codemirror\/mode\/meta.js",
+			"position": 13,
 			"type": 0
 			}
 		],

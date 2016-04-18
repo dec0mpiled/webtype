@@ -70,11 +70,36 @@ module.exports = function(io) {
         fn({ 'slug': slug(name.title, { lower: true, remove: /[.]/g }) });
       });
     });
+    
+    // to draft
+    socket.on('draft', function(name, fn) {
+      Document.findOneAndUpdate({ _id: name.id }, {
+        draft: true,
+        date: {
+          edited: new Date
+        }
+      }, function (err, document) {
+        fn({ 'draft' : true });
+      });
+    });
+    
+    // to publish
+    socket.on('publish', function(name, fn) {
+      Document.findOneAndUpdate({ _id: name.id }, {
+        draft: false,
+        date: {
+          edited: new Date
+        },
+        content: {
+          published: {
+            title: name.title,
+            raw: name.raw,
+            html: md.render(name.raw)
+          }
+        }
+      })
+    });
   });
-  
-  /*
-  
-  */
   
   // document settings
   router.get('/d/:id/s', function(req, res, next) {

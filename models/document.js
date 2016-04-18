@@ -12,6 +12,11 @@ var Document = new Schema({
         data: {
           raw: String,
           html: String
+        },
+        published: {
+            title: String,
+            raw: String,
+            html: String
         }
     },
     date: {
