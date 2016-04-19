@@ -38,10 +38,11 @@ module.exports = function(io) {
   router.get('/d/:id', ensureAuthentication, function (req, res, next) {
     Document.findOne({ _id: req.params.id }, function (err, document) {
       if (err) return next(err);
-      Document.find({ '_user' : document._user }, function(err, documents) {
+      Document.find({ '_user' : document._user }, null, {
+  sort: '-date.edited', limit: 5 }, function(err, documents) {
         if (err) return next(err);
         res.render('d/edit', {
-          title: 'Editor',
+          title: document.slug,
           user: req.user,
           document: document,
           documents: documents,

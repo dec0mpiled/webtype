@@ -17,11 +17,12 @@ router.get('/', function(req, res) {
     Document.find({
       '_user': req.user._id
     }, null, {
-      sort: '-date.edited'
+      sort: '-date.edited',
+      limit: 5
     }, function(err, documents) {
       if (err) throw err;
       res.render('d/edit', {
-        title: 'Editor',
+        title: documents[0].slug,
         user: req.user,
         document: documents[0],
         documents: documents,
