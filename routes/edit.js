@@ -80,8 +80,32 @@ module.exports = function(io) {
             html: md.render(name.raw)
           }
         }
-      })
+      }, function(err, document) {
+        if (err) return next(err);
+        fn({ 'draft' : false });
+      });
     });
+    
+    // archive
+    socket.on('archive', function(name, fn) {
+      Document.findOneAndUpdate({ _id: name.id }, {
+        archive: true
+      }, function(err, document) {
+        if (err) return next(err);
+        fn({ 'archive' : true });
+      });
+    });
+    
+    // revert 'archive'
+    socket.on('revert', function(name, fn) {
+      Document.findOneAndUpdate({ _id: name.id }, {
+        archive: false
+      }, function(err, document) {
+        if (err) return next(err);
+        fn({ 'archive' : false });
+      });
+    });
+    
   });
   
   // Ensure Authentication
