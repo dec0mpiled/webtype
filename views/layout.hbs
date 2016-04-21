@@ -29,7 +29,6 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
 
   </head>
   <body class="drawer drawer--left">
-    {{#if user}}
     <header role="banner">
       <button type="button" class="drawer-toggle drawer-hamburger">
         <span class="sr-only">toggle navigation</span>
@@ -41,19 +40,20 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
       </button>
       <nav class="drawer-nav" role="navigation">
         <ul class="drawer-menu">
-
+    
           <li><a class="drawer-brand" href="/">owebbot</a></li>
-
+    
+          {{#if user}}
           <a href="/create" class="drawer-menu-item">New Document</a>
           
           {{#if editor}}
-
+          
           <li><b class="drawer-menu-header">Current Document</b></li>
-  
+          
           <a class="drawer-menu-item" href="/d/d/{{document.id}}">Delete</a>
-
+          
           <li><b class="drawer-menu-header">Latest Documents ({{documents.length}})</b></li>
-
+          
           {{#each documents}}
           <li>
             <a class="drawer-menu-item" href="/{{../user.username}}/{{slug}}">
@@ -68,12 +68,14 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
           
           <li><a href="/{{user.username}}" class="drawer-menu-item">All Files</a></li>
           {{/if}}
-
+          
           <li><b><a class="drawer-menu-item" href="/auth/logout">Logout</a></b></li>
+          {{else}}
+          <li><b><a class="drawer-menu-item" href="/auth/login">Login</a></b></li>
+          {{/if}}
         </ul>
       </nav>
-    </header>
-    {{/if}}
+    </header> 
     <main role="main">
       {{{body}}}
     </main>
