@@ -25,7 +25,7 @@ $(document).ready(function() {
   
   var editorTitle = document.querySelector('.editor-title');
   
-  editorTitle.addEventListener('change', savingState, false);
+  editorTitle.addEventListener('blur', savingState, false);
   
 
   $('form').submit(function(event) {
