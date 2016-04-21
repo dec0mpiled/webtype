@@ -5,13 +5,6 @@ var index = express.Router();
 var Document = require('../models/document');
 var Account = require('../models/account');
 
-index.all('*', function(req, res, next) {
-  if (req.secure) {
-    return next();
-  };
- res.redirect('https://' + req.hostname + req.url);
-});
-
 // home screen (doc list, user login)
 index.get('/', function(req, res) {
   if (!req.user) {
