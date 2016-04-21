@@ -1,7 +1,7 @@
 module.exports = function(io) {
   
   var express = require('express');
-  var router = express.Router();
+  var edit = express.Router();
   
   // models
   var Document = require('../models/document');
@@ -33,24 +33,6 @@ module.exports = function(io) {
   //----------------------------------------------------------------------------//
   // DOCUMENT                                                                   //
   //----------------------------------------------------------------------------//
-  
-  // edit doc
-  router.get('/d/:id', ensureAuthentication, function (req, res, next) {
-    Document.findOne({ _id: req.params.id }, function (err, document) {
-      if (err) return next(err);
-      Document.find({ '_user' : document._user }, null, {
-  sort: '-date.edited', limit: 5 }, function(err, documents) {
-        if (err) return next(err);
-        res.render('d/edit', {
-          title: document.slug,
-          user: req.user,
-          document: document,
-          documents: documents,
-          editor: true
-        });
-      });
-    });
-  });
   
   // io sockets
   io.sockets.on('connection', function (socket) {
@@ -102,25 +84,6 @@ module.exports = function(io) {
     });
   });
   
-  // document settings
-  router.get('/d/:id/s', function(req, res, next) {
-    Document.findOne({ _id: req.params.id }, function(err, document) {
-      if (err) return next(err);
-      if (req.query.publish == 'true') {
-        document.draft = false;
-      } else {
-        document.draft = true;
-      }
-  
-      document.save(function(err) {
-        if (err) return next(err);
-        res.redirect('/e/d/' + req.params.id);
-      });
-  
-    });
-  });
-  
-  
   // Ensure Authentication
   function ensureAuthentication(req, res, next) {
     if (req.isAuthenticated()) {
@@ -130,5 +93,5 @@ module.exports = function(io) {
     }
   }
   
-  return router;
+  return edit;
 }

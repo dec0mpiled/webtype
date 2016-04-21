@@ -1,13 +1,13 @@
 var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
-var router = express.Router();
+var auth = express.Router();
 
-router.get('/register', function(req, res) {
+auth.get('/register', function(req, res) {
   res.render('a/register', { active: 'register', title: 'Register' });
 });
 
-router.post('/register', function(req, res, next) {
+auth.post('/register', function(req, res, next) {
   Account.register(new Account({
     username: req.body.username,
     email: req.body.email,
@@ -32,7 +32,7 @@ router.post('/register', function(req, res, next) {
 });
 
 
-router.get('/login', function(req, res) {
+auth.get('/login', function(req, res) {
   res.render('a/login', {
     user: req.user,
     active: 'login',
@@ -40,7 +40,7 @@ router.get('/login', function(req, res) {
   });
 });
 
-router.post('/login', function(req, res, next) {
+auth.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err); }
     if (!user) { return res.render("a/login", { info: "username and password do not match!", active: 'login', title: 'Login' }); }
@@ -51,7 +51,7 @@ router.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
-router.get('/logout', function(req, res, next) {
+auth.get('/logout', function(req, res, next) {
   req.logout();
   req.session.save(function(err) {
     if (err) {
@@ -62,7 +62,7 @@ router.get('/logout', function(req, res, next) {
 });
 
 // update
-router.post('/update', function (req, res, next) {
+auth.post('/update', function (req, res, next) {
   Account.findOneAndUpdate({ _id: req.user.id }, {
     name: req.body.name,
     email: req.body.email,
@@ -73,4 +73,4 @@ router.post('/update', function (req, res, next) {
   });
 });
 
-module.exports = router;
+module.exports = auth;

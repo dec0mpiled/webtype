@@ -1,32 +1,32 @@
  {{#if editor}}
- <div class="global">
-   <div class="container">
-     <span class="editor-save global-item-action" data-editor-status>*</span>
-     <a class="global-item-action editor-preview" data-editor-user="{{user.username}}" href="/@{{user.username}}/{{document.slug}}" target="_blank">👀</a>
-     <a class="global-item" href="/@{{user.username}}">files</a>
-     <span class="global-item">/</span>
-     <span class="global-item-slug">{{document.slug}}</span>
-   </div>
- </div>
- {{/if}}
-
-<div class="container">
-
-  <form method="post" data-id="{{document.id}}">
-
-    <section class="editor-body">
-      <input autocomplete="false" class="editor-title" name="title" type="text" placeholder="{{document.id}}" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
-      <input type="hidden" name="id" value="{{document.id}}">
-      
-      <div class="editor-frame" data-editor-value="{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}"></div>
-    </section>
-
-  </form>
-
-</div>
-
-<!--codemirror-->
-<link rel="stylesheet" href="/codemirror/lib/codemirror.css">
-<link rel="stylesheet" href="/codemirror/theme/espresso-tutti.css">
-
-<script src="/socket.io/socket.io.js"></script>
+  <div class="global">
+    <div class="container">
+      <span class="editor-save global-item-action" data-editor-status>*</span>
+      <a class="global-item-action editor-preview" data-editor-user="{{user.username}}" href="/{{user.username}}/{{document.slug}}/preview" target="_blank">👀</a>
+      <a class="global-item" href="/{{user.username}}">files</a>
+      <span class="global-item">/</span>
+      <span class="global-item-slug">{{document.slug}}</span>
+    </div>
+  </div>
+  {{/if}}
+ 
+ <div class="container">
+ 
+   <form method="post" data-id="{{document.id}}">
+ 
+     <section class="editor-body">
+       <input autocomplete="false" class="editor-title" name="title" type="text" placeholder="{{document.id}}" value="{{#if document.content.title}}{{document.content.title}}{{/if}}">
+       <input type="hidden" name="id" value="{{document.id}}">
+ 
+       <div class="editor-frame" data-editor-value="{{#if document.content.data.raw}}{{document.content.data.raw}}{{/if}}"></div>
+     </section>
+ 
+   </form>
+ 
+ </div> 
+ 
+ <!--codemirror-->
+ <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
+ <link rel="stylesheet" href="/codemirror/theme/espresso-tutti.css">
+ 
+ <script src="/socket.io/socket.io.js"></script>

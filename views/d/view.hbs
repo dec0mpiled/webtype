@@ -7,11 +7,11 @@
 
 <div class="container">
   
-  <p class="header-meta"><a href="/@{{account.username}}">{{account.name}}</a> on {{formatDate document.date.edited}}</p>
+  <p class="header-meta"><a href="/{{account.username}}">{{account.name}}</a> on {{formatDate document.date.edited}}</p>
 
   
   {{#if document.content.title}}
-  <a class="header-title" href="/@{{account.username}}/{{document.slug}}">{{document.content.title}}</a>
+  <a class="header-title" href="/{{account.username}}/{{document.slug}}">{{document.content.title}}</a>
   {{else}}
   <a class="header-title" href="/~{{document.id}}">{{document.id}}</a>
   {{/if}}

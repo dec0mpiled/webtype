@@ -44,7 +44,7 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
 
           <li><a class="drawer-brand" href="/">owebbot</a></li>
 
-          <a href="/c/d" class="drawer-menu-item">New Document</a>
+          <a href="/create" class="drawer-menu-item">New Document</a>
           
           {{#if editor}}
 
@@ -56,17 +56,17 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
 
           {{#each documents}}
           <li>
-            <a class="drawer-menu-item" href="/e/d/{{id}}">
+            <a class="drawer-menu-item" href="/{{../user.username}}/{{slug}}">
               {{#if content.title}}{{truncate content.title}}{{else}}{{id}}{{/if}} <br>
               <span class="list-item-meta">edited {{formatRelative date.edited}}</span>
             </a>
             {{#equal document.id id}}
-            <a href="/@{{../user.username}}/{{slug}}">preview</a>
+            <a href="/{{../user.username}}/{{slug}}/preview">preview</a>
             {{/equal}}
           </li>
           {{/each}}
           
-          <li><a href="/@{{user.username}}" class="drawer-menu-item">All Files</a></li>
+          <li><a href="/{{user.username}}" class="drawer-menu-item">All Files</a></li>
           {{/if}}
 
           <li><b><a class="drawer-menu-item" href="/auth/logout">Logout</a></b></li>

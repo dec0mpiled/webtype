@@ -1,12 +1,12 @@
 var express = require('express');
-var router = express.Router();
+var index = express.Router();
 
 // models
 var Document = require('../models/document');
 var Account = require('../models/account');
 
 // home screen (doc list, user login)
-router.get('/', function(req, res) {
+index.get('/', function(req, res) {
   if (!req.user) {
     res.render('index', {
       user: req.user,
@@ -21,71 +21,13 @@ router.get('/', function(req, res) {
       limit: 5
     }, function(err, documents) {
       if (err) throw err;
-      res.render('d/edit', {
-        title: documents[0].slug,
-        user: req.user,
-        document: documents[0],
-        documents: documents,
-        editor: true
-      });
+      res.redirect('/' + req.user.username + '/' + documents[0].slug);
     });
   }
 });
 
-// doc view
-router.get('/@:user/:slug', function(req, res, next) {
-  Account.findOne({
-    username: req.params.user
-  }, function(err, account) {
-    if (err) return next(err);
-    Document.findOne({
-      '_user': account._id,
-      'slug': req.params.slug
-    }, function(err, document) {
-      if (err) return next(err);
-      res.render('d/view', {
-        title: document.content.title,
-        document: document,
-        account: account,
-        user: req.user,
-        view: true
-      });
-    });
-  });
-});
-
-// unnamed view
-router.get('/~:id', function(req, res, next) {
-  Document.findOne({
-    _id: req.params.id
-  }, function(err, document) {
-    if (err) return next(err);
-    Account.findOne({
-      username: document.author
-    }, function(err, account) {
-      if (err) return next(err);
-      res.render('d/view', {
-        title: document.title,
-        document: document,
-        account: account,
-        user: req.user,
-        view: true
-      });
-    });
-  });
-});
-
-router.get('/a', function(req, res, next) {
-  Account.findOne({
-    _id: req.user.id
-  }, function(err, user) {
-    if (err) return next(err);
-    res.redirect('/@' + user.username);
-  });
-});
-
 // user view
-router.get('/@:user', function(req, res, next) {
+index.get('/:user', function(req, res, next) {
   Account.findOne({
     username: req.params.user
   }, function(err, result) {
@@ -106,6 +48,118 @@ router.get('/@:user', function(req, res, next) {
   });
 });
 
+// doc view
+index.get('/:user/:slug', function(req, res, next) {
+  Account.findOne({
+    username: req.params.user
+  }, function(err, account) {
+    if (err) return next(err);
+    Document.findOne({ 'slug': req.params.slug }, function (err, document) {
+        if (err) return next(err);
+        if (req.user) {
+          if (req.user.username === req.params.user) {
+            Document.find({ '_user' : document._user }, null, { sort: '-date.edited', limit: 5 }, function(err, documents) {
+              if (err) return next(err);
+              res.render('d/edit', {
+                title: document.slug,
+                user: req.user,
+                document: document,
+                documents: documents,
+                editor: true
+              });
+            });
+          } else {
+            res.render('d/view', {
+              title: document.content.title,
+              document: document,
+              account: account,
+              user: req.user,
+              view: true
+            });
+          }
+        } else {
+          res.render('d/view', {
+            title: document.content.title,
+            document: document,
+            account: account,
+            user: req.user,
+            view: true
+          });
+        }
+    });
+  });
+});
+
+// preview
+index.get('/:user/:slug/preview', function (req, res, next) {
+  Account.findOne({
+    username: req.params.user
+  }, function(err, account) {
+    if (err) return next(err);
+    Document.findOne({ 'slug': req.params.slug }, function (err, document) {
+      if (err) return next(err);
+      res.render('d/view', {
+        title: document.content.title,
+        document: document,
+        account: account,
+        user: req.user,
+        view: true
+      });
+    });
+  });
+});
+
+// raw html
+index.get('/:user/:slug/raw/html', function (req, res, next) {
+  Account.findOne({
+    username: req.params.user
+  }, function(err, account) {
+    if (err) return next(err);
+    Document.findOne({ 'slug': req.params.slug }, function (err, document) {
+      if (err) return next(err);
+      res.set('Content-Type', 'text/plain');
+      res.send(document.content.data.html);
+    });
+  });
+});
+
+// raw md
+index.get('/:user/:slug/raw/md', function (req, res, next) {
+  Account.findOne({
+    username: req.params.user
+  }, function(err, account) {
+    if (err) return next(err);
+    Document.findOne({ 'slug': req.params.slug }, function (err, document) {
+      if (err) return next(err);
+      res.set('Content-Type', 'text/plain');
+      res.send(document.content.data.raw);
+    });
+  });
+});
+
+// unnamed view
+index.get('/~:id', function(req, res, next) {
+  Document.findOne({
+    _id: req.params.id
+  }, function(err, document) {
+    if (err) return next(err);
+    Account.findOne({
+      username: document.author
+    }, function(err, account) {
+      if (err) return next(err);
+      res.render('d/view', {
+        title: document.title,
+        document: document,
+        account: account,
+        user: req.user,
+        view: true
+      });
+    });
+  });
+});
+
+
+
 // Ensure Authentication
 function ensureAuthentication(req, res, next) {
   if (req.isAuthenticated()) {
@@ -115,4 +169,4 @@ function ensureAuthentication(req, res, next) {
   }
 }
 
-module.exports = router;
+module.exports = index;

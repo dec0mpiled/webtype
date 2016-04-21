@@ -1,29 +1,28 @@
 // dependencies
-var express = require('express');
-var socket_io = require('socket.io');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var moment = require('moment');
+var express        = require('express');
+var socket_io      = require('socket.io');
+var path           = require('path');
+var favicon        = require('serve-favicon');
+var logger         = require('morgan');
+var cookieParser   = require('cookie-parser');
+var bodyParser     = require('body-parser');
+var mongoose       = require('mongoose');
+var passport       = require('passport');
+var moment         = require('moment');
 var HandlebarsIntl = require('handlebars-intl');
-var LocalStrategy = require('passport-local').Strategy;
+var LocalStrategy  = require('passport-local').Strategy;
 
-var app = express();
+var app            = express();
 
 // socket.io
-var io = socket_io();
-app.io = io;
+var io             = socket_io();
+app.io             = io;
 
-var routes = require('./routes/index');
-var auth = require('./routes/auth');
-
-var c = require('./routes/c');
-var e = require('./routes/e')(io);
-var d = require('./routes/d');
+var routes         = require('./routes/index');
+var auth           = require('./routes/auth');
+var create         = require('./routes/create');
+var edit           = require('./routes/edit')(io);
+var d              = require('./routes/d');
 
 // dotenv (environment variables) (include .env)
 if (app.get('env') === 'development') {
@@ -79,11 +78,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/', routes);
 app.use('/auth', auth);
-app.use('/c', c);
-app.use('/e', e);
+app.use('/', routes);
+app.use('/create', create);
+app.use('/edit', edit);
 app.use('/d', d);
 
 // passport config
