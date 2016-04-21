@@ -78,7 +78,7 @@ index.get('/:user/:slug', function(req, res, next) {
         if (req.user) {
           if (req.user.username === req.params.user) {
             Document.find({ '_user' : document._user }, null, { sort: '-date.edited', limit: 5 }, function(err, documents) {
-              if (err) return next(err);
+              if (err) return res.redirect('/');
               res.render('d/edit', {
                 title: document.slug,
                 user: req.user,
