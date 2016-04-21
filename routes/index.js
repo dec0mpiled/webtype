@@ -1,5 +1,6 @@
 var express = require('express');
 var index = express.Router();
+var slug = require('slug');
 
 // models
 var Document = require('../models/document');
@@ -24,6 +25,24 @@ index.get('/', function(req, res) {
       res.redirect('/' + req.user.username + '/' + documents[0].slug);
     });
   }
+});
+
+// create new doc
+index.get('/create', ensureAuthentication, function (req, res, next) {
+  Document.create({
+    _user: req.user._id,
+    title: 'untitled',
+    slug: slug('untitled', { lower: true, remove: /[.]/g }),
+    draft: true,
+    archived: false,
+    date: {
+        created: new Date,
+        edited: new Date
+    }
+  }, function (err, document) {
+    if (err) return next(err);
+    res.redirect('/' + req.user.username + '/' + document.slug);
+  });
 });
 
 // user view

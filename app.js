@@ -11,6 +11,8 @@ var passport       = require('passport');
 var moment         = require('moment');
 var HandlebarsIntl = require('handlebars-intl');
 var LocalStrategy  = require('passport-local').Strategy;
+var session        = require('express-session');
+var MongoDBStore   = require('connect-mongodb-session')(session);
 
 var app            = express();
 
@@ -20,7 +22,6 @@ app.io             = io;
 
 var routes         = require('./routes/index');
 var auth           = require('./routes/auth');
-var create         = require('./routes/create');
 var edit           = require('./routes/edit')(io);
 var d              = require('./routes/d');
 
@@ -61,6 +62,11 @@ HandlebarsIntl.registerWith(hbs);
 
 app.set("jsonp callback", true);
 
+var store = new MongoDBStore({ 
+  uri: process.env.MONGOURI,
+  collection: 'sessions'
+});
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -69,7 +75,8 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-app.use(require('express-session')({
+app.use(session({
+  store: store,
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false
@@ -80,7 +87,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', auth);
 app.use('/', routes);
-app.use('/create', create);
 app.use('/edit', edit);
 app.use('/d', d);
 

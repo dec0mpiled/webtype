@@ -1,8 +1,8 @@
 $(document).ready(function() {
   
-  /*if (window.location.protocol != "https:") {
+  if (window.location.protocol != "https:") {
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-  }*/
+  }
   
   var socket = io(); // TIP: io() with no args does auto-discovery
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
   
   var editorTitle = document.querySelector('.editor-title');
   
-  editorTitle.addEventListener('input', savingState, false);
+  editorTitle.addEventListener('change', savingState, false);
   
 
   $('form').submit(function(event) {
@@ -48,7 +48,8 @@ $(document).ready(function() {
   var slugg = document.querySelector('.global-item-slug');
   
   function updateHyperLinks(data) {
-    link.href = '/@' + link.dataset.editorUser + '/' + data.slug;
+    link.href = '/' + link.dataset.editorUser + '/' + data.slug + '/preview';
+    window.history.replaceState(null, null, '/' + link.dataset.editorUser + '/' + data.slug);
     slugg.innerHTML = data.slug;
   }
 
