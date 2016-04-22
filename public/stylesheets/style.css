@@ -73,6 +73,7 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 
 /* editor --------------------------------------*/
 
+.editor-hidden      { display: none; }
 .editor-title       { padding: 0; font-size: 3.25em; font-weight: 300; border: 0; }
 .editor-title:focus { border: 0; box-shadow: 0 0 0 0 transparent; }
 .editor-logo        { color: rgba(0, 0, 0, 0.5); }

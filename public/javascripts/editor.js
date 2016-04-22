@@ -52,8 +52,9 @@ $(document).ready(function() {
     window.history.replaceState(null, null, '/' + link.dataset.editorUser + '/' + data.slug);
     slugg.innerHTML = data.slug;
   }
-
-  var el = document.querySelector('.editor-save')
+  var el = document.querySelector('.editor-save');
+  var publish = document.querySelector('.editor-draft');
+  var draft = document.querySelector('.editor-publish');
 
   function errorSavingState() {
     el.dataset.editorStatus = 'editor-status-error';
@@ -84,7 +85,12 @@ $(document).ready(function() {
       showLoaderOnConfirm: true, 
     }, function(){
       socket.emit('draft', { 'id': $('input[name=id]').val() }, function (data) {
-        swal('unpublished!');
+        swal({ title: 'unpublished!' }, function () {
+          mixpanel.track("Document Unpublish");
+          draft.className += ' editor-hidden';
+          publish.className = publish.className.replace( /(?:^|\s)editor-hidden(?!\S)/g , '' );
+        });
+    
       });
     });
   }
@@ -97,14 +103,26 @@ $(document).ready(function() {
       showCancelButton: true,   
       closeOnConfirm: false,   
       showLoaderOnConfirm: true, 
-    }, function(){
+    }, function() {
       socket.emit('publish', { 
         'id': $('input[name=id]').val(), 
         'title': $('input[name=title]').val(),
         'raw': editor.getValue() }, function (data) {
-        swal('published!');
+        swal({ title: 'published!' }, function() {
+          mixpanel.track("Document Publish");
+          publish.className += ' editor-hidden';
+          draft.className = draft.className.replace( /(?:^|\s)editor-hidden(?!\S)/g , '' );
+        });
       });
     });
+  }
+  
+  
+  if (publish) {
+   publish.addEventListener('click', publishDoc, false); 
+  }
+  if (draft) {
+    draft.addEventListener('click', draftDoc, false);
   }
 
 });

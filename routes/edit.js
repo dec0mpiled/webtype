@@ -72,13 +72,6 @@ module.exports = function(io) {
         draft: false,
         date: {
           edited: new Date
-        },
-        content: {
-          published: {
-            title: name.title,
-            raw: name.raw,
-            html: md.render(name.raw)
-          }
         }
       }, function(err, document) {
         if (err) return next(err);

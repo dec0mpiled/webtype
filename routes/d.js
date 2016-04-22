@@ -14,7 +14,7 @@ remove.get('/a/:id', ensureAuthentication, function (req, res, next) {
 remove.get('/d/:id', ensureAuthentication, function (req, res, next) {
   Document.findOneAndRemove({ _id: req.params.id }, function (err, document) {
     if (err) return next(err);
-    res.redirect('/a');
+    res.redirect('/' + req.user.username);
   });
 });
 

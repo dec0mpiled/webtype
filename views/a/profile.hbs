@@ -15,7 +15,7 @@
     <div class="list">
       {{#each document}}
       <div class="list-item">
-        <h1 class="list-item-title">{{content.title}}</h2>
+        <h1 class="list-item-title">{{#if draft}}🔒{{else}}🔓{{/if}} {{content.title}}</h2>
         <span class="list-item-meta">{{formatRelative date.edited}}</span>
         <div class="list-item-actions">
           <a href="/{{../result.username}}/{{slug}}/preview" class="list-item-meta">view</a>
@@ -25,6 +25,27 @@
       </div>
       {{/each}}
     </div>
+    
+  {{else}}
+    
+    {{#each document}}
+    {{#unless draft}}
+    <div class="list-item">
+      <h1 class="list-item-title">{{content.title}}</h2>
+      <span class="list-item-meta">{{formatRelative date.edited}}</span>
+      <div class="list-item-actions">
+        <a href="/{{../result.username}}/{{slug}}/preview" class="list-item-meta">view</a>
+        <a href="/{{../result.username}}/{{slug}}" class="list-item-meta">edit</a>
+        <a href="/d/d/{{id}}" class="list-item-meta">delete</a>
+      </div>
+    </div>
+    {{/unless}}
+    {{else}}
+    <div class="list-item">
+      <h1 class="list-item-title">No public docs!</h2>
+    </div>
+    {{/each}}  
+    
   {{/equal}}
 
 </div>
