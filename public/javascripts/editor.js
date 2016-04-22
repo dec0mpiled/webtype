@@ -1,8 +1,8 @@
 $(document).ready(function() {
   
-  if (window.location.protocol != "https:") {
+  /*if (window.location.protocol != "https:") {
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-  }
+  }*/
   
   var socket = io(); // TIP: io() with no args does auto-discovery
 
@@ -39,6 +39,7 @@ $(document).ready(function() {
       'id' : $('input[name=id]').val()
     };
     socket.emit('save', formData, function (data) {
+      if (data.err) return errorSavingState();
       updateHyperLinks(data);
       savedState();
     });

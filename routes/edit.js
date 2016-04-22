@@ -50,6 +50,7 @@ module.exports = function(io) {
           edited: new Date
         }
       }, function (err, document) {
+        if (err) return fn({'err':err});
         fn({ 'slug': slug(name.title, { lower: true, remove: /[.]/g }) });
       });
     });
