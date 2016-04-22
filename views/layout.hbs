@@ -55,6 +55,7 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
           <li><b class="drawer-menu-header">Latest Documents ({{documents.length}})</b></li>
           
           {{#each documents}}
+          {{#unless archive}}
           <li>
             <a class="drawer-menu-item" href="/{{../user.username}}/{{slug}}">
               {{#if content.title}}{{truncate content.title}}{{else}}{{id}}{{/if}} <br>
@@ -64,6 +65,7 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
             <a href="/{{../user.username}}/{{slug}}/preview">preview</a>
             {{/equal}}
           </li>
+          {{/unless}}
           {{/each}}
           
           <li><a href="/{{user.username}}" class="drawer-menu-item">All Files</a></li>

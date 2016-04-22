@@ -1,8 +1,8 @@
 $(document).ready(function() {
   
-  /*if (window.location.protocol != "https:") {
+  if (window.location.protocol != "https:") {
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-  }*/
+  }
   
   var socket = io(); // TIP: io() with no args does auto-discovery
 
@@ -56,6 +56,7 @@ $(document).ready(function() {
   var el = document.querySelector('.editor-save');
   var publish = document.querySelector('.editor-draft');
   var draft = document.querySelector('.editor-publish');
+  var archive = document.querySelector('.editor-archive');
 
   function errorSavingState() {
     el.dataset.editorStatus = 'editor-status-error';
@@ -118,7 +119,27 @@ $(document).ready(function() {
     });
   }
   
+  function archiveDoc() {
+    swal({
+      title: "archive",   
+      text: "this operation can be reverted",   
+      type: "info",   
+      showCancelButton: true,   
+      closeOnConfirm: false,   
+      showLoaderOnConfirm: true, 
+    }, function() {
+      socket.emit('archive', { 'id': $('input[name=id]').val() }, function (data) {
+        swal({ title: 'archived' }, function() {
+          mixpanel.track("Document Archived");
+          window.location = '/' + link.dataset.editorUser;
+        });
+      });
+    });
+  }
   
+  if (archive) {
+    archive.addEventListener('click', archiveDoc, false)
+  }
   if (publish) {
    publish.addEventListener('click', publishDoc, false); 
   }

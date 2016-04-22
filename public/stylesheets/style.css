@@ -66,6 +66,7 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 .list-item-actions       { float: right; }
 .list-item-action        { padding: .1em; }
 .list-item-action-delete { color: #EA3930; }
+.list-item-hidden        { display: none; }
 
 @media (max-width: 700px) {
     .list-item           { width: 100%; }

@@ -1,3 +1,4 @@
+{{#equal user.username account.username}}
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
 <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -6,19 +7,49 @@
 
 
 <div class="container">
-  
+
   <p class="header-meta"><a href="/{{account.username}}">{{account.name}}</a> on {{formatDate document.date.edited}}</p>
 
-  
+
   {{#if document.content.title}}
   <a class="header-title" href="/{{account.username}}/{{document.slug}}">{{document.content.title}}</a>
   {{else}}
   <a class="header-title" href="/~{{document.id}}">{{document.id}}</a>
   {{/if}} 
-    
+
   <!-- document content -->
   <div class="markdown-body">
     {{{document.content.data.html}}}
   </div>
 
 </div>
+{{else}}
+{{#unless draft}}
+<script>window.location = '/';</script>
+{{else}}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<div class="container">
+
+  <p class="header-meta"><a href="/{{account.username}}">{{account.name}}</a> on {{formatDate document.date.edited}}</p>
+
+
+  {{#if document.content.title}}
+  <a class="header-title" href="/{{account.username}}/{{document.slug}}">{{document.content.title}}</a>
+  {{else}}
+  <a class="header-title" href="/~{{document.id}}">{{document.id}}</a>
+  {{/if}} 
+
+  <!-- document content -->
+  <div class="markdown-body">
+    {{{document.content.data.html}}}
+  </div>
+
+</div>
+{{/unless}}
+{{/equal}}

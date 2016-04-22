@@ -6,23 +6,41 @@
 
   <div class="list">
     <header class="list-header">
+      <button class="list-header-actions action-archive">Archived</button>
+      
       <h1 class="list-header-title">{{result.name}}</h1>
       <p class="list-header-subtitle">@{{result.username}}</p>
     </header>
   </div>
 
   {{#equal user.id result.id}}
-    <div class="list">
+    <div class="list list-current">
       {{#each document}}
+      {{#unless archive}}
       <div class="list-item">
         <h1 class="list-item-title">{{#if draft}}🔒{{else}}🔓{{/if}} {{content.title}}</h2>
         <span class="list-item-meta">{{formatRelative date.edited}}</span>
         <div class="list-item-actions">
           <a href="/{{../result.username}}/{{slug}}/preview" class="list-item-meta">view</a>
           <a href="/{{../result.username}}/{{slug}}" class="list-item-meta">edit</a>
-          <a href="/d/d/{{id}}" class="list-item-meta">delete</a>
+          <a href="/d/a/{{id}}" class="list-item-meta">archive</a>
         </div>
       </div>
+      {{/unless}}
+      {{/each}}
+    </div>
+    
+    <div class="list list-item-hidden list-archives">
+      {{#each document}}
+      {{#if archive}}
+      <div class="list-item">
+        <h1 class="list-item-title">{{content.title}}</h1>
+        <span class="list-item-meta">{{formatRelative date.edited}}</span>
+        <div class="list-item-actions">
+          <a class="list-item-meta item-revert" href="/d/r/{{id}}">revert</a>
+        </div>
+      </div>
+      {{/if}}
       {{/each}}
     </div>
     

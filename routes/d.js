@@ -4,10 +4,19 @@ var remove = express.Router();
 // models
 var Document = require('../models/document');
 
+// archive
 remove.get('/a/:id', ensureAuthentication, function (req, res, next) {
-  Document.findOneAndUpdate({ _id: req.params.id }, { archived: true }, function (err, document) {
+  Document.findOneAndUpdate({ _id: req.params.id }, { archive: true }, function (err, document) {
     if (err) return next(err);
-    res.redirect('/a');
+    res.redirect('/' + req.user.username);
+  });
+});
+
+// revert
+remove.get('/r/:id', ensureAuthentication, function (req, res, next) {
+  Document.findOneAndUpdate({ _id: req.params.id }, { archive: false }, function (err, document) {
+    if (err) return next(err);
+    res.redirect('/' + req.user.username);
   });
 });
 

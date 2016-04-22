@@ -12,6 +12,13 @@
       <span class="global-item-action editor-publish tooltip-bottom" data-tooltip="published. revert to draft">🔓</span>
       {{/if}}
       
+      
+      {{#if archive}}
+      ARCHIVED
+      {{/if}}
+      
+      <span class="global-item-action editor-archive tooltip-bottom" data-tooltip="archive">🗑</span>
+      
       <a class="global-item" href="/{{user.username}}">files</a>
       <span class="global-item">/</span>
       <span class="global-item-slug">{{document.slug}}</span>
