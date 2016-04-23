@@ -75,17 +75,14 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 /* editor --------------------------------------*/
 
 .editor-hidden      { display: none; }
+.editor-action      { color: #26292C; margin: 0 5px; appearance: none; box-shadow: none; border-radius: none; padding: 5px; border: solid 1px #dcdcdc; background: #fff; transition: all 0.3s; }
 .editor-title       { padding: 0; font-size: 3.25em; font-weight: 300; border: 0; }
 .editor-title:focus { border: 0; box-shadow: 0 0 0 0 transparent; }
 .editor-logo        { color: rgba(0, 0, 0, 0.5); }
 .editor-body        { padding: 1em 10%; }
 .editor-actions     { float: right; font-size: 2em; }
-.editor-save        { color: #939393; font-size: 1.5em; }
+.editor-save        { color: #939393; }
 .editor-frame       { font-size: 1.4em; }
-
-.editor-save[data-editor-status='editor-status-error']  { color: #EA3930; }
-.editor-save[data-editor-status='editor-status-saving'] { color: #FFDC00; }
-.editor-save[data-editor-status='editor-status-saved']  { color: #2ECC40; }
 
 .CodeMirror {
   height: auto !important;

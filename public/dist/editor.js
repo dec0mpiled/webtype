@@ -13419,11 +13419,15 @@ $(document).ready(function() {
 
   function errorSavingState() {
     el.dataset.editorStatus = 'editor-status-error';
+    el.dataset.tooltip = 'error saving';
+    el.innerHTML = '💔';
     mixpanel.track("Editor Save Error");
   }
 
   function savingState() {
     el.dataset.editorStatus = 'editor-status-saving';
+    el.dataset.tooltip = 'saving...';
+    el.innerHTML = '💛';
     autosave();
     var dirty = false;
     window.onbeforeunload = function() {
@@ -13432,6 +13436,8 @@ $(document).ready(function() {
   }
 
   function savedState() {
+    el.innerHTML = '💚';
+    el.dataset.tooltip = 'saved';
     el.dataset.editorStatus = 'editor-status-saved';
     mixpanel.track("Editor Save Success");
   }

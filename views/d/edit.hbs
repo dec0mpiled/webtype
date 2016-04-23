@@ -1,17 +1,17 @@
  {{#if editor}}
   <div class="global">
     <div class="container editor">
-      <span class="editor-save global-item-action" data-editor-status>*</span>
-      <a class="global-item-action editor-preview tooltip-bottom" data-tooltip="preview" data-editor-user="{{user.username}}" href="/{{user.username}}/{{document.slug}}/preview" target="_blank">👀</a>
+      <span class="editor-save editor-action global-item-action tooltip-bottom" data-editor-status data-tooltip="status">◽</span>
+      <a class="global-item-action editor-action editor-preview tooltip-bottom" data-tooltip="preview" data-editor-user="{{user.username}}" href="/{{user.username}}/{{document.slug}}/preview" target="_blank">👀</a>
       
-      <span class="global-item-action editor-archive tooltip-bottom" data-tooltip="archive">⚱</span>
+      <span class="global-item-action editor-action editor-archive tooltip-bottom" data-tooltip="archive">🗄</span>
       
       {{#if document.draft}}
-      <span class="global-item-action editor-draft tooltip-bottom" data-tooltip="draft. click to publish">🔒</span>
-      <span class="global-item-action editor-publish editor-hidden tooltip-bottom" data-tooltip="published. click to draft">🔓</span>
+      <span class="global-item-action editor-action editor-draft tooltip-bottom" data-tooltip="draft. click to publish">🔒</span>
+      <span class="global-item-action editor-action editor-publish editor-hidden tooltip-bottom" data-tooltip="published. click to draft">🔓</span>
       {{else}}
-      <span class="global-item-action editor-draft editor-hidden tooltip-bottom" data-tooltip="draft. click to publish">🔒</span>
-      <span class="global-item-action editor-publish tooltip-bottom" data-tooltip="published. revert to draft">🔓</span>
+      <span class="global-item-action editor-action editor-draft editor-hidden tooltip-bottom" data-tooltip="draft. click to publish">🔒</span>
+      <span class="global-item-action editor-action editor-publish tooltip-bottom" data-tooltip="published. revert to draft">🔓</span>
       {{/if}}
       
       

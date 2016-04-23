@@ -16,7 +16,8 @@ index.get('/', function(req, res) {
     });
   } else {
     Document.find({
-      '_user': req.user._id
+      '_user': req.user._id,
+      'archive' : false
     }, null, {
       sort: '-date.edited',
       limit: 5
@@ -34,7 +35,7 @@ index.get('/create', ensureAuthentication, function (req, res, next) {
     title: 'untitled',
     slug: slug('untitled', { lower: true, remove: /[.]/g }),
     draft: true,
-    archived: false,
+    archive: false,
     date: {
         created: new Date,
         edited: new Date
@@ -51,9 +52,7 @@ index.get('/:user', function(req, res, next) {
     username: req.params.user
   }, function(err, result) {
     if (err) return next(err);
-    if (!result) {
-      return res.redirect('/');
-    }
+    if (!result) return res.redirect('/');
     Document.find({
       '_user': result._id
     }, null, { sort: '-date.edited' }, function(err, document) {
@@ -61,7 +60,8 @@ index.get('/:user', function(req, res, next) {
       res.render('a/profile', {
         result: result,
         user: req.user,
-        document: document
+        document: document,
+        title: result.username
       });
     });
   });
