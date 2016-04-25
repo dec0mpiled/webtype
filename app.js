@@ -1,3 +1,5 @@
+require('newrelic');
+
 // dependencies
 var express        = require('express');
 var socket_io      = require('socket.io');
@@ -85,7 +87,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/auth', auth);
+app.use('/', auth);
 app.use('/', routes);
 app.use('/edit', edit);
 app.use('/d', d);
