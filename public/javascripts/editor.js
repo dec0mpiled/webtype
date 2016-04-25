@@ -4,7 +4,7 @@ $(document).ready(function() {
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
   }
   
-  var socket = io(); // TIP: io() with no args does auto-discovery
+  var socket = io();
 
   var editor = CodeMirror(document.querySelector('.editor-frame'), {
     value: document.querySelector('.editor-frame').dataset.editorValue,

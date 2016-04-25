@@ -17,7 +17,7 @@
     <div class="list list-current">
       {{#each document}}
       {{#unless archive}}
-      <div class="list-item">
+      <div class="list-item" id="{{id}}">
         <h1 class="list-item-title">{{#if draft}}🔒{{else}}🔓{{/if}} {{content.title}}</h2>
         <span class="list-item-meta">{{formatRelative date.edited}}</span>
         <div class="list-item-actions">
@@ -33,11 +33,12 @@
     <div class="list list-item-hidden list-archives">
       {{#each document}}
       {{#if archive}}
-      <div class="list-item">
+      <div class="list-item" id="{{id}}">
         <h1 class="list-item-title">{{content.title}}</h1>
         <span class="list-item-meta">{{formatRelative date.edited}}</span>
         <div class="list-item-actions">
           <a class="list-item-meta item-revert" href="/d/r/{{id}}">revert</a>
+          <a class="list-item-meta item-delete" href="/d/d/{{id}}">delete</a>
         </div>
       </div>
       {{/if}}
