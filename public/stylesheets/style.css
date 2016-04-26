@@ -90,9 +90,9 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 .editor-save        { color: #939393; font-size: 40px; line-height: 1.4; padding-left: .2em; }
 .editor-frame       { font-size: 1.4em; }
 
-.editor-save[data-editor-status='editor-status-error'] { color: #D61010; }
-.editor-save[data-editor-status='editor-status-saving'] { color: #DF8800; }
-.editor-save[data-editor-status='editor-status-saved'] { color: #00F463; }
+.editor-save[data-editor-status='editor-status-error'] { color: #DB4545; }
+.editor-save[data-editor-status='editor-status-saving'] { color: #EDDE3F; }
+.editor-save[data-editor-status='editor-status-saved'] { color: #39AA56; }
 
 .CodeMirror {
   height: auto !important;
