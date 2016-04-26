@@ -8,12 +8,14 @@
 /**
  * Display Properties
  */
+ 
+@import url(https://fonts.googleapis.com/css?family=Amaranth);
 
 /* global --------------------------------------*/
 
 .global { background: #fff; display: block; margin: 0; padding-bottom: 2em; transition: .2s background; font-size: 1.4em;  }
 .global-item { font-weight: 300; color: #222; }
-.global-item-action { float: right; font-weight: 300; color: #222; margin-right: 1em; }
+.global-item-action { float: right; font-weight: 300; color: #222; margin-right: 0; }
 .global-logo { color: #539FFE; font-size: 1.6em; }
 
 .container { padding: 0 10%; }
@@ -56,17 +58,21 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 
 .list-body {}
 
-.list-item               { border: 1px #E0E0E0 solid; border-radius: 4px; padding: .5em; width: 50%; margin: 1em 0; }
+.list-item               { border: 1px #E0E0E0 solid; border-radius: 4px; padding: .9em; width: 50%; margin: 1em 0; }
 .list-item:hover         { border: 1px #00A6F4 solid; }
 .list-item-header        {  }
 .list-header-title       { font-size: 1.5em; margin: 0; }
 .list-header-subtitle    { color: #939393; margin: 0; }
 .list-item-title         { font-size: 1.3em; margin: 0; }
+.list-item-head          { font-size: 1.2em; color: #333; }
 .list-item-meta          { font-weight: 500; font-size: 14px; color: #939393; text-transform: uppercase; }
 .list-item-actions       { float: right; }
 .list-item-action        { padding: .1em; }
 .list-item-action-delete { color: #EA3930; }
 .list-item-hidden        { display: none; }
+
+.drawer-menu-item        { transition: .2s all; }
+.drawer-menu-item:hover  { background: #ECECEC; }
 
 @media (max-width: 700px) {
     .list-item           { width: 100%; }
@@ -75,14 +81,18 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 /* editor --------------------------------------*/
 
 .editor-hidden      { display: none; }
-.editor-action      { color: #26292C; margin: 0 1px; appearance: none; box-shadow: none; border-radius: none; padding: 5px; background: #fff; transition: all 0.3s; }
+.editor-action      { color: #26292C; margin: 0 1px; appearance: none; box-shadow: none; border-radius: none; padding: 5px; background: #fff; transition: all 0.3s; padding-top: 1em; line-height: 0;  }
 .editor-title       { padding: 0; font-size: 3.25em; font-weight: 300; border: 0; }
 .editor-title:focus { border: 0; box-shadow: 0 0 0 0 transparent; }
 .editor-logo        { color: rgba(0, 0, 0, 0.5); }
 .editor-body        { padding: 1em 10%; }
-.editor-actions     { float: right; font-size: 2em; }
-.editor-save        { color: #939393; }
+.editor-actions     { float: right; font-size: 2em; padding: 1.5em; }
+.editor-save        { color: #939393; font-size: 40px; line-height: 1.4; padding-left: .2em; }
 .editor-frame       { font-size: 1.4em; }
+
+.editor-save[data-editor-status='editor-status-error'] { color: #D61010; }
+.editor-save[data-editor-status='editor-status-saving'] { color: #DF8800; }
+.editor-save[data-editor-status='editor-status-saved'] { color: #00F463; }
 
 .CodeMirror {
   height: auto !important;

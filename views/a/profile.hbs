@@ -15,6 +15,9 @@
 
   {{#equal user.id result.id}}
     <div class="list list-current">
+      
+      <h2>Current Documents</h2>
+      
       {{#each document}}
       {{#unless archive}}
       <div class="list-item" id="{{id}}">
@@ -31,6 +34,10 @@
     </div>
     
     <div class="list list-item-hidden list-archives">
+      
+      <h2>Archived Documents</h2>
+      
+      
       {{#each document}}
       {{#if archive}}
       <div class="list-item" id="{{id}}">
