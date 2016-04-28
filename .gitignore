@@ -3,7 +3,6 @@
 
 ### newrelic ###
 newrelic_agent.log
-newrelic.js
 
 ### Node.js ###
 node_modules
