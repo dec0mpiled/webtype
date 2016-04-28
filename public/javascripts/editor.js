@@ -1,8 +1,8 @@
 $(document).ready(function() {
   
-  if (window.location.protocol != "https:") {
+  /*if (window.location.protocol != "https:") {
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-  }
+  }*/
   
   var socket = io();
 
@@ -149,5 +149,67 @@ $(document).ready(function() {
   if (draft) {
     draft.addEventListener('click', draftDoc, false);
   }
+  
+  // auto-scaling 
+  // get the current styles size, in px integer.
+  var maxSize = parseInt($('.editor-title').css("font-size"));
+  
+  function isOverflowed (element){
+  
+      if ( $(element)[0].scrollWidth > $(element).innerWidth() ) {
+          return true;
+      } else {
+          return false;
+      }
+  };
+  
+  function decreaseSize (element){
+  
+      var fontSize = parseInt($(element).css("font-size"));
+      fontSize = fontSize - 1 + "px";
+      $(element).css({'font-size':fontSize});
+  
+  }
+  
+  function maximizeSize (element){
+  
+      var fontSize = parseInt($(element).css("font-size"));
+      while (!isOverflowed(element) && fontSize < maxSize){
+          fontSize = fontSize + 1 + "px";
+          $(element).css({'font-size':fontSize});
+  
+          // if this loop increases beyond the width, decrease again. 
+          // hacky.
+          if (isOverflowed(element)){
+              while (isOverflowed(element)) {
+                  decreaseSize(element);
+              }            
+          }     
+  
+      }        
+  
+  }
+  
+  function fixSize (element){
+      if (isOverflowed(element)){
+          while (isOverflowed(element)) {
+              decreaseSize(element);
+          }            
+      } else {
+          maximizeSize(element);
+      }
+  }
+  
+  // execute it onready.
+  $('.editor-title').each(function(){
+      fixSize(this);
+  });
+  
+  // bind to it.
+  $(function() {
+      $('.editor-title').keyup(function() {
+          fixSize(this);
+      })
+  });    
 
 });
