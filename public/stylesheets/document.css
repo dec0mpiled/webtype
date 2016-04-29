@@ -26,6 +26,9 @@
   .container {
     margin: 0;
   }
+  .drawer-toggle {
+    display: none;
+  }
 }
 
 @font-face {
