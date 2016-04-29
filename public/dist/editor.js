@@ -13359,9 +13359,9 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
 
 $(document).ready(function() {
   
-  if (window.location.protocol != "https:") {
+  /*if (window.location.protocol != "https:") {
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-  }
+  }*/
   
   var socket = io();
 
