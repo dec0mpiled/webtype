@@ -73,8 +73,11 @@ index.get('/:user/:slug', function(req, res, next) {
     username: req.params.user
   }, function(err, account) {
     if (err) return res.redirect('/');
+    if (!account) return res.redirect('/');
+    console.log('account found!')
     Document.findOne({ 'slug': req.params.slug }, function (err, document) {
         if (err) return res.redirect('/' + account.username);
+        if (!document) return res.redirect('/' + account.username);
         if (req.user) {
           if (req.user.username === req.params.user) {
             Document.find({ '_user' : document._user }, null, { sort: '-date.edited', limit: 8 }, function(err, documents) {
