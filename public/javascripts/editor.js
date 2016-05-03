@@ -1,8 +1,8 @@
 $(document).ready(function() {
   
-  if (window.location.protocol != "https:") {
+  /*if (window.location.protocol != "https:") {
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-  }
+  }*/
   
   var socket = io();
 
@@ -57,6 +57,7 @@ $(document).ready(function() {
   var publish = document.querySelector('.editor-draft');
   var draft = document.querySelector('.editor-publish');
   var archive = document.querySelector('.editor-archive');
+  var export_doc = document.querySelector('.editor-export');
 
   function errorSavingState() {
     el.dataset.editorStatus = 'editor-status-error';
@@ -78,6 +79,14 @@ $(document).ready(function() {
     el.dataset.tooltip = 'saved';
     el.dataset.editorStatus = 'editor-status-saved';
     mixpanel.track("Editor Save Success");
+  }
+  
+  function exportDoc() {
+    swal({
+      title: "export",
+      text: "<a class='button' href='/" + export_doc.dataset.user + "/" + export_doc.dataset.slug + "/raw/md'>markdown</a><br><br><a class='button' href='/" + export_doc.dataset.user + "/" + export_doc.dataset.slug + "/raw/html'>raw html</a>",
+      html: true
+    });
   }
   
   function draftDoc() {
@@ -148,6 +157,9 @@ $(document).ready(function() {
   }
   if (draft) {
     draft.addEventListener('click', draftDoc, false);
+  }
+  if (export_doc) {
+    export_doc.addEventListener('click', exportDoc, false);
   }
   
   // auto-scaling 

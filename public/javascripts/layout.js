@@ -4,6 +4,7 @@ $(document).ready(function() {
   var archive = document.querySelector('.action-archive');
   var archives = document.querySelector('.list-archives');
   var current = document.querySelector('.list-current');
+  var preview = document.querySelector('.markdown-body');
   
   function showArchives() {
     current.className += ' list-item-hidden';
@@ -23,6 +24,5 @@ $(document).ready(function() {
   if (archive) {
       archive.addEventListener('click', showArchives, false);
   }
-  
   
 });

@@ -14,6 +14,9 @@
       <span class="global-item-action editor-action editor-publish tooltip-bottom" data-tooltip="published. revert to draft">🔓</span>
       {{/if}}
       
+      <span class="global-item-action editor-action editor-export tooltip-bottom" data-tooltip="export" data-user="{{user.username}}" data-slug="{{document.slug}}">📬</span>
+
+      
       
       <a class="global-item" href="/{{user.username}}">files</a>
       <span class="global-item">/</span>
@@ -39,5 +42,3 @@
  <!--codemirror-->
  <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
  <link rel="stylesheet" href="/codemirror/theme/espresso-tutti.css">
- 
- <script src="/socket.io/socket.io.js"></script>

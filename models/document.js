@@ -7,6 +7,10 @@ var Document = new Schema({
     slug: String,
     draft: Boolean,
     archive: Boolean,
+    license: {
+        url: String,
+        type: String
+    },
     content: {
         title: String,
         data: {

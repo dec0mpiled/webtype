@@ -74,7 +74,6 @@ index.get('/:user/:slug', function(req, res, next) {
   }, function(err, account) {
     if (err) return res.redirect('/');
     if (!account) return res.redirect('/');
-    console.log('account found!')
     Document.findOne({ 'slug': req.params.slug }, function (err, document) {
         if (err) return res.redirect('/' + account.username);
         if (!document) return res.redirect('/' + account.username);
