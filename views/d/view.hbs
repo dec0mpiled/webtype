@@ -5,7 +5,8 @@
 <script>hljs.initHighlightingOnLoad();</script>
 
 <div class="container">
-  <p class="header-meta"><a href="/{{account.username}}">{{account.name}}</a> on {{formatDate document.date.edited}}</p>
+  <p class="header-meta header-user"><a href="/{{account.username}}">{{account.name}}</a></p>
+  <p class="header-meta header-date">{{formatDate document.date.edited}}</p>
   
   {{#if document.content.title}}
   <a class="header-title" href="/{{account.username}}/{{document.slug}}">{{document.content.title}}</a>

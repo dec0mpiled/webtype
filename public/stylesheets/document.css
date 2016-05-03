@@ -12,14 +12,13 @@
 .header-meta {
   font-size: 1.2em;
   font-weight: 500;
-  text-transform: uppercase;
-  color: #BFBFBF;
+  color: #9A9A9A;
   margin: 0;
   padding: 0;
 }
 .header-meta a {
   text-decoration: none;
-  color: #BFBFBF;
+  color: #63BAF4;
 }
 
 @media print {
