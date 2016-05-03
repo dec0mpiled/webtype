@@ -4,7 +4,7 @@ $(document).ready(function() {
   var archive = document.querySelector('.action-archive');
   var archives = document.querySelector('.list-archives');
   var current = document.querySelector('.list-current');
-  var preview = document.querySelector('.markdown-body');
+  var create = document.querySelector('.action-create');
   
   function showArchives() {
     current.className += ' list-item-hidden';
@@ -21,8 +21,15 @@ $(document).ready(function() {
     archive.addEventListener('click', showArchives, false);
   }
   
+  function sendToCreate() {
+    window.location = '/create';
+  }
+  
   if (archive) {
       archive.addEventListener('click', showArchives, false);
+  }
+  if (create) {
+    create.addEventListener('click', sendToCreate, false);
   }
   
 });

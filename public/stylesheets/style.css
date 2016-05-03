@@ -44,7 +44,7 @@ label                         { font-size: 14px; }
 input                         { display: block; margin: 0; width: 100%; font-size: 18px; appearance: none; box-shadow: none; border-radius: none; padding: 10px; border: solid 1px #dcdcdc; transition: box-shadow 0.3s, border 0.3s; }
 input:focus                   { outline: none; border: solid 1px #707070; box-shadow: 0 0 5px 1px #969696; }
 ::-webkit-input-placeholder   { color: #26292C; }
-button, .button               { color: #26292C; display: inline-block; margin: 0; font-size: 18px; appearance: none; box-shadow: none; border-radius: none; padding: 10px; border: solid 1px #dcdcdc; background: #fff; transition: all 0.3s; }
+button, .button               { color: #26292C; display: inline-block; margin: 0 5px; font-size: 18px; appearance: none; box-shadow: none; border-radius: none; padding: 10px; border: solid 1px #dcdcdc; background: #fff; transition: all 0.3s; }
 button: hover, .button: hover { outline: none; background: #26292C; color: #fff; }
 
 .parsley-error::-webkit-input-placeholder { color: #FF4136; }
