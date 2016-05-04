@@ -38,6 +38,8 @@ a {
 
 b, h1, h2, h3, h4, h5, h6 { font-weight: 500; }
 
+hr { border: 1px #9A9A9A solid; }
+
 /* form --------------------------------------*/
 
 label                         { font-size: 14px; }

@@ -6,6 +6,9 @@
 
   <div class="list">
     <header class="list-header">
+      {{#if user.admin}}
+      <a href="/admin" class="button">admin</a>
+      {{/if}}
       <button class="list-header-actions action-archive">Archived</button>
       <button class="list-header-actions action-create">Create</button>
       

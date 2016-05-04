@@ -1,0 +1,19 @@
+<div class="container">
+  <!-- HEADER -->
+  <header>
+	<h1 class="global-logo"><a href="/">owebbot</a>:admin</h1>
+  </header>
+
+  <h2>account</h2>
+
+  <p>id: {{account.id}}</p>
+  <p>url: <a href="/{{account.username}}">/{{account.username}}</a></p>
+  <p>name: {{account.name}}</p>
+  <p>email: {{account.email}}</p>
+  <p>admin: {{#if account.admin}}true{{else}}false{{/if}}</p>
+
+  <hr>
+
+  <a href="/admin/user/{{account.id}}/delete">delete</a>
+
+</div>

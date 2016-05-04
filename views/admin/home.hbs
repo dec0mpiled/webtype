@@ -1,0 +1,43 @@
+<div class="container">
+  <!-- HEADER -->
+  <header>
+	<h1 class="global-logo"><a href="/">owebbot</a>:admin</h1>
+  </header>
+
+  <div class="list list-current">
+  
+    <h2>Documents ({{documents.length}})</h2>
+  
+    {{#each documents}}
+    <div class="list-item" id="{{id}}">
+      	<h1 class="list-item-title">{{#if draft}}🔒{{else}}🔓{{/if}} {{content.title}}</h2>
+      	<span class="list-item-meta">{{formatRelative date.edited}}</span>
+      	<div class="list-item-actions">
+      	  <a href="/admin/doc/{{id}}" class="list-item-meta">modify</a>
+      	  <a href="/admin/doc/{{id}}/delete" class="list-item-meta">delete</a>
+      	</div>
+    </div>
+    {{/each}}
+    
+  </div>
+  
+  <div class="list list-current">
+  
+  	<h2>Accounts ({{accounts.length}})</h2>
+  
+  	{{#each accounts}}
+  	<div class="list-item" id="{{id}}">
+  	  	<h1 class="list-item-title">{{id}}</h1>
+	  	<span class="list-item-meta">{{username}}</span><br>
+  	  	<span class="list-item-meta">{{name}}</span><br>
+  	  	<span class="list-item-meta">{{email}}</span><br>
+  	  	
+  	  	<div class="list-item-actions">
+  	  	  <a href="/admin/user/{{id}}" class="list-item-meta">modify</a>
+  	  	  <a href="/admin/user/{{id}}/delete" class="list-item-meta">delete</a>
+  	  	</div>
+  	</div>
+  	{{/each}}
+  
+    </div>
+</div>

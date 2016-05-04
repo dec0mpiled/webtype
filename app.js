@@ -25,6 +25,7 @@ app.io             = io;
 
 var routes         = require('./routes/index');
 var auth           = require('./routes/auth');
+var admin          = require('./routes/admin');
 var edit           = require('./routes/edit')(io);
 var d              = require('./routes/d');
 
@@ -121,6 +122,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/admin', admin);
 app.use('/', auth);
 app.use('/', routes);
 app.use('/edit', edit);

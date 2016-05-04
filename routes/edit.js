@@ -107,7 +107,7 @@ module.exports = function(io) {
     if (req.isAuthenticated()) {
       return next();
     } else {
-      return res.redirect('/auth/login');
+      return res.redirect('/login');
     }
   }
   
