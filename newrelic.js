@@ -8,7 +8,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['owebbot'],
+  app_name: ['webtype'],
   /**
    * Your New Relic license key.
    */

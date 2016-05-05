@@ -1,4 +1,4 @@
-# owebbot
+# webtype
 
-## version one now in production at [owebbot](https://owebbot.com)
+## version one now in production at [webtype](https://webtype.io)
 

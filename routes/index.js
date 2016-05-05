@@ -11,7 +11,7 @@ index.get('/', function(req, res) {
   if (!req.user) {
     res.render('index', {
       user: req.user,
-      title: 'owebbot',
+      title: 'webtype',
       active: 'home'
     });
   } else {
