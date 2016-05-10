@@ -48,6 +48,7 @@ input:focus                   { outline: none; border: solid 1px #707070; box-sh
 ::-webkit-input-placeholder   { color: #26292C; }
 button, .button               { color: #26292C; display: inline-block; margin: 0 5px; font-size: 18px; appearance: none; box-shadow: none; border-radius: none; padding: 10px; border: solid 1px #dcdcdc; background: #fff; transition: all 0.3s; }
 button:hover, .button:hover { outline: none; border: solid 1px #707070; box-shadow: 0 0 5px 1px #969696; }
+.drawer-toggle:hover         { border: 0; box-shadow: 0; }
 .form-group                    { padding-bottom: 1em; }
 
 .parsley-error::-webkit-input-placeholder { color: #FF4136; }
