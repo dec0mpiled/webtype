@@ -4614,6 +4614,17 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 0
 		},
+	"\/public\/javascripts\/parsley.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/public\/javascripts\/parsley.js",
+		"outputAbbreviatedPath": "\/public\/javascripts\/min\/parsley-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/public\/javascripts\/sweetalert.min.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -4856,14 +4867,20 @@
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/javascripts\/iscroll.js",
+			"linkedFileAbbreviatedPath": "\/public\/javascripts\/parsley.js",
 			"position": 1,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/public\/javascripts\/drawer.min.js",
+			"linkedFileAbbreviatedPath": "\/public\/javascripts\/iscroll.js",
 			"position": 2,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/public\/javascripts\/drawer.min.js",
+			"position": 3,
 			"type": 0
 			}
 		]

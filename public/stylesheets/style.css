@@ -47,7 +47,8 @@ input                         { display: block; margin: 0; width: 100%; font-siz
 input:focus                   { outline: none; border: solid 1px #707070; box-shadow: 0 0 5px 1px #969696; }
 ::-webkit-input-placeholder   { color: #26292C; }
 button, .button               { color: #26292C; display: inline-block; margin: 0 5px; font-size: 18px; appearance: none; box-shadow: none; border-radius: none; padding: 10px; border: solid 1px #dcdcdc; background: #fff; transition: all 0.3s; }
-button: hover, .button: hover { outline: none; background: #26292C; color: #fff; }
+button:hover, .button:hover { outline: none; border: solid 1px #707070; box-shadow: 0 0 5px 1px #969696; }
+.form-group                    { padding-bottom: 1em; }
 
 .parsley-error::-webkit-input-placeholder { color: #FF4136; }
 .parsley-required, .parsley-errors-list { display: none; }
@@ -99,3 +100,32 @@ button: hover, .button: hover { outline: none; background: #26292C; color: #fff;
 .CodeMirror {
   height: auto !important;
 }
+
+/* homepage ------------------------------------*/
+
+.home               { text-align: center; }
+.home-mega-logo     { color: #539FFE; font-size: 4em; margin-bottom: 0; }
+.home-mega-sublogo  { color: #539FFE; font-size: 2em; margin-top: 0; }
+.home-mega-button   { color: #539FFE; font-size: 2em; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

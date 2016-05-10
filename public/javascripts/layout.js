@@ -6,6 +6,9 @@ $(document).ready(function() {
   var current = document.querySelector('.list-current');
   var create = document.querySelector('.action-create');
   
+  $('.form-register').parsley();
+  $('.form-signin').parsley();
+  
   function showArchives() {
     current.className += ' list-item-hidden';
     archives.className = archives.className.replace( /(?:^|\s)list-item-hidden(?!\S)/g , '' );

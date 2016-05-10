@@ -10,7 +10,7 @@
 
 
   <!-- FORM -->
-  <form role="form" action="/register" method="post" autocomplete="off" data-parsley-validate>
+  <form role="form" class="form-register" action="/register" method="post" autocomplete="off" data-parsley-validate>
 
     {{#if info}}
 
@@ -22,22 +22,22 @@
     {{/if}}
 
     <div class="form-group">
-      <input required class="form-control" type="text" name="username" placeholder="username">
+      <input data-parsley-type="alphanum" required class="form-control" type="text" name="username" placeholder="username">
     </div>
 
     <div class="form-group">
-      <input required class="form-control" type="text" name="name" placeholder="name">
+      <input data-parsley-type="alphanum" required class="form-control" type="text" name="name" placeholder="name">
     </div>
 
     <div class="form-group">
-      <input required class="form-control" type="email" name="email" placeholder="email">
+      <input data-parsley-type="alphanum" required class="form-control" type="email" name="email" placeholder="email">
     </div>
 
     <div class="form-group">
-      <input required class="form-control" type="password" name="password" placeholder="password">
+      <input data-parsley-type="alphanum" required class="form-control" type="password" name="password" placeholder="password">
     </div>
 
-    <button class="btn btn-primary" type="submit">log in</button>
+    <button class="btn btn-primary" type="submit">register</button>
     <a href="/"><button class="btn btn-warning" type="button">cancel</button></a>
   </form>
 </div>
