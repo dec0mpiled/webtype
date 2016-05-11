@@ -6,14 +6,16 @@
 
   <div class="list">
     <header class="list-header">
+      {{#equal user.username result.username}}
       {{#if user.admin}}
       <a href="/admin" class="button list-header-actions">admin</a>
       {{/if}}
-      <button class="list-header-actions action-archive">Archived</button>
-      <button class="list-header-actions action-create">Create</button>
+      <button class="list-header-actions action-archive">archived</button>
+      <a class="button list-header-actions" href="/create">create</a>
+      {{/equal}}
       
       <h1 class="list-header-title">{{result.name}}</h1>
-      <p class="list-header-subtitle">@{{result.username}}</p>
+      <p class="list-header-subtitle">@{{result.username}} - {{document.length}} docs</p>
     </header>
   </div>
 
@@ -25,7 +27,7 @@
       {{#each document}}
       {{#unless archive}}
       <div class="list-item" id="{{id}}">
-        <h1 class="list-item-title">{{#if draft}}🔒{{else}}🔓{{/if}} {{content.title}}</h2>
+        <h1 class="list-item-title">{{#if draft}}🔒{{else}}🔓{{/if}} {{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</h2>
         <span class="list-item-meta">{{formatRelative date.edited}}</span>
         <div class="list-item-actions">
           <a href="/{{../result.username}}/{{slug}}/preview" class="list-item-meta">view</a>
@@ -45,7 +47,7 @@
       {{#each document}}
       {{#if archive}}
       <div class="list-item" id="{{id}}">
-        <h1 class="list-item-title">{{content.title}}</h1>
+        <h1 class="list-item-title">{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</h1>
         <span class="list-item-meta">{{formatRelative date.edited}}</span>
         <div class="list-item-actions">
           <a class="list-item-meta item-revert" href="/d/r/{{id}}">revert</a>
@@ -61,7 +63,7 @@
     {{#each document}}
     {{#unless draft}}
     <div class="list-item">
-      <h1 class="list-item-title">{{content.title}}</h2>
+      <h1 class="list-item-title">{{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</h2>
       <span class="list-item-meta">{{formatRelative date.edited}}</span>
       <div class="list-item-actions">
         <a href="/{{../result.username}}/{{slug}}" class="list-item-meta">view</a>

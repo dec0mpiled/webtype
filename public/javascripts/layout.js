@@ -13,26 +13,19 @@ $(document).ready(function() {
     current.className += ' list-item-hidden';
     archives.className = archives.className.replace( /(?:^|\s)list-item-hidden(?!\S)/g , '' );
     archive.removeEventListener('click', showArchives, false);
-    archive.innerHTML = 'Current';
+    archive.innerHTML = 'current';
     archive.addEventListener('click', hideArchives, false);
   }
   
   function hideArchives() {
     archives.className += ' list-item-hidden';
     current.className = current.className.replace( /(?:^|\s)list-item-hidden(?!\S)/g , '' );
-    archive.innerHTML = 'Archived';
+    archive.innerHTML = 'archived';
     archive.addEventListener('click', showArchives, false);
-  }
-  
-  function sendToCreate() {
-    window.location = '/create';
   }
   
   if (archive) {
       archive.addEventListener('click', showArchives, false);
-  }
-  if (create) {
-    create.addEventListener('click', sendToCreate, false);
   }
   
 });
