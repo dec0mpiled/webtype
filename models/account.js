@@ -8,7 +8,13 @@ var Account = new Schema({
     name: String,
     username: String,
     password: String,
-    admin: Boolean
+    admin: Boolean,
+    meta: {
+        totalDocs: Number,
+        archivedDocs: Number,
+        currentDocs: Number,
+        totalSaves: Number
+    }
 });
 
 Account.plugin(passportLocalMongoose);

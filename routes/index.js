@@ -61,6 +61,7 @@ index.get('/:user', function(req, res, next) {
         result: result,
         user: req.user,
         document: document,
+        documents: document,
         title: result.username
       });
     });

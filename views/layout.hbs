@@ -46,13 +46,15 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
           {{#if user}}
           <a href="/create" class="drawer-menu-item">New Document</a>
           
-          {{#if editor}}
+          {{#if editor}}          
+          <li><a href="/{{user.username}}" class="drawer-menu-item">All Files</a></li>
+          {{/if}}
           
           {{#each documents}}
           {{#unless archive}}
           <li>
             <a class="drawer-menu-item" href="/{{../user.username}}/{{slug}}">
-              <span class="list-item-head">{{#if content.title}}{{truncate content.title}}{{else}}{{id}}{{/if}}</span><br>
+              <span class="list-item-head">{{#if content.title}}{{truncate content.title}}{{else}}{{truncate id}}{{/if}}</span><br>
               <span class="list-item-meta">edited {{formatRelative date.edited}}</span>
             </a>
             {{#equal document.id id}}
@@ -61,9 +63,7 @@ mixpanel.init("1faf49af1e5412fa61d515b9d1aa7276");</script>
           </li>
           {{/unless}}
           {{/each}}
-          
-          <li><a href="/{{user.username}}" class="drawer-menu-item">All Files</a></li>
-          {{/if}}
+
           
           <li><b><a class="drawer-menu-item" href="/logout">Logout</a></b></li>
           {{else}}
