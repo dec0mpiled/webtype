@@ -23,8 +23,11 @@ index.get('/', function(req, res) {
       limit: 5
     }, function(err, documents) {
       if (err) return res.redirect('/' + req.user.username);
-      if (!documents) return res.redirect('/' + req.user.username);
-      res.redirect('/' + req.user.username + '/' + documents[0].slug);
+      if (documents.length > 0) {
+        return res.redirect('/' + req.user.username + '/' + documents[0].slug);
+      } else {
+        return res.redirect('/' + req.user.username);
+      }
     });
   }
 });
