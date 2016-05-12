@@ -1,6 +1,7 @@
 var express = require('express');
 var index = express.Router();
 var slug = require('slug');
+var randomWords = require('random-words');
 
 // models
 var Document = require('../models/document');
@@ -34,19 +35,25 @@ index.get('/', function(req, res) {
 
 // create new doc
 index.get('/create', ensureAuthentication, function (req, res, next) {
-  Document.create({
-    _user: req.user._id,
-    title: 'untitled',
-    slug: slug('untitled', { lower: true, remove: /[.]/g }),
-    draft: true,
-    archive: false,
-    date: {
-        created: new Date,
-        edited: new Date
-    }
-  }, function (err, document) {
+  Document.find({ _user: req.user.id }, function(err, documents) {
     if (err) return res.redirect('/');
-    res.redirect('/' + req.user.username + '/' + document.slug);
+    var title = randomWords();
+    Document.create({
+      _user: req.user._id,
+      slug: slug(title, { lower: true, remove: /[.]/g }),
+      draft: true,
+      archive: false,
+      date: {
+          created: new Date,
+          edited: new Date
+      },
+      content: {
+        title: title
+      }
+    }, function (err, document) {
+      if (err) return res.redirect('/');
+      res.redirect('/' + req.user.username + '/' + document.slug);
+    });
   });
 });
 
