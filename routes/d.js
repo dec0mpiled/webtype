@@ -22,7 +22,7 @@ remove.get('/r/:id', ensureAuthentication, function (req, res, next) {
 
 remove.get('/d/:id', ensureAuthentication, function (req, res, next) {
   Document.findOneAndRemove({ _id: req.params.id }, function (err, document) {
-    if (err) return next(err);
+    if (err) return console.log(err);
     res.redirect('/' + req.user.username);
   });
 });

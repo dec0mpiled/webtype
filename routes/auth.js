@@ -25,7 +25,7 @@ auth.post('/register', function(req, res, next) {
     passport.authenticate('local')(req, res, function() {
       req.session.save(function(err) {
         if (err) return next(err);
-        res.redirect('/create');
+        res.redirect('/' + account.username);
       });
     });
   });

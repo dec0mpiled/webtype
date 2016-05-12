@@ -43,7 +43,7 @@ button:hover, .button:hover               { outline: none; border: solid 1px #70
 /* list --------------------------------------*/
 
 .list-header             { margin: 1em 0; padding-bottom: 6em; }
-.list-header-image       { border-radius: 100%; display: inline-block; float: left; }
+.list-header-image       { float: left; border-radius: 100%; display: inline-block; }
 .list-header-image-wrap  { width: calc(100% * 1/4); }
 .list-header-profile     { float: left; width: calc(100% * 1/4); padding-left: 1em; }
 .list-header-title       { font-weight: 500; font-size: 22px; }
@@ -67,6 +67,10 @@ button:hover, .button:hover               { outline: none; border: solid 1px #70
 .drawer-menu-item        { transition: .2s all; }
 .drawer-menu-item:hover  { background: #ECECEC; }
 
+@media (min-width: 660px) {
+    .list-header-image-wrap  { width: calc(100% * 1/2); }
+    .list-header-profile     { float: left; width: calc(100% * 1/2); padding-left: 1em; }
+}
 @media (max-width: 700px) {
     .list-item           { width: 100%; }
 }
