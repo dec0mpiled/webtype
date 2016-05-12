@@ -22,7 +22,8 @@ index.get('/', function(req, res) {
       sort: '-date.edited',
       limit: 5
     }, function(err, documents) {
-      if (err) throw err;
+      if (err) return res.redirect('/' + req.user.username);
+      if (!documents) return res.redirect('/' + req.user.username);
       res.redirect('/' + req.user.username + '/' + documents[0].slug);
     });
   }
