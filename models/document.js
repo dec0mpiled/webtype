@@ -12,6 +12,7 @@ var Document = new Schema({
         type: String
     },
     content: {
+        words: Number,
         title: String,
         data: {
           raw: String,

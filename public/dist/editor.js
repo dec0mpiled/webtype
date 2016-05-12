@@ -13389,6 +13389,7 @@ $(document).ready(function() {
 
   function autosave() {
     var formData = {
+      'words': countWords(editor.getValue()),
       'title': $('input[name=title]').val(),
       'content': editor.getValue(),
       'id' : $('input[name=id]').val()
@@ -13398,6 +13399,10 @@ $(document).ready(function() {
       updateHyperLinks(data);
       savedState();
     });
+  }
+  
+  function countWords(str) {
+    return str.split(/\s+/).length;
   }
   
   var link = document.querySelector('.editor-preview');

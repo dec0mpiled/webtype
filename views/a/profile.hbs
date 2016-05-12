@@ -33,7 +33,7 @@
       {{#unless archive}}
       <div class="list-item" id="{{id}}">
         <h1 class="list-item-title">{{#if draft}}🔒{{else}}🔓{{/if}} {{#if content.title}}{{content.title}}{{else}}{{id}}{{/if}}</h2>
-        <span class="list-item-meta">{{formatRelative date.edited}}</span>
+        <span class="list-item-meta">{{formatRelative date.edited}} {{#if content.words}} - {{content.words}} words{{/if}}</span>
         <div class="list-item-actions">
           <a href="/{{../result.username}}/{{slug}}/preview" class="list-item-meta">view</a>
           <a href="/{{../result.username}}/{{slug}}" class="list-item-meta">edit</a>

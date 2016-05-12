@@ -40,6 +40,7 @@ module.exports = function(io) {
       Document.findOneAndUpdate({ _id: name.id }, {
         slug: slug(name.title, { lower: true, remove: /[.]/g }),
         content: {
+          words: name.words,
           title: name.title,
           data: {
             raw: name.content,

@@ -173,29 +173,6 @@ index.get('/:user/:slug/raw/md', function (req, res, next) {
   });
 });
 
-// unnamed view
-index.get('/~:id', function(req, res, next) {
-  Document.findOne({
-    _id: req.params.id
-  }, function(err, document) {
-    if (err) return next(err);
-    Account.findOne({
-      username: document.author
-    }, function(err, account) {
-      if (err) return next(err);
-      res.render('d/view', {
-        title: document.title,
-        document: document,
-        account: account,
-        user: req.user,
-        view: true
-      });
-    });
-  });
-});
-
-
-
 // Ensure Authentication
 function ensureAuthentication(req, res, next) {
   if (req.isAuthenticated()) {
