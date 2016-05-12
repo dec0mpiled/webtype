@@ -66,7 +66,7 @@ index.get('/:user', function(req, res, next) {
         user: req.user,
         document: document,
         documents: document,
-        title: result.name + '(' + result.username + ')'
+        title: result.name + ' (@' + result.username + ')'
       });
     });
   });
