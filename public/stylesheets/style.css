@@ -42,7 +42,10 @@ button:hover, .button:hover               { outline: none; border: solid 1px #70
 
 /* list --------------------------------------*/
 
-.list-header             { margin: 1em 0; }
+.list-header             { margin: 1em 0; padding-bottom: 6em; }
+.list-header-image       { border-radius: 100%; display: inline-block; float: left; }
+.list-header-image-wrap  { width: calc(100% * 1/4); }
+.list-header-profile     { float: left; width: calc(100% * 1/4); padding-left: 1em; }
 .list-header-title       { font-weight: 500; font-size: 22px; }
 .list-header-actions     { float: right; }
 
@@ -67,6 +70,7 @@ button:hover, .button:hover               { outline: none; border: solid 1px #70
 @media (max-width: 700px) {
     .list-item           { width: 100%; }
 }
+
 
 /* editor --------------------------------------*/
 

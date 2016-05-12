@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
 var auth = express.Router();
+var md5 = require('md5');
 
 auth.get('/register', function(req, res) {
   res.render('a/register', { active: 'register', title: 'Register' });
@@ -11,7 +12,8 @@ auth.post('/register', function(req, res, next) {
   Account.register(new Account({
     username: req.body.username,
     email: req.body.email,
-    name: req.body.name
+    name: req.body.name,
+    md5: md5(req.body.email)
   }), req.body.password, function(err, account) {
     if (err) {
       return res.render("a/register", {

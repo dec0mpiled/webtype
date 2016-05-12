@@ -9,6 +9,7 @@ var Account = new Schema({
     username: String,
     password: String,
     admin: Boolean,
+    md5: String,
     meta: {
         totalDocs: Number,
         archivedDocs: Number,

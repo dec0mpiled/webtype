@@ -14,8 +14,13 @@
       <a class="button list-header-actions" href="/create">create</a>
       {{/equal}}
       
-      <h1 class="list-header-title">{{result.name}}</h1>
-      <p class="list-header-subtitle">@{{result.username}} - {{document.length}} docs</p>
+      <div class="list-header-image-wrap">
+        <img class="list-header-image" src="http://www.gravatar.com/avatar/{{result.md5}}">
+      </div>
+      <div class="list-header-profile">        
+        <h1 class="list-header-title">{{result.name}}</h1>
+        <p class="list-header-subtitle">@{{result.username}}</p>
+      </div>
     </header>
   </div>
 
